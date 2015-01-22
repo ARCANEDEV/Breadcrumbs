@@ -1,0 +1,31 @@
+{
+    "name": "arcanedev/breadcrumbs",
+    "description": "A simple way to create breadcrumbs.",
+    "keywords": ["breadcrumbs", "html", "twitter", "bootstrap"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ARCANEDEV",
+            "email": "arcanedev.maroc@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "~2.2",
+        "phpunit/phpcov": "~2.0",
+        "mockery/mockery": "~0.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Arcanedev\\Breadcrumbs\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Arcanedev\\Breadcrumbs\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable"
+}
