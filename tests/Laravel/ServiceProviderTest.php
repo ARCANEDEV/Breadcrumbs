@@ -1,17 +1,18 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests;
+<?php namespace Arcanedev\Breadcrumbs\Tests\Laravel;
 
-use Arcanedev\Breadcrumbs\Breadcrumbs;
+use Arcanedev\Breadcrumbs\Laravel\ServiceProvider;
+use Arcanedev\Breadcrumbs\Tests\LaravelTestCase;
 
-class BreadcrumbsTest extends TestCase
+class ServiceProviderTest extends LaravelTestCase
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
-    const BREADCRUMBS_CLASS = 'Arcanedev\\Breadcrumbs\\Breadcrumbs';
-
-    /** @var Breadcrumbs */
-    private $breadcrumbs;
+    /**
+     * @var ServiceProvider
+     */
+    private $serviceProvider;
 
     /* ------------------------------------------------------------------------------------------------
      |  Main Functions
@@ -21,14 +22,14 @@ class BreadcrumbsTest extends TestCase
     {
         parent::setUp();
 
-        $this->breadcrumbs = new Breadcrumbs;
+        $this->serviceProvider = new ServiceProvider($this->app);
     }
 
     public function tearDown()
     {
         parent::tearDown();
 
-        unset($this->breadcrumbs);
+        unset($this->serviceProvider);
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -38,8 +39,11 @@ class BreadcrumbsTest extends TestCase
     /**
      * @test
      */
-    public function testCanBeInstantiated()
+    public function it_can_get_what_package_provides()
     {
-        $this->assertInstanceOf(self::BREADCRUMBS_CLASS, $this->breadcrumbs);
+        // This is for 100% code converge
+        $this->assertEquals([
+            'arcanedev.breadcrumbs'
+        ], $this->serviceProvider->provides());
     }
 }

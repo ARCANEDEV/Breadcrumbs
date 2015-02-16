@@ -1,17 +1,14 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests;
+<?php namespace Arcanedev\Breadcrumbs\Tests\Laravel;
 
-use Arcanedev\Breadcrumbs\Breadcrumbs;
+use Arcanedev\Breadcrumbs\Laravel\Facade as Breadcrumbs;
+use Arcanedev\Breadcrumbs\Tests\LaravelTestCase;
 
-class BreadcrumbsTest extends TestCase
+class FacadeTest extends LaravelTestCase
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
-    const BREADCRUMBS_CLASS = 'Arcanedev\\Breadcrumbs\\Breadcrumbs';
-
-    /** @var Breadcrumbs */
-    private $breadcrumbs;
 
     /* ------------------------------------------------------------------------------------------------
      |  Main Functions
@@ -20,26 +17,22 @@ class BreadcrumbsTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-
-        $this->breadcrumbs = new Breadcrumbs;
     }
 
     public function tearDown()
     {
         parent::tearDown();
-
-        unset($this->breadcrumbs);
     }
 
     /* ------------------------------------------------------------------------------------------------
      |  Test Functions
      | ------------------------------------------------------------------------------------------------
      */
-    /**
-     * @test
-     */
-    public function testCanBeInstantiated()
+    /** @test */
+    public function it_register_callbacks()
     {
-        $this->assertInstanceOf(self::BREADCRUMBS_CLASS, $this->breadcrumbs);
+        Breadcrumbs::register('public', function($builder) {
+
+        });
     }
 }
