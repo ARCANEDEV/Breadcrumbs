@@ -1,9 +1,10 @@
 <?php namespace Arcanedev\Breadcrumbs;
 
+use Arcanedev\Breadcrumbs\Contracts\BuilderContract;
 use Arcanedev\Breadcrumbs\Exceptions\InvalidBreadcrumbNameException;
 use Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException;
 
-class Builder
+class Builder implements BuilderContract
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
