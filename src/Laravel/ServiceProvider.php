@@ -20,21 +20,21 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Bootstrap the application events
-     */
-    public function boot()
-    {
-        parent::boot();
-
-        $this->package('arcanedev/breadcrumbs', null, __DIR__);
-    }
-
-    /**
      * Register the service provider
      */
     public function register()
     {
-        $this->app->bindShared('arcanedev.breadcrumbs', function($app) {
+        $this->loadViewsFrom(__DIR__ . '/views', 'breadcrumbs');
+
+        $this->publishes([
+            __DIR__ . '/views' => base_path('resources/views/arcanedev/breadcrumbs'),
+        ]);
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/config/config.php', 'breadcrumbs'
+        );
+
+        $this->app->singleton('arcanedev.breadcrumbs', function($app) {
             $config = $app['config']->get('breadcrumbs::config');
 
             return new Breadcrumbs($config);
