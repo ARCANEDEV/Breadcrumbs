@@ -1,6 +1,6 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests\Laravel;
 
-use Arcanedev\Breadcrumbs\Laravel\Facade as Breadcrumbs;
+use Breadcrumbs;
 use Arcanedev\Breadcrumbs\Tests\LaravelTestCase;
 
 class FacadeTest extends LaravelTestCase

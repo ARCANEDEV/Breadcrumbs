@@ -37,9 +37,7 @@ abstract class LaravelTestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getPackageAliases($app)
     {
-        return [
-            'Facade' => 'Arcanedev\Breadcrumbs\Laravel\Facade'
-        ];
+        return [];
     }
     /**
      * Define environment setup.

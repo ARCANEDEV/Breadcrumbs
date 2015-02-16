@@ -1,6 +1,7 @@
 <?php namespace Arcanedev\Breadcrumbs\Laravel;
 
 use Arcanedev\Breadcrumbs\Breadcrumbs;
+use Illuminate\Foundation\AliasLoader;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -39,6 +40,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
             return new Breadcrumbs($config);
         });
+
+        $loader = AliasLoader::getInstance();
+        $loader->alias('Breadcrumbs', 'Arcanedev\Breadcrumbs\Laravel\Facade');
     }
 
     /**
