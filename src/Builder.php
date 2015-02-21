@@ -11,7 +11,7 @@ class Builder implements BuilderContract
      | ------------------------------------------------------------------------------------------------
      */
     /** @var array */
-    protected $callbacks  = [];
+    protected $callbacks   = [];
 
     /** @var array */
     protected $breadcrumbs = [];
@@ -124,11 +124,13 @@ class Builder implements BuilderContract
     public function toArray()
     {
         $breadcrumbs = $this->breadcrumbs;
+
         // Add first & last indicators
-        if ($breadcrumbs) {
-            $breadcrumbs[0]->first = true;
+        if (count($breadcrumbs)) {
+            $breadcrumbs[0]->first                      = true;
             $breadcrumbs[count($breadcrumbs) - 1]->last = true;
         }
+
         return $breadcrumbs;
     }
 
