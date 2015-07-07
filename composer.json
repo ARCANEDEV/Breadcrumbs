@@ -10,10 +10,10 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=5.5.9"
     },
     "require-dev": {
-        "orchestra/testbench": "~2.2",
+        "orchestra/testbench": "~3.1",
         "phpunit/phpcov": "~2.0",
         "mockery/mockery": "~0.9"
     },

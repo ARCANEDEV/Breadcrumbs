@@ -24,7 +24,7 @@ abstract class LaravelTestCase extends \Orchestra\Testbench\TestCase
      *
      * @return array
      */
-    protected function getPackageProviders()
+    protected function getPackageProviders($app)
     {
         return [
             'Arcanedev\Breadcrumbs\Laravel\ServiceProvider'
@@ -35,11 +35,9 @@ abstract class LaravelTestCase extends \Orchestra\Testbench\TestCase
      *
      * @return array
      */
-    protected function getPackageAliases()
+    protected function getPackageAliases($app)
     {
-        return [
-            'Facade' => 'Arcanedev\Breadcrumbs\Laravel\Facade'
-        ];
+        return [];
     }
     /**
      * Define environment setup.
