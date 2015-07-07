@@ -46,14 +46,19 @@ class BreadcrumbCollection extends Collection
     {
         $this->push($breadcrumb);
 
-        return $this->reorder();
+        return $this->order();
     }
 
     /* ------------------------------------------------------------------------------------------------
      |  Other Functions
      | ------------------------------------------------------------------------------------------------
      */
-    private function reorder()
+    /**
+     * Order all breadcrumbs items
+     *
+     * @return self
+     */
+    private function order()
     {
         $this->each(function(BreadcrumbItem $breadcrumb, $key) {
             $breadcrumb->resetPosition();
