@@ -60,6 +60,11 @@ class Breadcrumbs implements BreadcrumbsContract
         return $this;
     }
 
+    /**
+     * Get the template view
+     *
+     * @return string
+     */
     private function getView()
     {
         return $this->views[$this->template];
@@ -87,15 +92,18 @@ class Breadcrumbs implements BreadcrumbsContract
     }
 
     /**
+     * Generate the breadcrumbs
+     *
      * @param  string $name
      *
      * @return array
      */
     public function generate($name)
     {
-        $args = array_slice(func_get_args(), 1);
-
-        return $this->generateArray($name, $args);
+        return $this->generateArray(
+            $name,
+            array_slice(func_get_args(), 1)
+        );
     }
 
     /**
@@ -123,9 +131,10 @@ class Breadcrumbs implements BreadcrumbsContract
      */
     public function render($name = null)
     {
-        $args = array_slice(func_get_args(), 1);
-
-        return $this->renderArray($name, $args);
+        return $this->renderArray(
+            $name,
+            array_slice(func_get_args(), 1)
+        );
     }
 
     /**
