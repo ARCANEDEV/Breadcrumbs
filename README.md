@@ -46,6 +46,6 @@ Any ideas are welcome. Feel free the submit any issues or pull requests.
   - [ ] ZURB Foundation v5 Support
   - [ ] Laravel Support (v4.2)
   - [ ] Laravel Support (v5.0)
+  - [ ] Laravel Support (v5.0)
   - [ ] Foundation Support
   - [ ] Refactoring
-  
