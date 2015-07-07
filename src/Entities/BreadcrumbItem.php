@@ -225,11 +225,11 @@ class BreadcrumbItem implements Arrayable
      */
     public function toArray()
     {
-        return array_merge([
+        return array_merge($this->data, [
             'title' => $this->title,
             'url'   => $this->url,
             'first' => $this->first,
             'last'  => $this->last,
-        ], $this->data);
+        ]);
     }
 }
