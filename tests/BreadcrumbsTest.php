@@ -8,8 +8,6 @@ class BreadcrumbsTest extends TestCase
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
-    const BREADCRUMBS_CLASS = 'Arcanedev\\Breadcrumbs\\Breadcrumbs';
-
     /** @var Breadcrumbs */
     private $breadcrumbs;
 
@@ -35,11 +33,11 @@ class BreadcrumbsTest extends TestCase
      |  Test Functions
      | ------------------------------------------------------------------------------------------------
      */
-    /**
-     * @test
-     */
-    public function testCanBeInstantiated()
+    /** @test */
+    public function it_can_be_instantiated()
     {
-        $this->assertInstanceOf(self::BREADCRUMBS_CLASS, $this->breadcrumbs);
+        $this->assertInstanceOf(Breadcrumbs::class, $this->breadcrumbs);
     }
+
+
 }

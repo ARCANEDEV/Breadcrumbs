@@ -3,10 +3,15 @@
 use Arcanedev\Breadcrumbs\Contracts\BreadcrumbsContract;
 use Arcanedev\Breadcrumbs\Exceptions\InvalidTemplateException;
 use Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException;
-use Illuminate\Support\Facades\View;
 
 class Breadcrumbs implements BreadcrumbsContract
 {
+    /* ------------------------------------------------------------------------------------------------
+     |  Constants
+     | ------------------------------------------------------------------------------------------------
+     */
+    const DEFAULT_TEMPLATE = 'bootstrap-3';
+
     /* ------------------------------------------------------------------------------------------------
      |  Properties
      | ------------------------------------------------------------------------------------------------
@@ -16,8 +21,6 @@ class Breadcrumbs implements BreadcrumbsContract
 
     /** @var string */
     private $template;
-
-    const DEFAULT_TEMPLATE = 'bootstrap-3';
 
     /** @var array */
     private $views = [
@@ -69,8 +72,8 @@ class Breadcrumbs implements BreadcrumbsContract
     /**
      * Register a domain
      *
-     * @param string   $name
-     * @param callable $callback
+     * @param  string   $name
+     * @param  callable $callback
      *
      * @return Breadcrumbs
      */
@@ -96,12 +99,14 @@ class Breadcrumbs implements BreadcrumbsContract
     }
 
     /**
+     * Generate array
+     *
      * @param  string $name
      * @param  array  $args
      *
      * @return array
      */
-    public function generateArray($name, $args = [])
+    public function generateArray($name, array $args = [])
     {
         $generator = new Builder($this->callbacks);
         $generator->call($name, $args);
@@ -133,9 +138,7 @@ class Breadcrumbs implements BreadcrumbsContract
      */
     public function renderArray($name, $args = [])
     {
-        $breadcrumbs = $this->generateArray($name, $args);
-
-        return View::make($this->getView(), compact('breadcrumbs'))->render();
+        return view($this->getView(), $this->generateArray($name, $args));
     }
 
     /* ------------------------------------------------------------------------------------------------
