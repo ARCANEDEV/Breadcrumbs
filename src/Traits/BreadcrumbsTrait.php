@@ -61,14 +61,14 @@ trait BreadcrumbsTrait
     {
         $this->setBcContainer($container);
 
-        Breadcrumbs::register('main', function(Builder $bc) use ($item) {
-            if (empty($item)) {
-                $item = [
-                    'title' => 'Home',
-                    'url'   => route('home')
-                ];
-            }
+        if (empty($item)) {
+            $item = [
+                'title' => 'Home',
+                'url'   => route('home')
+            ];
+        }
 
+        Breadcrumbs::register('main', function(Builder $bc) use ($item) {
             $bc->push($item['title'], $item['url']);
         });
 
