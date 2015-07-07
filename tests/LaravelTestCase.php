@@ -10,6 +10,7 @@ abstract class LaravelTestCase extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
     }
+
     public function tearDown()
     {
         parent::tearDown();
@@ -30,6 +31,7 @@ abstract class LaravelTestCase extends \Orchestra\Testbench\TestCase
             'Arcanedev\Breadcrumbs\Laravel\ServiceProvider'
         ];
     }
+
     /**
      * Register Aliases
      *
@@ -37,13 +39,15 @@ abstract class LaravelTestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getPackageAliases($app)
     {
-        return [];
+        return [
+            'Breadcrumbs' => 'Arcanedev\Breadcrumbs\Laravel\Facade'
+        ];
     }
+
     /**
      * Define environment setup.
      *
      * @param  \Illuminate\Foundation\Application  $app
-     * @return void
      */
     protected function getEnvironmentSetUp($app)
     {
