@@ -48,4 +48,3 @@ Any ideas are welcome. Feel free the submit any issues or pull requests.
   - [ ] Laravel Support (v5.0)
   - [ ] Foundation Support
   - [ ] Refactoring
-  
