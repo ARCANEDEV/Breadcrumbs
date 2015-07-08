@@ -2,8 +2,9 @@
 
 use Arcanedev\Breadcrumbs\Breadcrumbs;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 
-class ServiceProvider extends \Illuminate\Support\ServiceProvider
+class ServiceProvider extends IlluminateServiceProvider
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
@@ -25,24 +26,20 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function register()
     {
-        $this->loadViewsFrom(__DIR__ . '/views', 'breadcrumbs');
+        $basePath  = __DIR__ . '/../..';
+        $viewsPath = $basePath . '/resources/views';
 
+        $this->loadViewsFrom($viewsPath, 'breadcrumbs');
         $this->publishes([
-            __DIR__ . '/views' => base_path('resources/views/arcanedev/breadcrumbs'),
+            $viewsPath => base_path('resources/views/arcanedev/breadcrumbs'),
         ]);
 
         $this->mergeConfigFrom(
-            __DIR__ . '/config/config.php', 'breadcrumbs'
+            $basePath . '/config/config.php', 'breadcrumbs'
         );
 
-        $this->app->singleton('arcanedev.breadcrumbs', function($app) {
-            $config = $app['config']->get('breadcrumbs::config');
-
-            return new Breadcrumbs($config);
-        });
-
-        $loader = AliasLoader::getInstance();
-        $loader->alias('Breadcrumbs', 'Arcanedev\Breadcrumbs\Laravel\Facade');
+        $this->registerServices();
+        $this->registerFacades();
     }
 
     /**
@@ -61,4 +58,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      |  Other Functions
      | ------------------------------------------------------------------------------------------------
      */
+    private function registerServices()
+    {
+        $this->app->singleton('arcanedev.breadcrumbs', function () {
+            return new Breadcrumbs(config('breadcrumbs::config'));
+        });
+    }
+
+    private function registerFacades()
+    {
+        $loader = AliasLoader::getInstance();
+        $loader->alias('Breadcrumbs', 'Arcanedev\Breadcrumbs\Laravel\Facade');
+    }
 }
