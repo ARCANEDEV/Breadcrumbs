@@ -147,7 +147,9 @@ class Breadcrumbs implements BreadcrumbsContract
      */
     public function renderArray($name, $args = [])
     {
-        return view($this->getView(), $this->generateArray($name, $args));
+        $breadcrumbs = $this->generateArray($name, $args);
+
+        return view($this->getView(), compact('breadcrumbs'))->render();
     }
 
     /* ------------------------------------------------------------------------------------------------
