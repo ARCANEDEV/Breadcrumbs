@@ -1,7 +1,8 @@
 <?php namespace Arcanedev\Breadcrumbs\Contracts;
 
 use Arcanedev\Breadcrumbs\Builder;
-use Arcanedev\Breadcrumbs\Exceptions\InvalidBreadcrumbNameException;
+use Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection;
+use Arcanedev\Breadcrumbs\Exceptions\InvalidCallbackNameException;
 use Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException;
 
 interface BuilderContract
@@ -11,20 +12,18 @@ interface BuilderContract
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Get breadcrumbs
+     * Get breadcrumbs collection
      *
-     * @return array
+     * @return BreadcrumbCollection
      */
     public function get();
 
     /**
-     * Set breadcrumbs
+     * Get callbacks
      *
-     * @param array $breadcrumbs
-     *
-     * @return Builder
+     * @return array
      */
-    public function set(array $breadcrumbs);
+    public function getCallbacks();
 
     /* ------------------------------------------------------------------------------------------------
      |  Main Functions
@@ -37,9 +36,9 @@ interface BuilderContract
      * @param  array  $params
      *
      * @throws InvalidTypeException
-     * @throws InvalidBreadcrumbNameException
+     * @throws InvalidCallbackNameException
      */
-    public function call($name, $params);
+    public function call($name, array $params = []);
 
     /**
      * Call parent breadcrumb
@@ -47,7 +46,7 @@ interface BuilderContract
      * @param  string $name
      *
      * @throws InvalidTypeException
-     * @throws InvalidBreadcrumbNameException
+     * @throws InvalidCallbackNameException
      */
     public function parent($name);
 

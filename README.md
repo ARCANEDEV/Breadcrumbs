@@ -1,4 +1,4 @@
-Breadcrumbs [![Packagist License](http://img.shields.io/packagist/l/arcanedev/breadcrumbs.svg?style=flat-square)](https://github.com/ARCANEDEV/noCAPTCHA/blob/master/LICENSE)
+Breadcrumbs (Only for Laravel) [![Packagist License](http://img.shields.io/packagist/l/arcanedev/breadcrumbs.svg?style=flat-square)](https://github.com/ARCANEDEV/noCAPTCHA/blob/master/LICENSE)
 ==============
 [![Travis Status](http://img.shields.io/travis/ARCANEDEV/Breadcrumbs.svg?style=flat-square)](https://travis-ci.org/ARCANEDEV/Breadcrumbs)
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/ARCANEDEV/Breadcrumbs.svg?style=flat-square)](https://scrutinizer-ci.com/g/ARCANEDEV/Breadcrumbs/?branch=master)
@@ -23,7 +23,7 @@ You can install this package via [Composer](http://getcomposer.org/). Add this t
 ```json
 {
     "require": {
-        "arcanedev/breadcrumbs": "~1.0"
+        "arcanedev/breadcrumbs": "~2.0"
     }
 }
 ```    
@@ -45,6 +45,5 @@ Any ideas are welcome. Feel free the submit any issues or pull requests.
   - [ ] Twitter bootstrap v3 Support
   - [ ] ZURB Foundation v5 Support
   - [ ] Laravel Support (v4.2)
-  - [ ] Laravel Support (v5.0)
-  - [ ] Foundation Support
-  - [ ] Refactoring
+  - [x] Laravel Support (v5.0)
+  - [x] Laravel Support (v5.1)

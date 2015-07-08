@@ -27,7 +27,7 @@ interface BreadcrumbsContract
      *
      * @return array
      */
-    public function generateArray($name, $args = []);
+    public function generateArray($name, array $args = []);
 
     /**
      * Render breadcrumbs

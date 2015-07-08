@@ -1,7 +1,8 @@
 <?php namespace Arcanedev\Breadcrumbs;
 
 use Arcanedev\Breadcrumbs\Contracts\BuilderContract;
-use Arcanedev\Breadcrumbs\Exceptions\InvalidBreadcrumbNameException;
+use Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection;
+use Arcanedev\Breadcrumbs\Exceptions\InvalidCallbackNameException;
 use Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException;
 
 class Builder implements BuilderContract
@@ -13,15 +14,16 @@ class Builder implements BuilderContract
     /** @var array */
     protected $callbacks  = [];
 
-    /** @var array */
-    protected $breadcrumbs = [];
+    /** @var BreadcrumbCollection */
+    protected $breadcrumbs;
 
     /* ------------------------------------------------------------------------------------------------
      |  Constructor
      | ------------------------------------------------------------------------------------------------
      */
-    public function __construct(array $callbacks)
+    public function __construct(array $callbacks = [])
     {
+        $this->breadcrumbs = new BreadcrumbCollection;
         $this->setCallbacks($callbacks);
     }
 
@@ -30,9 +32,9 @@ class Builder implements BuilderContract
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Get breadcrumbs
+     * Get breadcrumbs collection
      *
-     * @return array
+     * @return BreadcrumbCollection
      */
     public function get()
     {
@@ -40,17 +42,13 @@ class Builder implements BuilderContract
     }
 
     /**
-     * Set breadcrumbs
+     * Get callbacks
      *
-     * @param array $breadcrumbs
-     *
-     * @return Builder
+     * @return array
      */
-    public function set(array $breadcrumbs)
+    public function getCallbacks()
     {
-        $this->breadcrumbs = $breadcrumbs;
-
-        return $this;
+        return $this->callbacks;
     }
 
     /**
@@ -78,9 +76,9 @@ class Builder implements BuilderContract
      * @param  array  $params
      *
      * @throws InvalidTypeException
-     * @throws InvalidBreadcrumbNameException
+     * @throws InvalidCallbackNameException
      */
-    public function call($name, $params)
+    public function call($name, array $params = [])
     {
         $this->checkName($name);
 
@@ -94,42 +92,36 @@ class Builder implements BuilderContract
      * @param  string $name
      *
      * @throws InvalidTypeException
-     * @throws InvalidBreadcrumbNameException
+     * @throws InvalidCallbackNameException
      */
     public function parent($name)
     {
-        $params = array_slice(func_get_args(), 1);
-        $this->call($name, $params);
+        $this->call($name, array_slice(func_get_args(), 1));
     }
 
     /**
      * Push a breadcrumb
      *
-     * @param string      $title
-     * @param string|null $url
-     * @param array       $data
+     * @param  string      $title
+     * @param  string|null $url
+     * @param  array       $data
+     *
+     * @return self
      */
     public function push($title, $url = null, array $data = [])
     {
-        $breadcrumb = array_merge($data, [
-            'title' => $title,
-            'url'   => $url,
-            'first' => false,
-            'last'  => false,
-        ]);
+        $this->breadcrumbs->addOne($title, $url, $data);
 
-        $this->breadcrumbs[] = (object) $breadcrumb;
+        return $this;
     }
 
+    /**
+     * Get
+     * @return array
+     */
     public function toArray()
     {
-        $breadcrumbs = $this->breadcrumbs;
-        // Add first & last indicators
-        if ($breadcrumbs) {
-            $breadcrumbs[0]->first = true;
-            $breadcrumbs[count($breadcrumbs) - 1]->last = true;
-        }
-        return $breadcrumbs;
+        return $this->breadcrumbs->toArray();
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -142,19 +134,19 @@ class Builder implements BuilderContract
      * @param  string $name
      *
      * @throws InvalidTypeException
-     * @throws InvalidBreadcrumbNameException
+     * @throws InvalidCallbackNameException
      */
     private function checkName($name)
     {
-        if (! is_string($name)) {
+        if ( ! is_string($name)) {
             throw new InvalidTypeException(
                 'The name value must be a string, ' . gettype($name) . ' given'
             );
         }
 
-        if (! isset($this->callbacks[$name])) {
-            throw new InvalidBreadcrumbNameException(
-                'Breadcrumb not found with name "' . $name . '"'
+        if ( ! isset($this->callbacks[$name])) {
+            throw new InvalidCallbackNameException(
+                "The callback name not found [{$name}]"
             );
         }
     }

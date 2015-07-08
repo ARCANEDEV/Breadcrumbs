@@ -3,10 +3,15 @@
 use Arcanedev\Breadcrumbs\Contracts\BreadcrumbsContract;
 use Arcanedev\Breadcrumbs\Exceptions\InvalidTemplateException;
 use Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException;
-use Illuminate\Support\Facades\View;
 
 class Breadcrumbs implements BreadcrumbsContract
 {
+    /* ------------------------------------------------------------------------------------------------
+     |  Constants
+     | ------------------------------------------------------------------------------------------------
+     */
+    const DEFAULT_TEMPLATE = 'bootstrap-3';
+
     /* ------------------------------------------------------------------------------------------------
      |  Properties
      | ------------------------------------------------------------------------------------------------
@@ -16,8 +21,6 @@ class Breadcrumbs implements BreadcrumbsContract
 
     /** @var string */
     private $template;
-
-    const DEFAULT_TEMPLATE = 'bootstrap-3';
 
     /** @var array */
     private $views = [
@@ -57,6 +60,11 @@ class Breadcrumbs implements BreadcrumbsContract
         return $this;
     }
 
+    /**
+     * Get the template view
+     *
+     * @return string
+     */
     private function getView()
     {
         return $this->views[$this->template];
@@ -69,8 +77,8 @@ class Breadcrumbs implements BreadcrumbsContract
     /**
      * Register a domain
      *
-     * @param string   $name
-     * @param callable $callback
+     * @param  string   $name
+     * @param  callable $callback
      *
      * @return Breadcrumbs
      */
@@ -84,24 +92,29 @@ class Breadcrumbs implements BreadcrumbsContract
     }
 
     /**
+     * Generate the breadcrumbs
+     *
      * @param  string $name
      *
      * @return array
      */
     public function generate($name)
     {
-        $args = array_slice(func_get_args(), 1);
-
-        return $this->generateArray($name, $args);
+        return $this->generateArray(
+            $name,
+            array_slice(func_get_args(), 1)
+        );
     }
 
     /**
+     * Generate array
+     *
      * @param  string $name
      * @param  array  $args
      *
      * @return array
      */
-    public function generateArray($name, $args = [])
+    public function generateArray($name, array $args = [])
     {
         $generator = new Builder($this->callbacks);
         $generator->call($name, $args);
@@ -118,9 +131,10 @@ class Breadcrumbs implements BreadcrumbsContract
      */
     public function render($name = null)
     {
-        $args = array_slice(func_get_args(), 1);
-
-        return $this->renderArray($name, $args);
+        return $this->renderArray(
+            $name,
+            array_slice(func_get_args(), 1)
+        );
     }
 
     /**
@@ -135,7 +149,7 @@ class Breadcrumbs implements BreadcrumbsContract
     {
         $breadcrumbs = $this->generateArray($name, $args);
 
-        return View::make($this->getView(), compact('breadcrumbs'))->render();
+        return view($this->getView(), compact('breadcrumbs'))->render();
     }
 
     /* ------------------------------------------------------------------------------------------------
