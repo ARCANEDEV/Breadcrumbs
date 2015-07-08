@@ -1,7 +1,5 @@
 <?php namespace Arcanedev\Breadcrumbs\Entities;
 
-use Illuminate\Contracts\Support\Arrayable;
-
 /**
  * Class BreadcrumbItem
  * @package Arcanedev\Breadcrumbs\Entities
@@ -11,7 +9,7 @@ use Illuminate\Contracts\Support\Arrayable;
  * @property bool   first
  * @property bool   last
  */
-class BreadcrumbItem implements Arrayable
+class BreadcrumbItem
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
