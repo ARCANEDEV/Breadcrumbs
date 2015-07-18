@@ -86,4 +86,17 @@ class BreadcrumbCollectionTest extends TestCase
         $this->assertFalse($this->bcCollection->last()->isFirst());
         $this->assertTrue($this->bcCollection->last()->isLast());
     }
+
+    /**
+     * Call artisan command and return code.
+     *
+     * @param string $command
+     * @param array  $parameters
+     *
+     * @return int
+     */
+    public function artisan($command, $parameters = [])
+    {
+        // TODO: Implement artisan() method.
+    }
 }

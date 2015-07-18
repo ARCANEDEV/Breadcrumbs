@@ -114,4 +114,17 @@ class BreadcrumbItemTest extends TestCase
             $data
         ), $this->breadcrumb->toArray());
     }
+
+    /**
+     * Call artisan command and return code.
+     *
+     * @param string $command
+     * @param array  $parameters
+     *
+     * @return int
+     */
+    public function artisan($command, $parameters = [])
+    {
+        // TODO: Implement artisan() method.
+    }
 }

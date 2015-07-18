@@ -3,7 +3,11 @@
 use Arcanedev\Breadcrumbs\Breadcrumbs;
 use Arcanedev\Breadcrumbs\Builder;
 
-class BreadcrumbsTest extends LaravelTestCase
+/**
+ * Class BreadcrumbsTest
+ * @package Arcanedev\Breadcrumbs\Tests
+ */
+class BreadcrumbsTest extends TestCase
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties

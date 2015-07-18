@@ -1,9 +1,9 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests\Laravel;
 
 use Arcanedev\Breadcrumbs\Laravel\ServiceProvider;
-use Arcanedev\Breadcrumbs\Tests\LaravelTestCase;
+use Arcanedev\Breadcrumbs\Tests\TestCase;
 
-class ServiceProviderTest extends LaravelTestCase
+class ServiceProviderTest extends TestCase
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties

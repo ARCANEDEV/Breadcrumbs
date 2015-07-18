@@ -14,9 +14,6 @@ class BuilderTest extends TestCase
     /** @var Builder */
     private $builder;
 
-    /** @var array */
-    private $callbacks;
-
     /* ------------------------------------------------------------------------------------------------
      |  Main Functions
      | ------------------------------------------------------------------------------------------------
@@ -87,5 +84,18 @@ class BuilderTest extends TestCase
     public function it_must_throw_invalid_callback_name_exception()
     {
         $this->builder->call('random', []);
+    }
+
+    /**
+     * Call artisan command and return code.
+     *
+     * @param string $command
+     * @param array  $parameters
+     *
+     * @return int
+     */
+    public function artisan($command, $parameters = [])
+    {
+        // TODO: Implement artisan() method.
     }
 }

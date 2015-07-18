@@ -115,16 +115,14 @@ class BreadcrumbItem
      */
     public function __get($name)
     {
-        $value = null;
-
         if (property_exists($this, $name)) {
-            $value = $this->$name;
+            return $this->$name;
         }
         elseif ($this->hasData($name)) {
-            $value = $this->data[$name];
+            return $this->data[$name];
         }
 
-        return $value;
+        return null;
     }
 
     /**

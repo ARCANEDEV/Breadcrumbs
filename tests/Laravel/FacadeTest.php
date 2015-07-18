@@ -1,9 +1,9 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests\Laravel;
 
 use Breadcrumbs;
-use Arcanedev\Breadcrumbs\Tests\LaravelTestCase;
+use Arcanedev\Breadcrumbs\Tests\TestCase;
 
-class FacadeTest extends LaravelTestCase
+class FacadeTest extends TestCase
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
