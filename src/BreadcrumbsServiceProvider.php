@@ -84,12 +84,13 @@ class BreadcrumbsServiceProvider extends ServiceProvider
      */
     private function registerBreadcrumbsService()
     {
-        $this->singleton('arcanedev.breadcrumbs', function ($app) {
+        $this->app->singleton('arcanedev.breadcrumbs', function ($app) {
             /** @var  \Illuminate\Config\Repository  $config */
             $config = $app['config'];
 
             return new Breadcrumbs(
-                $config->get('breadcrumbs')
+                $config->get('breadcrumbs.template.supported', []),
+                $config->get('breadcrumbs.template.default', '')
             );
         });
     }

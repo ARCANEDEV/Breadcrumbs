@@ -1,8 +1,6 @@
 <?php namespace Arcanedev\Breadcrumbs;
 
 use Arcanedev\Breadcrumbs\Contracts\BreadcrumbsInterface;
-use Arcanedev\Breadcrumbs\Exceptions\InvalidTemplateException;
-use Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException;
 use Closure;
 
 /**
@@ -16,12 +14,6 @@ use Closure;
 class Breadcrumbs implements BreadcrumbsInterface
 {
     /* ------------------------------------------------------------------------------------------------
-     |  Constants
-     | ------------------------------------------------------------------------------------------------
-     */
-    const DEFAULT_TEMPLATE = 'bootstrap-3';
-
-    /* ------------------------------------------------------------------------------------------------
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
@@ -29,7 +21,7 @@ class Breadcrumbs implements BreadcrumbsInterface
     private $template;
 
     /** @var array */
-    private $views = [
+    private $supported = [
         'bootstrap-3' => 'breadcrumbs::bootstrap-3',
     ];
 
@@ -40,13 +32,21 @@ class Breadcrumbs implements BreadcrumbsInterface
      |  Constructor
      | ------------------------------------------------------------------------------------------------
      */
-    public function __construct($config = [])
+    /**
+     * Create a Breadcrumbs instance.
+     *
+     * @param  array   $supported
+     * @param  string  $template
+     */
+    public function __construct(array $supported, $template = '')
     {
-        if ( ! isset($config['template'])) {
-            $config['template'] = self::DEFAULT_TEMPLATE;
+        $this->supported = $supported;
+
+        if ( ! empty($template)) {
+            $template = 'bootstrap-3';
         }
 
-        $this->setTemplate($config['template']);
+        $this->setTemplate($template);
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -54,13 +54,13 @@ class Breadcrumbs implements BreadcrumbsInterface
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Set template
+     * Set template.
      *
-     * @param  string $template
+     * @param  string  $template
      *
-     * @return Breadcrumbs
+     * @return self
      */
-    private function setTemplate($template)
+    public function setTemplate($template)
     {
         $this->checkTemplate($template);
 
@@ -70,13 +70,13 @@ class Breadcrumbs implements BreadcrumbsInterface
     }
 
     /**
-     * Get the template view
+     * Get the template view.
      *
      * @return string
      */
     private function getView()
     {
-        return $this->views[$this->template];
+        return $this->supported[$this->template];
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ class Breadcrumbs implements BreadcrumbsInterface
     /**
      * Register a breadcrumb domain.
      *
-     * @param  string   $name
+     * @param  string    $name
      * @param  \Closure  $callback
      *
      * @return self
@@ -103,7 +103,7 @@ class Breadcrumbs implements BreadcrumbsInterface
     /**
      * Generate the breadcrumbs.
      *
-     * @param  string $name
+     * @param  string  $name
      *
      * @return array
      */
@@ -133,7 +133,7 @@ class Breadcrumbs implements BreadcrumbsInterface
     /**
      * Render breadcrumbs.
      *
-     * @param  string $name
+     * @param  string  $name
      *
      * @return string
      */
@@ -145,10 +145,10 @@ class Breadcrumbs implements BreadcrumbsInterface
     }
 
     /**
-     * Render breadcrumbs from array
+     * Render breadcrumbs from array.
      *
-     * @param  string $name
-     * @param  array $args
+     * @param  string  $name
+     * @param  array   $args
      *
      * @return string
      */
@@ -164,41 +164,42 @@ class Breadcrumbs implements BreadcrumbsInterface
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Check Template
+     * Check Template.
      *
-     * @param  string $template
+     * @param  string  $template
      *
-     * @throws InvalidTemplateException
-     * @throws InvalidTypeException
+     * @throws Exceptions\InvalidTemplateException
+     * @throws Exceptions\InvalidTypeException
      */
     private function checkTemplate($template)
     {
         if ( ! is_string($template)) {
-            throw new InvalidTypeException(
-                'The template value must be a string, ' . gettype($template) . ' given'
+            $type = gettype($template);
+            throw new Exceptions\InvalidTypeException(
+                "The default template name must be a string, $type given."
             );
         }
 
         $template = strtolower(trim($template));
 
-        if ( ! array_key_exists($template, $this->views)) {
-            throw new InvalidTemplateException(
-                'The template [' . $template . '] is not supported.'
+        if ( ! array_key_exists($template, $this->supported)) {
+            throw new Exceptions\InvalidTemplateException(
+                "The template [$template] is not supported."
             );
         }
     }
 
     /**
-     * Check Name
+     * Check Name.
      *
-     * @param  string $name
+     * @param  string  $name
      *
-     * @throws InvalidTypeException
+     * @throws Exceptions\InvalidTypeException
      */
     private function checkName(&$name)
     {
         if ( ! is_string($name)) {
-            throw new InvalidTypeException(
+            throw new Exceptions\InvalidTypeException(
                 'The name value must be a string, ' . gettype($name) . ' given'
             );
         }
