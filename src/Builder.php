@@ -28,6 +28,11 @@ class Builder implements BuilderInterface
      |  Constructor
      | ------------------------------------------------------------------------------------------------
      */
+    /**
+     * Create the builder instance.
+     *
+     * @param  array  $callbacks
+     */
     public function __construct(array $callbacks = [])
     {
         $this->breadcrumbs = new Entities\BreadcrumbCollection;
