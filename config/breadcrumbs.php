@@ -5,7 +5,15 @@ return [
      |  Template
      | ------------------------------------------------------------------------------------------------
      */
-    'template'      => 'bootstrap-3',
+    'template'  => [
+        'default'   => 'bootstrap-3',
+
+        'supported' => [
+            'bootstrap-3'  => 'breadcrumbs::bootstrap-3',
+            'bootstrap-2'  => 'breadcrumbs::bootstrap-2',
+            'foundation-5' => 'breadcrumbs::bootstrap-5',
+        ],
+    ],
 
     /* ------------------------------------------------------------------------------------------------
      |  Route
