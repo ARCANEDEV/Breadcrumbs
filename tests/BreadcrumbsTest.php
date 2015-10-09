@@ -26,7 +26,9 @@ class BreadcrumbsTest extends TestCase
     {
         parent::setUp();
 
-        $this->breadcrumbs = new Breadcrumbs;
+        $this->breadcrumbs = breadcrumbs();
+
+        $this->registerMainBreadcrumb();
     }
 
     public function tearDown()
@@ -47,12 +49,74 @@ class BreadcrumbsTest extends TestCase
     }
 
     /** @test */
-    public function it_can_register_a_callback()
+    public function it_can_render()
     {
-        $this->breadcrumbs->register('blog', function(Builder $builder) {
+        $result = $this->breadcrumbs->render('public');
+
+        $this->assertStringStartsWith(
+            '<ul class="breadcrumb breadcrumb-top">',
+            $result
+        );
+
+        $this->assertContains(
+            '<li class="active">Home</li>',
+            $result
+        );
+    }
+
+    /** @test */
+    public function it_can_generate_items()
+    {
+        $items = $this->breadcrumbs->generate('public');
+
+        $this->assertCount(1, $items);
+
+        $item = $items[0];
+
+        $this->assertArrayHasKey('title', $item);
+        $this->assertArrayHasKey('url', $item);
+        $this->assertArrayHasKey('first', $item);
+        $this->assertArrayHasKey('last', $item);
+
+        $this->assertEquals($item['title'], 'Home');
+        $this->assertEquals($item['url'], 'http://www.example.com');
+        $this->assertTrue($item['first']);
+        $this->assertTrue($item['last']);
+    }
+
+    /**
+     * @test
+     *
+     * @expectedException         \Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException
+     * @expectedExceptionMessage  The default template name must be a string, NULL given.
+     */
+    public function it_must_throw_invalid_type_exception_on_template()
+    {
+        $this->breadcrumbs->setTemplate(null);
+    }
+
+    /**
+     * @test
+     *
+     * @expectedException         \Arcanedev\Breadcrumbs\Exceptions\InvalidTemplateException
+     * @expectedExceptionMessage  The template [material-design] is not supported.
+     */
+    public function it_must_throw_InvalidTemplateException_on_template()
+    {
+        $this->breadcrumbs->setTemplate('material-design');
+    }
+
+    /* ------------------------------------------------------------------------------------------------
+     |  Other Functions
+     | ------------------------------------------------------------------------------------------------
+     */
+    /**
+     * Register main breadcrumb domain.
+     */
+    private function registerMainBreadcrumb()
+    {
+        $this->breadcrumbs->register('public', function(Builder $builder) {
             $builder->push('Home', 'http://www.example.com');
         });
-
-        $this->assertNotEmpty($this->breadcrumbs->render('blog'));
     }
 }
