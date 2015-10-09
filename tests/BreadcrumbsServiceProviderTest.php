@@ -1,22 +1,22 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests;
 
-use Arcanedev\Breadcrumbs\Breadcrumbs;
-use Arcanedev\Breadcrumbs\Builder;
+use Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider;
+use Arcanedev\Breadcrumbs\Tests\TestCase;
 
 /**
- * Class     BreadcrumbsTest
+ * Class     BreadcrumbsServiceProviderTest
  *
- * @package  Arcanedev\Breadcrumbs\Tests
+ * @package  Arcanedev\Breadcrumbs\Tests\Laravel
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class BreadcrumbsTest extends TestCase
+class BreadcrumbsServiceProviderTest extends TestCase
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
-    /** @var Breadcrumbs */
-    private $breadcrumbs;
+    /** @var BreadcrumbsServiceProvider */
+    private $provider;
 
     /* ------------------------------------------------------------------------------------------------
      |  Main Functions
@@ -26,14 +26,14 @@ class BreadcrumbsTest extends TestCase
     {
         parent::setUp();
 
-        $this->breadcrumbs = new Breadcrumbs;
+        $this->provider = $this->app->getProvider(BreadcrumbsServiceProvider::class);
     }
 
     public function tearDown()
     {
         parent::tearDown();
 
-        unset($this->breadcrumbs);
+        unset($this->provider);
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -41,18 +41,25 @@ class BreadcrumbsTest extends TestCase
      | ------------------------------------------------------------------------------------------------
      */
     /** @test */
-    public function it_can_be_instantiated()
+    public function it_must_be_a_provider()
     {
-        $this->assertInstanceOf(Breadcrumbs::class, $this->breadcrumbs);
+        $exceptedProviders = [
+            \Illuminate\Support\ServiceProvider::class,
+            \Arcanedev\Support\ServiceProvider::class,
+            \Arcanedev\Support\PackageServiceProvider::class,
+            BreadcrumbsServiceProvider::class,
+        ];
+
+        foreach ($exceptedProviders as $provider) {
+            $this->assertInstanceOf($provider, $this->provider);
+        }
     }
 
     /** @test */
-    public function it_can_register_a_callback()
+    public function it_can_get_what_package_provides()
     {
-        $this->breadcrumbs->register('blog', function(Builder $builder) {
-            $builder->push('Home', 'http://www.example.com');
-        });
-
-        $this->assertNotEmpty($this->breadcrumbs->render('blog'));
+        $this->assertEquals([
+            'arcanedev.breadcrumbs'
+        ], $this->provider->provides());
     }
 }

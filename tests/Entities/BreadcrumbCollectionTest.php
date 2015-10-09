@@ -3,6 +3,12 @@
 use Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection;
 use Arcanedev\Breadcrumbs\Tests\TestCase;
 
+/**
+ * Class     BreadcrumbCollectionTest
+ *
+ * @package  Arcanedev\Breadcrumbs\Tests\Entities
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
+ */
 class BreadcrumbCollectionTest extends TestCase
 {
     /* ------------------------------------------------------------------------------------------------

@@ -1,11 +1,14 @@
 <?php namespace Arcanedev\Breadcrumbs;
 
-use Arcanedev\Breadcrumbs\Contracts\BuilderContract;
-use Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection;
-use Arcanedev\Breadcrumbs\Exceptions\InvalidCallbackNameException;
-use Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException;
+use Arcanedev\Breadcrumbs\Contracts\BuilderInterface;
 
-class Builder implements BuilderContract
+/**
+ * Class     Builder
+ *
+ * @package  Arcanedev\Breadcrumbs
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
+ */
+class Builder implements BuilderInterface
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
@@ -14,7 +17,11 @@ class Builder implements BuilderContract
     /** @var array */
     protected $callbacks  = [];
 
-    /** @var BreadcrumbCollection */
+    /**
+     * Breadcrumbs collection.
+     *
+     * @var Entities\BreadcrumbCollection
+     */
     protected $breadcrumbs;
 
     /* ------------------------------------------------------------------------------------------------
@@ -23,7 +30,7 @@ class Builder implements BuilderContract
      */
     public function __construct(array $callbacks = [])
     {
-        $this->breadcrumbs = new BreadcrumbCollection;
+        $this->breadcrumbs = new Entities\BreadcrumbCollection;
         $this->setCallbacks($callbacks);
     }
 
@@ -32,9 +39,9 @@ class Builder implements BuilderContract
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Get breadcrumbs collection
+     * Get breadcrumbs collection.
      *
-     * @return BreadcrumbCollection
+     * @return Entities\BreadcrumbCollection
      */
     public function get()
     {
@@ -42,7 +49,7 @@ class Builder implements BuilderContract
     }
 
     /**
-     * Get callbacks
+     * Get callbacks.
      *
      * @return array
      */
@@ -52,9 +59,9 @@ class Builder implements BuilderContract
     }
 
     /**
-     * Set callbacks
+     * Set callbacks.
      *
-     * @param  array $callbacks
+     * @param  array  $callbacks
      *
      * @return Builder
      */
@@ -70,13 +77,13 @@ class Builder implements BuilderContract
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Call breadcrumb
+     * Call breadcrumb.
      *
-     * @param  string $name
-     * @param  array  $params
+     * @param  string  $name
+     * @param  array   $params
      *
-     * @throws InvalidTypeException
-     * @throws InvalidCallbackNameException
+     * @throws Exceptions\InvalidTypeException
+     * @throws Exceptions\InvalidCallbackNameException
      */
     public function call($name, array $params = [])
     {
@@ -87,12 +94,12 @@ class Builder implements BuilderContract
     }
 
     /**
-     * Call parent breadcrumb
+     * Call parent breadcrumb.
      *
-     * @param  string $name
+     * @param  string  $name
      *
-     * @throws InvalidTypeException
-     * @throws InvalidCallbackNameException
+     * @throws Exceptions\InvalidTypeException
+     * @throws Exceptions\InvalidCallbackNameException
      */
     public function parent($name)
     {
@@ -100,11 +107,11 @@ class Builder implements BuilderContract
     }
 
     /**
-     * Push a breadcrumb
+     * Push a breadcrumb.
      *
-     * @param  string      $title
-     * @param  string|null $url
-     * @param  array       $data
+     * @param  string       $title
+     * @param  string|null  $url
+     * @param  array        $data
      *
      * @return self
      */
@@ -116,7 +123,8 @@ class Builder implements BuilderContract
     }
 
     /**
-     * Get
+     * Get the breadcrumbs items as a plain array.
+     *
      * @return array
      */
     public function toArray()
@@ -129,23 +137,23 @@ class Builder implements BuilderContract
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Check Name
+     * Check Name.
      *
-     * @param  string $name
+     * @param  string  $name
      *
-     * @throws InvalidTypeException
-     * @throws InvalidCallbackNameException
+     * @throws Exceptions\InvalidTypeException
+     * @throws Exceptions\InvalidCallbackNameException
      */
     private function checkName($name)
     {
         if ( ! is_string($name)) {
-            throw new InvalidTypeException(
+            throw new Exceptions\InvalidTypeException(
                 'The name value must be a string, ' . gettype($name) . ' given'
             );
         }
 
         if ( ! isset($this->callbacks[$name])) {
-            throw new InvalidCallbackNameException(
+            throw new Exceptions\InvalidCallbackNameException(
                 "The callback name not found [{$name}]"
             );
         }

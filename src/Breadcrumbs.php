@@ -1,10 +1,19 @@
 <?php namespace Arcanedev\Breadcrumbs;
 
-use Arcanedev\Breadcrumbs\Contracts\BreadcrumbsContract;
+use Arcanedev\Breadcrumbs\Contracts\BreadcrumbsInterface;
 use Arcanedev\Breadcrumbs\Exceptions\InvalidTemplateException;
 use Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException;
+use Closure;
 
-class Breadcrumbs implements BreadcrumbsContract
+/**
+ * Class     Breadcrumbs
+ *
+ * @package  Arcanedev\Breadcrumbs
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
+ *
+ * @todo:     Complete the doc comments
+ */
+class Breadcrumbs implements BreadcrumbsInterface
 {
     /* ------------------------------------------------------------------------------------------------
      |  Constants
@@ -16,9 +25,6 @@ class Breadcrumbs implements BreadcrumbsContract
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
-    /** @var array */
-    protected $callbacks = [];
-
     /** @var string */
     private $template;
 
@@ -26,6 +32,9 @@ class Breadcrumbs implements BreadcrumbsContract
     private $views = [
         'bootstrap-3' => 'breadcrumbs::bootstrap-3',
     ];
+
+    /** @var array */
+    protected $callbacks = [];
 
     /* ------------------------------------------------------------------------------------------------
      |  Constructor
@@ -75,14 +84,14 @@ class Breadcrumbs implements BreadcrumbsContract
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Register a domain
+     * Register a breadcrumb domain.
      *
      * @param  string   $name
-     * @param  callable $callback
+     * @param  \Closure  $callback
      *
-     * @return Breadcrumbs
+     * @return self
      */
-    public function register($name, callable $callback)
+    public function register($name, Closure $callback)
     {
         $this->checkName($name);
 
@@ -92,7 +101,7 @@ class Breadcrumbs implements BreadcrumbsContract
     }
 
     /**
-     * Generate the breadcrumbs
+     * Generate the breadcrumbs.
      *
      * @param  string $name
      *
@@ -101,16 +110,15 @@ class Breadcrumbs implements BreadcrumbsContract
     public function generate($name)
     {
         return $this->generateArray(
-            $name,
-            array_slice(func_get_args(), 1)
+            $name, array_slice(func_get_args(), 1)
         );
     }
 
     /**
-     * Generate array
+     * Generate array.
      *
-     * @param  string $name
-     * @param  array  $args
+     * @param  string  $name
+     * @param  array   $args
      *
      * @return array
      */
@@ -123,7 +131,7 @@ class Breadcrumbs implements BreadcrumbsContract
     }
 
     /**
-     * Render breadcrumbs
+     * Render breadcrumbs.
      *
      * @param  string $name
      *
@@ -132,8 +140,7 @@ class Breadcrumbs implements BreadcrumbsContract
     public function render($name = null)
     {
         return $this->renderArray(
-            $name,
-            array_slice(func_get_args(), 1)
+            $name, array_slice(func_get_args(), 1)
         );
     }
 

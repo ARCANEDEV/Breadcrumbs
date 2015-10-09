@@ -1,3 +1,9 @@
 <?php namespace Arcanedev\Breadcrumbs\Exceptions;
 
-class InvalidTemplateException extends \Exception {}
+/**
+ * Class     InvalidTemplateException
+ *
+ * @package  Arcanedev\Breadcrumbs\Exceptions
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
+ */
+class InvalidTemplateException extends BreadcrumbsException {}

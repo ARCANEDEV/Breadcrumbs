@@ -1,9 +1,12 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests;
+
 use Arcanedev\Breadcrumbs\Builder;
 
 /**
- * Class BuilderTest
- * @package Arcanedev\Breadcrumbs\Tests
+ * Class     BuilderTest
+ *
+ * @package  Arcanedev\Breadcrumbs\Tests
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class BuilderTest extends TestCase
 {
@@ -13,9 +16,6 @@ class BuilderTest extends TestCase
      */
     /** @var Builder */
     private $builder;
-
-    /** @var array */
-    private $callbacks;
 
     /* ------------------------------------------------------------------------------------------------
      |  Main Functions

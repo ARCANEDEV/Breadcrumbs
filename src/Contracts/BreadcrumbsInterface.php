@@ -1,20 +1,30 @@
 <?php namespace Arcanedev\Breadcrumbs\Contracts;
 
-use Arcanedev\Breadcrumbs\Breadcrumbs;
+use Closure;
 
-interface BreadcrumbsContract
+/**
+ * Interface  BreadcrumbsInterface
+ *
+ * @package   Arcanedev\Breadcrumbs\Contracts
+ * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
+ *
+ * @todo:     Complete the doc comments
+ */
+interface BreadcrumbsInterface
 {
     /**
-     * Register a domain
+     * Register a breadcrumb domain.
      *
-     * @param string   $name
-     * @param callable $callback
+     * @param  string    $name
+     * @param  \Closure  $callback
      *
-     * @return Breadcrumbs
+     * @return self
      */
-    public function register($name, callable $callback);
+    public function register($name, Closure $callback);
 
     /**
+     * Generate the breadcrumbs.
+     *
      * @param  string $name
      *
      * @return array

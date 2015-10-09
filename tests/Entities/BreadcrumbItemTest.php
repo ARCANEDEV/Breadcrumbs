@@ -1,6 +1,7 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests\Entities;
-use Arcanedev\Breadcrumbs\Tests\TestCase;
+
 use Arcanedev\Breadcrumbs\Entities\BreadcrumbItem;
+use Arcanedev\Breadcrumbs\Tests\TestCase;
 
 /**
  * Class BreadcrumbItemTest
