@@ -1,9 +1,9 @@
 <?php namespace Arcanedev\Breadcrumbs\Exceptions;
 
 /**
- * Class     InvalidCallbackNameException
+ * Class     BreadcrumbsException
  *
  * @package  Arcanedev\Breadcrumbs\Exceptions
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class InvalidCallbackNameException extends BreadcrumbsException {}
+class BreadcrumbsException extends \Exception {}
