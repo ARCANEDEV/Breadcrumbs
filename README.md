@@ -22,39 +22,33 @@ A simple breadcrumbs generator helper.
 
 Feel free to check out the [releases](https://github.com/ARCANEDEV/Breadcrumbs/releases), [license](LICENSE.md), and [contribution guidelines](CONTRIBUTING.md).
 
-### Requirements
+### Features
+
+ * Easy setup &amp; configuration.
+ * Well documented &amp; IDE Friendly. 
+ * Made with :heart: &amp; :coffee:.
     
-    - PHP >= 5.4.0
+## Table of contents
 
-# INSTALLATION
+ 1. [Requirements](1-Requirements.md)
+ 2. [Installation and Setup](2-Installation-and-Setup.md)
+ 3. [Configuration](3-Configuration.md)
+ 4. [Usage](4-Usage.md)
 
-## Composer
-You can install this package via [Composer](http://getcomposer.org/). Add this to your `composer.json` :
+## TODOS
 
-```json
-{
-    "require": {
-        "arcanedev/breadcrumbs": "~2.0"
-    }
-}
-```    
+  - [ ] Documentation.
+  - [ ] Examples.
+  - [ ] More tests and code coverage.
+  - [ ] Laravel 4.2 Support.
+  - [ ] ZURB Foundation v5 Support.
 
-Then install it via `composer install` or `composer update`.
+## DONE
 
-# USAGE
-Coming soon ...
-
-## TODOS:
-
-  - [ ] Documentation
-  - [ ] Examples
-  - [ ] More tests and code coverage
-  - [ ] Twitter bootstrap v3 Support
-  - [ ] ZURB Foundation v5 Support
-  - [ ] Laravel Support (v4.2)
-  - [x] Laravel Support (v5.0)
-  - [x] Laravel Support (v5.1)
-
+  - [x] Laravel 5.0 Supported.
+  - [x] Laravel 5.1 Supported.
+  - [x] Twitter Bootstrap v3 Supported.
+  
 ## Contribution
 
 Any ideas are welcome. Feel free to submit any issues or pull requests, please check the [contribution guidelines](CONTRIBUTING.md).
