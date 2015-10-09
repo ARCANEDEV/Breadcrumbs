@@ -32,15 +32,12 @@ class DummyController extends Controller
      |  Controller Functions
      | ------------------------------------------------------------------------------------------------
      */
-    public function index()
+    public function aboutUs()
     {
-        return 'Home page';
-    }
+        $this->addBreadcrumbRoute('About', 'public::about');
+        $this->addBreadcrumb('ARCANEDEV');
+        $this->loadBreadcrumbs();
 
-    public function about()
-    {
-        $this->addBreadcrumb('About us', 'about-us');
-
-        return 'Home page';
+        return 'ARCANEDEV page';
     }
 }

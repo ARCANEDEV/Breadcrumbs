@@ -76,10 +76,13 @@ trait BreadcrumbsTrait
     protected function registerBreadcrumbs($container, array $item = [])
     {
         $this->setBreadcrumbsContainer($container);
-        $this->registerBreadcrumbsMainContainer($item);
 
-        breadcrumbs()->register($this->breadcrumbsContainer, function(Builder $bc) {
-            $bc->parent('main');
+        breadcrumbs()->register('main', function(Builder $bc) use ($item) {
+            if (empty($item)) {
+                $item = $this->getBreadcrumbsHomeItem();
+            }
+
+            $bc->push($item['title'], $item['url']);
         });
     }
 
@@ -91,16 +94,10 @@ trait BreadcrumbsTrait
         breadcrumbs()->register($this->breadcrumbsContainer, function(Builder $bc) {
             $bc->parent('main');
 
-            if (empty($this->breadcrumbsItems)) {
-                return;
-            }
-
-            // TODO: Refactor this
-            foreach ($this->breadcrumbsItems as $crumb) {
-                if (empty($crumb['url']))
-                    $bc->push($crumb['title']);
-                else
+            if ( ! empty($this->breadcrumbsItems)) {
+                foreach ($this->breadcrumbsItems as $crumb) {
                     $bc->push($crumb['title'], $crumb['url']);
+                }
             }
         });
     }
@@ -135,25 +132,5 @@ trait BreadcrumbsTrait
     protected function addBreadcrumbRoute($title, $route, $parameters = [])
     {
         return $this->addBreadcrumb($title, route($route, $parameters));
-    }
-
-    /* ------------------------------------------------------------------------------------------------
-     |  Other Functions
-     | ------------------------------------------------------------------------------------------------
-     */
-    /**
-     * Register Breadcrumbs main container.
-     *
-     * @param  array  $item
-     */
-    private function registerBreadcrumbsMainContainer(array $item)
-    {
-        if (empty($item)) {
-            $item = $this->getBreadcrumbsHomeItem();
-        }
-
-        breadcrumbs()->register('main', function(Builder $bc) use ($item) {
-            $bc->push($item['title'], $item['url']);
-        });
     }
 }

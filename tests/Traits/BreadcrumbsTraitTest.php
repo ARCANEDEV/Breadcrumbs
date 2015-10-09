@@ -32,9 +32,9 @@ class BreadcrumbsTraitTest extends TestCase
      | ------------------------------------------------------------------------------------------------
      */
     /** @test */
-    public function it_can_render_home_page_breadcrumbs()
+    public function it_can_render_about_us_page_breadcrumbs()
     {
-        $this->route('GET', 'public::home');
+        $this->route('GET', 'public::about-us');
 
         $result = breadcrumbs()->render('public');
 
@@ -44,25 +44,17 @@ class BreadcrumbsTraitTest extends TestCase
         );
 
         $this->assertContains(
-            '<li class="active">Home</li>',
-            $result
-        );
-    }
-
-    /** @test */
-    public function it_can_render_about_page_breadcrumbs()
-    {
-        $this->route('GET', 'public::about');
-
-        $result = breadcrumbs()->render('public');
-
-        $this->assertStringStartsWith(
-            '<ul class="breadcrumb breadcrumb-top">',
+            '<li><a href="http://localhost">Home</a></li>',
             $result
         );
 
         $this->assertContains(
-            '<li class="active">Home</li>',
+            '<li><a href="http://localhost/about">About</a></li>',
+            $result
+        );
+
+        $this->assertContains(
+            '<li class="active">ARCANEDEV</li>',
             $result
         );
     }
@@ -80,9 +72,14 @@ class BreadcrumbsTraitTest extends TestCase
                 'uses'  => 'DummyController@index',
             ]);
 
-            $router->get('/', [
+            $router->get('about', [
                 'as'    => 'public::about',
                 'uses'  => 'DummyController@about',
+            ]);
+
+            $router->get('about-us', [
+                'as'    => 'public::about-us',
+                'uses'  => 'DummyController@aboutUs',
             ]);
         });
     }
