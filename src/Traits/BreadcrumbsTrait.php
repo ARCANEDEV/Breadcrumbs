@@ -76,16 +76,9 @@ trait BreadcrumbsTrait
     protected function registerBreadcrumbs($container, array $item = [])
     {
         $this->setBreadcrumbsContainer($container);
+        $this->registerBreadcrumbsMainContainer($item);
 
-        if (empty($item)) {
-            $item = $this->getBreadcrumbsHomeItem();
-        }
-
-        breadcrumbs()->register('main', function(Builder $bc) use ($item) {
-            $bc->push($item['title'], $item['url']);
-        });
-
-        breadcrumbs()->register($container, function(Builder $bc) {
+        breadcrumbs()->register($this->breadcrumbsContainer, function(Builder $bc) {
             $bc->parent('main');
         });
     }
@@ -142,5 +135,25 @@ trait BreadcrumbsTrait
     protected function addBreadcrumbRoute($title, $route, $parameters = [])
     {
         return $this->addBreadcrumb($title, route($route, $parameters));
+    }
+
+    /* ------------------------------------------------------------------------------------------------
+     |  Other Functions
+     | ------------------------------------------------------------------------------------------------
+     */
+    /**
+     * Register Breadcrumbs main container.
+     *
+     * @param  array  $item
+     */
+    private function registerBreadcrumbsMainContainer(array $item)
+    {
+        if (empty($item)) {
+            $item = $this->getBreadcrumbsHomeItem();
+        }
+
+        breadcrumbs()->register('main', function(Builder $bc) use ($item) {
+            $bc->push($item['title'], $item['url']);
+        });
     }
 }
