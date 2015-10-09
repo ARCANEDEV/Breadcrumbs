@@ -21,7 +21,8 @@
     "autoload": {
         "psr-4": {
             "Arcanedev\\Breadcrumbs\\": "src/"
-        }
+        },
+        "files": ["helpers.php"]
     },
     "autoload-dev": {
         "psr-4": {
