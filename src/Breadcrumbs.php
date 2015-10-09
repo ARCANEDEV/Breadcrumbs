@@ -121,7 +121,7 @@ class Breadcrumbs implements BreadcrumbsInterface
             $name, array_slice(func_get_args(), 1)
         );
 
-        return view($this->getView(), compact('breadcrumbs'))->render();
+        return (string) view($this->getView(), compact('breadcrumbs'))->render();
     }
 
     /**
