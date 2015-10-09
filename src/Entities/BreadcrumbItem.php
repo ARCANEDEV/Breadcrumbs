@@ -1,13 +1,15 @@
 <?php namespace Arcanedev\Breadcrumbs\Entities;
 
 /**
- * Class BreadcrumbItem
- * @package Arcanedev\Breadcrumbs\Entities
+ * Class     BreadcrumbItem
  *
- * @property string title
- * @property string url
- * @property bool   first
- * @property bool   last
+ * @package  Arcanedev\Breadcrumbs\Entities
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
+ *
+ * @property  string  title
+ * @property  string  url
+ * @property  bool    first
+ * @property  bool    last
  */
 class BreadcrumbItem
 {
@@ -16,30 +18,36 @@ class BreadcrumbItem
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Breadcrumb title
+     * Breadcrumb title.
      *
      * @var string
      */
     protected $title = '';
 
     /**
-     * Breadcrumb url
+     * Breadcrumb URL.
      *
      * @var string
      */
     protected $url   = '';
 
     /**
+     * First position.
+     *
      * @var bool
      */
     protected $first = false;
 
     /**
+     * Last position.
+     *
      * @var bool
      */
     protected $last  = false;
 
     /**
+     * Custom data.
+     *
      * @var array
      */
     protected $data = [];
@@ -47,6 +55,13 @@ class BreadcrumbItem
     /* ------------------------------------------------------------------------------------------------
      |  Constructor
      | ------------------------------------------------------------------------------------------------
+     */
+    /**
+     * Create a breadcrumb item instance.
+     *
+     * @param  string  $title
+     * @param  string  $url
+     * @param  array   $data
      */
     public function __construct($title, $url, array $data = [])
     {
@@ -62,7 +77,8 @@ class BreadcrumbItem
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Get Title
+     * Get Title.
+     *
      * @return string
      */
     public function getTitle()
@@ -71,9 +87,9 @@ class BreadcrumbItem
     }
 
     /**
-     * Set title
+     * Set title.
      *
-     * @param  string $title
+     * @param  string  $title
      *
      * @return self
      */
@@ -85,7 +101,7 @@ class BreadcrumbItem
     }
 
     /**
-     * Get URL
+     * Get URL.
      *
      * @return string
      */
@@ -95,9 +111,9 @@ class BreadcrumbItem
     }
 
     /**
-     * Set url
+     * Set URL.
      *
-     * @param  string $url
+     * @param  string  $url
      *
      * @return self
      */
@@ -109,7 +125,9 @@ class BreadcrumbItem
     }
 
     /**
-     * @param  string $name
+     * Get a breadcrumb item attribute.
+     *
+     * @param  string  $name
      *
      * @return mixed|null
      */
@@ -126,7 +144,7 @@ class BreadcrumbItem
     }
 
     /**
-     * Set first
+     * Set as first item.
      *
      * @return self
      */
@@ -138,9 +156,9 @@ class BreadcrumbItem
     }
 
     /**
-     * Set last
+     * Set as last item.
      *
-     * @return $this
+     * @return self
      */
     public function setLast()
     {
@@ -154,9 +172,11 @@ class BreadcrumbItem
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * @param  string $title
-     * @param  string $url
-     * @param  array  $data
+     * Make a breadcrumb item instance.
+     *
+     * @param  string  $title
+     * @param  string  $url
+     * @param  array   $data
      *
      * @return self
      */
@@ -166,7 +186,7 @@ class BreadcrumbItem
     }
 
     /**
-     * Reset position
+     * Reset position.
      *
      * @return self
      */
@@ -183,7 +203,7 @@ class BreadcrumbItem
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Check is first item
+     * Check is first item.
      *
      * @return bool
      */
@@ -193,25 +213,13 @@ class BreadcrumbItem
     }
 
     /**
-     * Check is last item
+     * Check is last item.
      *
      * @return bool
      */
     public function isLast()
     {
         return $this->last;
-    }
-
-    /**
-     * Check has a custom data
-     *
-     * @param  string $name
-     *
-     * @return bool
-     */
-    private function hasData($name)
-    {
-        return isset($this->data[$name]);
     }
 
     /**
@@ -227,5 +235,21 @@ class BreadcrumbItem
             'first' => $this->first,
             'last'  => $this->last,
         ]);
+    }
+
+    /* ------------------------------------------------------------------------------------------------
+     |  Other Functions
+     | ------------------------------------------------------------------------------------------------
+     */
+    /**
+     * Check if breadcrumb item has a custom data.
+     *
+     * @param  string $name
+     *
+     * @return bool
+     */
+    private function hasData($name)
+    {
+        return isset($this->data[$name]);
     }
 }
