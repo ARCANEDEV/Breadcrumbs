@@ -1,10 +1,9 @@
 <?php namespace Arcanedev\Breadcrumbs\Traits;
 
 use Arcanedev\Breadcrumbs\Builder;
-use Arcanedev\Breadcrumbs\Facades\Breadcrumbs;
 
 /**
- * Class     BreadcrumbsTrait
+ * Trait     BreadcrumbsTrait
  *
  * @package  Arcanedev\Breadcrumbs\Traits
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
@@ -22,14 +21,14 @@ trait BreadcrumbsTrait
      *
      * @var string
      */
-    private $bcContainer    = 'public';
+    protected $breadcrumbsContainer   = 'public';
 
     /**
-     * Breadcrumbs collection.
+     * Breadcrumbs items collection.
      *
      * @var array
      */
-    private $bcItems    = [];
+    private $breadcrumbsItems       = [];
 
     /* ------------------------------------------------------------------------------------------------
      |  Getters & Setters
@@ -38,15 +37,30 @@ trait BreadcrumbsTrait
     /**
      * Set breadcrumbs container name.
      *
-     * @param  string  $bcContainer
+     * @param  string  $name
      *
      * @return self
      */
-    public function setBcContainer($bcContainer)
+    protected function setBreadcrumbsContainer($name)
     {
-        $this->bcContainer = $bcContainer;
+        $this->breadcrumbsContainer = $name;
 
         return $this;
+    }
+
+    /**
+     * Get the breadcrumbs home item (root).
+     *
+     * @return array
+     */
+    protected function getBreadcrumbsHomeItem()
+    {
+        $route = config('breadcrumbs.home-route', 'public::home');
+
+        return [
+            'title' => 'Home',
+            'url'   => route($route)
+        ];
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -59,22 +73,19 @@ trait BreadcrumbsTrait
      * @param  string  $container
      * @param  array   $item
      */
-    public function registerBreadcrumbs($container, array $item = [])
+    protected function registerBreadcrumbs($container, array $item = [])
     {
-        $this->setBcContainer($container);
+        $this->setBreadcrumbsContainer($container);
 
         if (empty($item)) {
-            $item = [
-                'title' => 'Home',
-                'url'   => route(config('breadcrumbs.home-route', 'public::home'))
-            ];
+            $item = $this->getBreadcrumbsHomeItem();
         }
 
-        Breadcrumbs::register('main', function(Builder $bc) use ($item) {
+        breadcrumbs()->register('main', function(Builder $bc) use ($item) {
             $bc->push($item['title'], $item['url']);
         });
 
-        Breadcrumbs::register($container, function(Builder $bc) {
+        breadcrumbs()->register($container, function(Builder $bc) {
             $bc->parent('main');
         });
     }
@@ -82,21 +93,21 @@ trait BreadcrumbsTrait
     /**
      * Load all breadcrumbs.
      */
-    public function loadBreadcrumbs()
+    protected function loadBreadcrumbs()
     {
-        Breadcrumbs::register($this->bcContainer, function(Builder $bc) {
+        breadcrumbs()->register($this->breadcrumbsContainer, function(Builder $bc) {
             $bc->parent('main');
 
+            if (empty($this->breadcrumbsItems)) {
+                return;
+            }
+
             // TODO: Refactor this
-            if ( ! empty($this->bcItems)) {
-                foreach ($this->bcItems as $crumb) {
-                    if ( ! empty($crumb['url'])) {
-                        $bc->push($crumb['title'], $crumb['url']);
-                    }
-                    else {
-                        $bc->push($crumb['title']);
-                    }
-                }
+            foreach ($this->breadcrumbsItems as $crumb) {
+                if (empty($crumb['url']))
+                    $bc->push($crumb['title']);
+                else
+                    $bc->push($crumb['title'], $crumb['url']);
             }
         });
     }
@@ -105,22 +116,31 @@ trait BreadcrumbsTrait
      * Add breadcrumb.
      *
      * @param  string  $title
-     * @param  string  $route
-     * @param  array   $slugs
+     * @param  string  $url
      *
      * @return self
      */
-    public function addBreadcrumb($title, $route = '', $slugs = [])
+    protected function addBreadcrumb($title, $url = '')
     {
-        $url = ! empty($route)
-            ? ( ! empty($slugs) ? route($route, $slugs) : route($route))
-            : '';
-
-        $this->bcItems[] = [
+        $this->breadcrumbsItems[] = [
             'title' => $title,
-            'url' => $url,
+            'url'   => $url,
         ];
 
         return $this;
+    }
+
+    /**
+     * Add breadcrumb with route.
+     *
+     * @param  string  $title
+     * @param  string  $route
+     * @param  array   $parameters
+     *
+     * @return self
+     */
+    protected function addBreadcrumbRoute($title, $route, $parameters = [])
+    {
+        return $this->addBreadcrumb($title, route($route, $parameters));
     }
 }
