@@ -1,9 +1,12 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests;
+
 use Arcanedev\Breadcrumbs\Builder;
 
 /**
- * Class BuilderTest
- * @package Arcanedev\Breadcrumbs\Tests
+ * Class     BuilderTest
+ *
+ * @package  Arcanedev\Breadcrumbs\Tests
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class BuilderTest extends TestCase
 {
@@ -84,18 +87,5 @@ class BuilderTest extends TestCase
     public function it_must_throw_invalid_callback_name_exception()
     {
         $this->builder->call('random', []);
-    }
-
-    /**
-     * Call artisan command and return code.
-     *
-     * @param string $command
-     * @param array  $parameters
-     *
-     * @return int
-     */
-    public function artisan($command, $parameters = [])
-    {
-        // TODO: Implement artisan() method.
     }
 }

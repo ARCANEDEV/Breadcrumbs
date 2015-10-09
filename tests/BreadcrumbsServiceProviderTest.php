@@ -1,18 +1,22 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests\Laravel;
+<?php namespace Arcanedev\Breadcrumbs\Tests;
 
-use Arcanedev\Breadcrumbs\Laravel\ServiceProvider;
+use Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider;
 use Arcanedev\Breadcrumbs\Tests\TestCase;
 
-class ServiceProviderTest extends TestCase
+/**
+ * Class     BreadcrumbsServiceProviderTest
+ *
+ * @package  Arcanedev\Breadcrumbs\Tests\Laravel
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
+ */
+class BreadcrumbsServiceProviderTest extends TestCase
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
-    /**
-     * @var ServiceProvider
-     */
-    private $serviceProvider;
+    /** @var BreadcrumbsServiceProvider */
+    private $provider;
 
     /* ------------------------------------------------------------------------------------------------
      |  Main Functions
@@ -22,28 +26,40 @@ class ServiceProviderTest extends TestCase
     {
         parent::setUp();
 
-        $this->serviceProvider = new ServiceProvider($this->app);
+        $this->provider = $this->app->getProvider(BreadcrumbsServiceProvider::class);
     }
 
     public function tearDown()
     {
         parent::tearDown();
 
-        unset($this->serviceProvider);
+        unset($this->provider);
     }
 
     /* ------------------------------------------------------------------------------------------------
      |  Test Functions
      | ------------------------------------------------------------------------------------------------
      */
-    /**
-     * @test
-     */
+    /** @test */
+    public function it_must_be_a_provider()
+    {
+        $exceptedProviders = [
+            \Illuminate\Support\ServiceProvider::class,
+            \Arcanedev\Support\ServiceProvider::class,
+            \Arcanedev\Support\PackageServiceProvider::class,
+            BreadcrumbsServiceProvider::class,
+        ];
+
+        foreach ($exceptedProviders as $provider) {
+            $this->assertInstanceOf($provider, $this->provider);
+        }
+    }
+
+    /** @test */
     public function it_can_get_what_package_provides()
     {
-        // This is for 100% code converge
         $this->assertEquals([
             'arcanedev.breadcrumbs'
-        ], $this->serviceProvider->provides());
+        ], $this->provider->provides());
     }
 }

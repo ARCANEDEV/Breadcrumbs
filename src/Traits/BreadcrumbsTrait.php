@@ -1,13 +1,15 @@
 <?php namespace Arcanedev\Breadcrumbs\Traits;
 
 use Arcanedev\Breadcrumbs\Builder;
-use Arcanedev\Breadcrumbs\Laravel\Facade as Breadcrumbs;
+use Arcanedev\Breadcrumbs\Facades\Breadcrumbs;
 
 /**
- * Class BreadcrumbsTrait
- * @package Arcanedev\Foundation\Traits
+ * Class     BreadcrumbsTrait
  *
- * @todo: Missing Doc Comments
+ * @package  Arcanedev\Breadcrumbs\Traits
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
+ *
+ * @todo:    Complete the doc comments
  */
 trait BreadcrumbsTrait
 {
@@ -16,14 +18,14 @@ trait BreadcrumbsTrait
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Breadcrumbs container name
+     * Breadcrumbs container name.
      *
      * @var string
      */
     private $bcContainer    = 'public';
 
     /**
-     * Breadcrumbs collection
+     * Breadcrumbs collection.
      *
      * @var array
      */
@@ -34,9 +36,9 @@ trait BreadcrumbsTrait
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Set breadcrumbs container name
+     * Set breadcrumbs container name.
      *
-     * @param  string $bcContainer
+     * @param  string  $bcContainer
      *
      * @return self
      */
@@ -52,10 +54,10 @@ trait BreadcrumbsTrait
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Register a breadcrumb
+     * Register a breadcrumb.
      *
-     * @param string $container
-     * @param array  $item
+     * @param  string  $container
+     * @param  array   $item
      */
     public function registerBreadcrumbs($container, array $item = [])
     {
@@ -64,7 +66,7 @@ trait BreadcrumbsTrait
         if (empty($item)) {
             $item = [
                 'title' => 'Home',
-                'url'   => route('home')
+                'url'   => route(config('breadcrumbs.home-route', 'public::home'))
             ];
         }
 
@@ -78,7 +80,7 @@ trait BreadcrumbsTrait
     }
 
     /**
-     * Load all breadcrumbs
+     * Load all breadcrumbs.
      */
     public function loadBreadcrumbs()
     {
@@ -88,21 +90,23 @@ trait BreadcrumbsTrait
             // TODO: Refactor this
             if ( ! empty($this->bcItems)) {
                 foreach ($this->bcItems as $crumb) {
-                    if ( ! empty($crumb['url']))
+                    if ( ! empty($crumb['url'])) {
                         $bc->push($crumb['title'], $crumb['url']);
-                    else
+                    }
+                    else {
                         $bc->push($crumb['title']);
+                    }
                 }
             }
         });
     }
 
     /**
-     * Add breadcrumb
+     * Add breadcrumb.
      *
-     * @param  string $title
-     * @param  string $route
-     * @param  array  $slugs
+     * @param  string  $title
+     * @param  string  $route
+     * @param  array   $slugs
      *
      * @return self
      */

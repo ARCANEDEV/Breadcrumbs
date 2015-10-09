@@ -1,6 +1,7 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests\Entities;
-use Arcanedev\Breadcrumbs\Tests\TestCase;
+
 use Arcanedev\Breadcrumbs\Entities\BreadcrumbItem;
+use Arcanedev\Breadcrumbs\Tests\TestCase;
 
 /**
  * Class BreadcrumbItemTest
@@ -113,18 +114,5 @@ class BreadcrumbItemTest extends TestCase
             ['first' => false, 'last' => false],
             $data
         ), $this->breadcrumb->toArray());
-    }
-
-    /**
-     * Call artisan command and return code.
-     *
-     * @param string $command
-     * @param array  $parameters
-     *
-     * @return int
-     */
-    public function artisan($command, $parameters = [])
-    {
-        // TODO: Implement artisan() method.
     }
 }

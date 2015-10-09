@@ -4,8 +4,10 @@ use Arcanedev\Breadcrumbs\Breadcrumbs;
 use Arcanedev\Breadcrumbs\Builder;
 
 /**
- * Class BreadcrumbsTest
- * @package Arcanedev\Breadcrumbs\Tests
+ * Class     BreadcrumbsTest
+ *
+ * @package  Arcanedev\Breadcrumbs\Tests
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class BreadcrumbsTest extends TestCase
 {
@@ -52,18 +54,5 @@ class BreadcrumbsTest extends TestCase
         });
 
         $this->assertNotEmpty($this->breadcrumbs->render('blog'));
-    }
-
-    /**
-     * Call artisan command and return code.
-     *
-     * @param string $command
-     * @param array  $parameters
-     *
-     * @return int
-     */
-    public function artisan($command, $parameters = [])
-    {
-        // TODO: Implement artisan() method.
     }
 }

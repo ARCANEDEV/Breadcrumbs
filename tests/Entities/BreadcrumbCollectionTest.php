@@ -3,6 +3,12 @@
 use Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection;
 use Arcanedev\Breadcrumbs\Tests\TestCase;
 
+/**
+ * Class     BreadcrumbCollectionTest
+ *
+ * @package  Arcanedev\Breadcrumbs\Tests\Entities
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
+ */
 class BreadcrumbCollectionTest extends TestCase
 {
     /* ------------------------------------------------------------------------------------------------
@@ -85,18 +91,5 @@ class BreadcrumbCollectionTest extends TestCase
 
         $this->assertFalse($this->bcCollection->last()->isFirst());
         $this->assertTrue($this->bcCollection->last()->isLast());
-    }
-
-    /**
-     * Call artisan command and return code.
-     *
-     * @param string $command
-     * @param array  $parameters
-     *
-     * @return int
-     */
-    public function artisan($command, $parameters = [])
-    {
-        // TODO: Implement artisan() method.
     }
 }

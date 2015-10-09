@@ -1,12 +1,14 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests;
 
-use Orchestra\Testbench\TestCase as LaravelTestCase;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 
 /**
- * Class TestCase
- * @package Arcanedev\Breadcrumbs\Tests
+ * Class     TestCase
+ *
+ * @package  Arcanedev\Breadcrumbs\Tests
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-abstract class TestCase extends LaravelTestCase
+abstract class TestCase extends BaseTestCase
 {
     /* ------------------------------------------------------------------------------------------------
      |  Main Functions
@@ -27,26 +29,26 @@ abstract class TestCase extends LaravelTestCase
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Register Service Providers
+     * Register Service Providers.
      *
      * @return array
      */
     protected function getPackageProviders($app)
     {
         return [
-            'Arcanedev\Breadcrumbs\Laravel\ServiceProvider'
+            \Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider::class
         ];
     }
 
     /**
-     * Register Aliases
+     * Register Aliases.
      *
      * @return array
      */
     protected function getPackageAliases($app)
     {
         return [
-            'Breadcrumbs' => 'Arcanedev\Breadcrumbs\Laravel\Facade'
+            'Breadcrumbs' => \Arcanedev\Breadcrumbs\Facades\Breadcrumbs::class
         ];
     }
 
@@ -57,5 +59,6 @@ abstract class TestCase extends LaravelTestCase
      */
     protected function getEnvironmentSetUp($app)
     {
+        //
     }
 }
