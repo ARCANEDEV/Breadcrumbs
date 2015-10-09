@@ -36,6 +36,8 @@ interface BuilderInterface
      * @param  string  $name
      * @param  array   $params
      *
+     * @return self
+     *
      * @throws \Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException
      * @throws \Arcanedev\Breadcrumbs\Exceptions\InvalidCallbackNameException
      */

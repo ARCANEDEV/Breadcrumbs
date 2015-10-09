@@ -12,6 +12,23 @@ use Closure;
  */
 interface BreadcrumbsInterface
 {
+    /* ------------------------------------------------------------------------------------------------
+     |  Getters & Setters
+     | ------------------------------------------------------------------------------------------------
+     */
+    /**
+     * Set default template view.
+     *
+     * @param  string  $template
+     *
+     * @return self
+     */
+    public function setTemplate($template);
+
+    /* ------------------------------------------------------------------------------------------------
+     |  Main Functions
+     | ------------------------------------------------------------------------------------------------
+     */
     /**
      * Register a breadcrumb domain.
      *
@@ -23,6 +40,15 @@ interface BreadcrumbsInterface
     public function register($name, Closure $callback);
 
     /**
+     * Render breadcrumbs items.
+     *
+     * @param  string|null  $name
+     *
+     * @return string
+     */
+    public function render($name = null);
+
+    /**
      * Generate the breadcrumbs.
      *
      * @param  string $name
@@ -30,19 +56,4 @@ interface BreadcrumbsInterface
      * @return array
      */
     public function generate($name);
-
-    /**
-     * @param  string $name
-     * @param  array  $args
-     *
-     * @return array
-     */
-    public function generateArray($name, array $args = []);
-
-    /**
-     * Render breadcrumbs
-     *
-     * @param string|null $name
-     */
-    public function render($name = null);
 }

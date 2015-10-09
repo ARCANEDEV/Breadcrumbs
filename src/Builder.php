@@ -82,6 +82,8 @@ class Builder implements BuilderInterface
      * @param  string  $name
      * @param  array   $params
      *
+     * @return self
+     *
      * @throws Exceptions\InvalidTypeException
      * @throws Exceptions\InvalidCallbackNameException
      */
@@ -91,6 +93,8 @@ class Builder implements BuilderInterface
 
         array_unshift($params, $this);
         call_user_func_array($this->callbacks[$name], $params);
+
+        return $this;
     }
 
     /**

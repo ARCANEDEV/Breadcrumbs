@@ -17,10 +17,18 @@ class Breadcrumbs implements BreadcrumbsInterface
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
-    /** @var string */
+    /**
+     * Default template view.
+     *
+     * @var string
+     */
     private $template;
 
-    /** @var array */
+    /**
+     * Supported template views.
+     *
+     * @var array
+     */
     private $supported = [
         'bootstrap-3' => 'breadcrumbs::bootstrap-3',
     ];
@@ -54,7 +62,7 @@ class Breadcrumbs implements BreadcrumbsInterface
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Set template.
+     * Set default template view.
      *
      * @param  string  $template
      *
@@ -101,6 +109,22 @@ class Breadcrumbs implements BreadcrumbsInterface
     }
 
     /**
+     * Render breadcrumbs items.
+     *
+     * @param  string|null  $name
+     *
+     * @return string
+     */
+    public function render($name = null)
+    {
+        $breadcrumbs = $this->generateArray(
+            $name, array_slice(func_get_args(), 1)
+        );
+
+        return view($this->getView(), compact('breadcrumbs'))->render();
+    }
+
+    /**
      * Generate the breadcrumbs.
      *
      * @param  string  $name
@@ -122,41 +146,11 @@ class Breadcrumbs implements BreadcrumbsInterface
      *
      * @return array
      */
-    public function generateArray($name, array $args = [])
+    private function generateArray($name, array $args = [])
     {
         $generator = new Builder($this->callbacks);
-        $generator->call($name, $args);
 
-        return $generator->toArray();
-    }
-
-    /**
-     * Render breadcrumbs.
-     *
-     * @param  string  $name
-     *
-     * @return string
-     */
-    public function render($name = null)
-    {
-        return $this->renderArray(
-            $name, array_slice(func_get_args(), 1)
-        );
-    }
-
-    /**
-     * Render breadcrumbs from array.
-     *
-     * @param  string  $name
-     * @param  array   $args
-     *
-     * @return string
-     */
-    public function renderArray($name, $args = [])
-    {
-        $breadcrumbs = $this->generateArray($name, $args);
-
-        return view($this->getView(), compact('breadcrumbs'))->render();
+        return $generator->call($name, $args)->toArray();
     }
 
     /* ------------------------------------------------------------------------------------------------
