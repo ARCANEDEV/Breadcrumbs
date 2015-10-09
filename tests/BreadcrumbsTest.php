@@ -92,7 +92,7 @@ class BreadcrumbsTest extends TestCase
      */
     public function it_must_throw_invalid_type_exception_on_template()
     {
-        $this->breadcrumbs->setTemplate(null);
+        breadcrumbs()->setTemplate(null);
     }
 
     /**
@@ -103,7 +103,20 @@ class BreadcrumbsTest extends TestCase
      */
     public function it_must_throw_InvalidTemplateException_on_template()
     {
-        $this->breadcrumbs->setTemplate('material-design');
+        breadcrumbs()->setTemplate('material-design');
+    }
+
+    /**
+     * @test
+     *
+     * @expectedException         \Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException
+     * @expectedExceptionMessage  The callback name value must be a string, NULL given.
+     */
+    public function it_must_throw_InvalidTypeException_on_register()
+    {
+        breadcrumbs()->register(null, function () {
+            return 'hello';
+        });
     }
 
     /* ------------------------------------------------------------------------------------------------

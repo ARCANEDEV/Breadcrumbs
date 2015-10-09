@@ -101,7 +101,7 @@ class Breadcrumbs implements BreadcrumbsInterface
      */
     public function register($name, Closure $callback)
     {
-        $this->checkName($name);
+        $this->checkCallbackName($name);
 
         $this->callbacks[$name] = $callback;
 
@@ -190,11 +190,13 @@ class Breadcrumbs implements BreadcrumbsInterface
      *
      * @throws Exceptions\InvalidTypeException
      */
-    private function checkName(&$name)
+    private function checkCallbackName(&$name)
     {
         if ( ! is_string($name)) {
+            $type = gettype($name);
+
             throw new Exceptions\InvalidTypeException(
-                'The name value must be a string, ' . gettype($name) . ' given'
+                "The callback name value must be a string, $type given."
             );
         }
 
