@@ -5,6 +5,7 @@ Breadcrumbs [![For Laravel 5][badge_laravel]](https://github.com/ARCANEDEV/Bread
 [![Scrutinizer Code Quality][badge_quality]](https://scrutinizer-ci.com/g/ARCANEDEV/Breadcrumbs/?branch=master)
 [![SensioLabs Insight][badge_insight]](https://insight.sensiolabs.com/projects/f3fd137f-6b3e-42dc-bac6-fdc98720e3c2)
 [![Github Issues][badge_issues]](https://github.com/ARCANEDEV/Breadcrumbs/issues)
+
 [![Packagist Release][badge_release]](https://packagist.org/packages/arcanedev/breadcrumbs)
 [![Packagist Downloads][badge_downloads]](https://packagist.org/packages/arcanedev/breadcrumbs)
 
