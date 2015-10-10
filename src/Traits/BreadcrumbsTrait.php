@@ -7,8 +7,6 @@ use Arcanedev\Breadcrumbs\Builder;
  *
  * @package  Arcanedev\Breadcrumbs\Traits
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
- *
- * @todo:    Complete the doc comments
  */
 trait BreadcrumbsTrait
 {
