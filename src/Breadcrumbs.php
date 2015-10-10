@@ -8,8 +8,6 @@ use Closure;
  *
  * @package  Arcanedev\Breadcrumbs
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
- *
- * @todo:     Complete the doc comments
  */
 class Breadcrumbs implements BreadcrumbsInterface
 {

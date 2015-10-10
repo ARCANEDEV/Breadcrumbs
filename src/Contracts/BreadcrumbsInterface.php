@@ -7,8 +7,6 @@ use Closure;
  *
  * @package   Arcanedev\Breadcrumbs\Contracts
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
- *
- * @todo:     Complete the doc comments
  */
 interface BreadcrumbsInterface
 {
