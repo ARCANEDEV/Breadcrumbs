@@ -2,21 +2,22 @@
     "name": "arcanedev/breadcrumbs",
     "description": "A simple way to create breadcrumbs.",
     "keywords": ["laravel", "breadcrumbs", "html", "twitter", "bootstrap"],
-    "license": "MIT",
     "authors": [
         {
             "name": "ARCANEDEV",
             "email": "arcanedev.maroc@gmail.com"
         }
     ],
+    "type": "library",
+    "license": "MIT",
     "require": {
         "php": ">=5.5.9",
         "arcanedev/support": "~3.0"
     },
     "require-dev": {
         "orchestra/testbench": "~3.1",
-        "phpunit/phpunit": "~4.0",
-        "phpunit/phpcov": "~2.0"
+        "phpunit/phpcov": "~2.0",
+        "phpunit/phpunit": "~4.0|~5.0"
     },
     "autoload": {
         "psr-4": {
@@ -27,6 +28,11 @@
     "autoload-dev": {
         "psr-4": {
             "Arcanedev\\Breadcrumbs\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.0-dev"
         }
     }
 }
