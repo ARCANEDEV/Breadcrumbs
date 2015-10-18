@@ -1,4 +1,4 @@
-Breadcrumbs [![For Laravel 5][badge_laravel]](https://github.com/ARCANEDEV/Breadcrumbs#breadcrumbs) [![Packagist License][badge_license]](LICENSE.md)
+Breadcrumbs [![Packagist License][badge_license]](LICENSE.md) [![For Laravel 5][badge_laravel]](https://github.com/ARCANEDEV/Breadcrumbs#breadcrumbs)
 ==============
 [![Travis Status][badge_build]](https://travis-ci.org/ARCANEDEV/Breadcrumbs)
 [![HHVM Status][badge_hhvm]](http://hhvm.h4cc.de/package/arcanedev/breadcrumbs)
@@ -11,14 +11,16 @@ Breadcrumbs [![For Laravel 5][badge_laravel]](https://github.com/ARCANEDEV/Bread
 [![Packagist Release][badge_release]](https://packagist.org/packages/arcanedev/breadcrumbs)
 [![Packagist Downloads][badge_downloads]](https://packagist.org/packages/arcanedev/breadcrumbs)
 
-[badge_laravel]:   https://img.shields.io/badge/for%20Laravel-5.0%7C5.1-orange.svg?style=flat-square
+[badge_laravel]:   https://img.shields.io/badge/For%20Laravel-5.0%7C5.1-orange.svg?style=flat-square
 [badge_license]:   https://img.shields.io/packagist/l/arcanedev/breadcrumbs.svg?style=flat-square
+
 [badge_build]:     https://img.shields.io/travis/ARCANEDEV/Breadcrumbs.svg?style=flat-square
 [badge_hhvm]:      https://img.shields.io/hhvm/arcanedev/breadcrumbs.svg?style=flat-square
 [badge_coverage]:  https://img.shields.io/scrutinizer/coverage/g/ARCANEDEV/Breadcrumbs.svg?style=flat-square
 [badge_quality]:   https://img.shields.io/scrutinizer/g/ARCANEDEV/Breadcrumbs.svg?style=flat-square
 [badge_insight]:   https://img.shields.io/sensiolabs/i/f3fd137f-6b3e-42dc-bac6-fdc98720e3c2.svg?style=flat-square
 [badge_issues]:    https://img.shields.io/github/issues/ARCANEDEV/Breadcrumbs.svg?style=flat-square
+
 [badge_package]:   https://img.shields.io/badge/package-arcanedev/breadcrumbs-blue.svg?style=flat-square
 [badge_release]:   https://img.shields.io/packagist/v/arcanedev/breadcrumbs.svg?style=flat-square
 [badge_downloads]: https://img.shields.io/packagist/dt/arcanedev/breadcrumbs.svg?style=flat-square
