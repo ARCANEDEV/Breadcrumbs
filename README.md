@@ -49,9 +49,10 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/Breadcrumbs/r
 
   - [ ] Complete documentation.
   - [ ] Examples.
-  - [ ] Laravel 4.2 Support.
-  - [ ] ZURB Foundation v5 Support.
   - [ ] Adding Laravel 5.2 Support.
+  - [ ] Complete Twitter Bootstrap v4 Support.
+  - [ ] Complete ZURB Foundation v5 Support.
+  - [ ] Complete ZURB Foundation v6 Support.
 
 ## DONE
 
