@@ -1,6 +1,6 @@
 <?php namespace Arcanedev\Breadcrumbs;
 
-use Arcanedev\Breadcrumbs\Contracts\BreadcrumbsInterface;
+use Arcanedev\Breadcrumbs\Contracts\Breadcrumbs as BreadcrumbsContract;
 use Closure;
 
 /**
@@ -9,7 +9,7 @@ use Closure;
  * @package  Arcanedev\Breadcrumbs
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class Breadcrumbs implements BreadcrumbsInterface
+class Breadcrumbs implements BreadcrumbsContract
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
