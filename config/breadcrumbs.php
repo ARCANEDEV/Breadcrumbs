@@ -9,9 +9,14 @@ return [
         'default'   => 'bootstrap-3',
 
         'supported' => [
-            'bootstrap-3'  => 'breadcrumbs::bootstrap-3',
+            // Twitter Bootstrap
             'bootstrap-2'  => 'breadcrumbs::bootstrap-2',
+            'bootstrap-3'  => 'breadcrumbs::bootstrap-3',
+            'bootstrap-4'  => 'breadcrumbs::bootstrap-4',
+
+            // Zurb Foundation
             'foundation-5' => 'breadcrumbs::foundation-5',
+            'foundation-6' => 'breadcrumbs::foundation-6',
         ],
     ],
 
