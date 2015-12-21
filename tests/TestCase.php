@@ -14,20 +14,6 @@ abstract class TestCase extends BaseTestCase
      |  Main Functions
      | ------------------------------------------------------------------------------------------------
      */
-    public function setUp()
-    {
-        parent::setUp();
-    }
-
-    public function tearDown()
-    {
-        parent::tearDown();
-    }
-
-    /* ------------------------------------------------------------------------------------------------
-     |  Other Functions
-     | ------------------------------------------------------------------------------------------------
-     */
     /**
      * Register Service Providers.
      *

@@ -27,9 +27,9 @@ class BreadcrumbItemTest extends TestCase
 
     public function tearDown()
     {
-        parent::tearDown();
-
         unset($this->breadcrumb);
+
+        parent::tearDown();
     }
 
     /* ------------------------------------------------------------------------------------------------

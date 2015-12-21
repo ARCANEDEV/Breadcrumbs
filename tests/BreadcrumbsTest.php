@@ -33,9 +33,9 @@ class BreadcrumbsTest extends TestCase
 
     public function tearDown()
     {
-        parent::tearDown();
-
         unset($this->breadcrumbs);
+
+        parent::tearDown();
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -45,7 +45,14 @@ class BreadcrumbsTest extends TestCase
     /** @test */
     public function it_can_be_instantiated()
     {
-        $this->assertInstanceOf(Breadcrumbs::class, $this->breadcrumbs);
+        $expectations = [
+            \Arcanedev\Breadcrumbs\Contracts\Breadcrumbs::class,
+            \Arcanedev\Breadcrumbs\Breadcrumbs::class,
+        ];
+
+        foreach ($expectations as $expected) {
+            $this->assertInstanceOf($expected, $this->breadcrumbs);
+        }
     }
 
     /** @test */

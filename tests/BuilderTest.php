@@ -38,9 +38,9 @@ class BuilderTest extends TestCase
 
     public function tearDown()
     {
-        parent::tearDown();
-
         unset($this->builder);
+
+        parent::tearDown();
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -50,7 +50,14 @@ class BuilderTest extends TestCase
     /** @test */
     public function it_can_be_instantiated()
     {
-        $this->assertInstanceOf(Builder::class, $this->builder);
+        $expectations = [
+            \Arcanedev\Breadcrumbs\Contracts\Builder::class,
+            \Arcanedev\Breadcrumbs\Builder::class,
+        ];
+
+        foreach ($expectations as $expected) {
+            $this->assertInstanceOf($expected, $this->builder);
+        }
 
         $this->assertArrayHasKey('main', $this->builder->getCallbacks());
         $this->assertArrayHasKey('blog', $this->builder->getCallbacks());
