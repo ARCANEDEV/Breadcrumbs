@@ -6,7 +6,7 @@ A simple breadcrumbs generator helper.
 
   * Easy setup &amp; configuration.
   * Well documented &amp; IDE Friendly.
-  * Well tested with maximum code quality. 
+  * Well tested with maximum code quality.
   * Made with :heart: &amp; :coffee:.
 
 ## Table of contents

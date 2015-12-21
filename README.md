@@ -1,5 +1,5 @@
-Breadcrumbs [![Packagist License][badge_license]](LICENSE.md) [![For Laravel 5][badge_laravel]](https://github.com/ARCANEDEV/Breadcrumbs#breadcrumbs)
-==============
+# Breadcrumbs [![Packagist License][badge_license]](LICENSE.md) [![For Laravel 5][badge_laravel]](https://github.com/ARCANEDEV/Breadcrumbs#breadcrumbs)
+
 [![Travis Status][badge_build]](https://travis-ci.org/ARCANEDEV/Breadcrumbs)
 [![HHVM Status][badge_hhvm]](http://hhvm.h4cc.de/package/arcanedev/breadcrumbs)
 [![Coverage Status][badge_coverage]](https://scrutinizer-ci.com/g/ARCANEDEV/Breadcrumbs/?branch=master)
@@ -35,7 +35,7 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/Breadcrumbs/r
 
   * Well tested with maximum code quality.
   * Easy setup &amp; configuration.
-  * Well documented &amp; IDE Friendly. 
+  * Well documented &amp; IDE Friendly.
   * Made with :heart: &amp; :coffee:.
 
 ## Table of contents
@@ -48,9 +48,10 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/Breadcrumbs/r
 ## TODOS
 
   - [ ] Complete documentation.
-  - [ ] Examples. 
+  - [ ] Examples.
   - [ ] Laravel 4.2 Support.
   - [ ] ZURB Foundation v5 Support.
+  - [ ] Adding Laravel 5.2 Support.
 
 ## DONE
 
