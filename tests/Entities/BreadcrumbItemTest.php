@@ -20,11 +20,6 @@ class BreadcrumbItemTest extends TestCase
      |  Main Functions
      | ------------------------------------------------------------------------------------------------
      */
-    public function setUp()
-    {
-        parent::setUp();
-    }
-
     public function tearDown()
     {
         unset($this->breadcrumb);

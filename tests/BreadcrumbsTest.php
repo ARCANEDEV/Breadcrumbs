@@ -126,6 +126,21 @@ class BreadcrumbsTest extends TestCase
         });
     }
 
+    /** @test */
+    public function it_can_register_a_crumb_with_icon()
+    {
+        $this->breadcrumbs->register('public', function(Builder $builder) {
+            $builder->push('Home', 'http://www.example.com', [
+                'icon' => 'fa fa-home'
+            ]);
+        });
+
+        $this->assertContains(
+            '<i class="fa fa-home"></i>',
+            $this->breadcrumbs->render('public')
+        );
+    }
+
     /* ------------------------------------------------------------------------------------------------
      |  Other Functions
      | ------------------------------------------------------------------------------------------------
