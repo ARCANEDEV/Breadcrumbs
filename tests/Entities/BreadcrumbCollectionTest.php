@@ -31,9 +31,9 @@ class BreadcrumbCollectionTest extends TestCase
 
     public function tearDown()
     {
-        parent::tearDown();
-
         unset($this->bcCollection);
+
+        parent::tearDown();
     }
 
     /* ------------------------------------------------------------------------------------------------

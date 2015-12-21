@@ -44,12 +44,12 @@ class BreadcrumbsTraitTest extends TestCase
         );
 
         $this->assertContains(
-            '<li><a href="http://localhost">Home</a></li>',
+            '<a href="http://localhost">Home</a>',
             $result
         );
 
         $this->assertContains(
-            '<li><a href="http://localhost/about">About</a></li>',
+            '<a href="http://localhost/about">About</a>',
             $result
         );
 

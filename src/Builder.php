@@ -1,6 +1,6 @@
 <?php namespace Arcanedev\Breadcrumbs;
 
-use Arcanedev\Breadcrumbs\Contracts\BuilderInterface;
+use Arcanedev\Breadcrumbs\Contracts\Builder as BuilderContract;
 
 /**
  * Class     Builder
@@ -8,7 +8,7 @@ use Arcanedev\Breadcrumbs\Contracts\BuilderInterface;
  * @package  Arcanedev\Breadcrumbs
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class Builder implements BuilderInterface
+class Builder implements BuilderContract
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties

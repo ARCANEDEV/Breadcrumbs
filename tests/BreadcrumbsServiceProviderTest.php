@@ -31,9 +31,9 @@ class BreadcrumbsServiceProviderTest extends TestCase
 
     public function tearDown()
     {
-        parent::tearDown();
-
         unset($this->provider);
+
+        parent::tearDown();
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -47,11 +47,11 @@ class BreadcrumbsServiceProviderTest extends TestCase
             \Illuminate\Support\ServiceProvider::class,
             \Arcanedev\Support\ServiceProvider::class,
             \Arcanedev\Support\PackageServiceProvider::class,
-            BreadcrumbsServiceProvider::class,
+            \Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider::class,
         ];
 
-        foreach ($exceptedProviders as $provider) {
-            $this->assertInstanceOf($provider, $this->provider);
+        foreach ($exceptedProviders as $expected) {
+            $this->assertInstanceOf($expected, $this->provider);
         }
     }
 

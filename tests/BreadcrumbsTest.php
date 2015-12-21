@@ -33,9 +33,9 @@ class BreadcrumbsTest extends TestCase
 
     public function tearDown()
     {
-        parent::tearDown();
-
         unset($this->breadcrumbs);
+
+        parent::tearDown();
     }
 
     /* ------------------------------------------------------------------------------------------------
@@ -45,7 +45,14 @@ class BreadcrumbsTest extends TestCase
     /** @test */
     public function it_can_be_instantiated()
     {
-        $this->assertInstanceOf(Breadcrumbs::class, $this->breadcrumbs);
+        $expectations = [
+            \Arcanedev\Breadcrumbs\Contracts\Breadcrumbs::class,
+            \Arcanedev\Breadcrumbs\Breadcrumbs::class,
+        ];
+
+        foreach ($expectations as $expected) {
+            $this->assertInstanceOf($expected, $this->breadcrumbs);
+        }
     }
 
     /** @test */
@@ -117,6 +124,21 @@ class BreadcrumbsTest extends TestCase
         breadcrumbs()->register(null, function () {
             return 'hello';
         });
+    }
+
+    /** @test */
+    public function it_can_register_a_crumb_with_icon()
+    {
+        $this->breadcrumbs->register('public', function(Builder $builder) {
+            $builder->push('Home', 'http://www.example.com', [
+                'icon' => 'fa fa-home'
+            ]);
+        });
+
+        $this->assertContains(
+            '<i class="fa fa-home"></i>',
+            $this->breadcrumbs->render('public')
+        );
     }
 
     /* ------------------------------------------------------------------------------------------------

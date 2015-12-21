@@ -57,7 +57,8 @@ trait BreadcrumbsTrait
 
         return [
             'title' => 'Home',
-            'url'   => route($route)
+            'url'   => route($route),
+            'data'  => [],
         ];
     }
 
@@ -80,7 +81,7 @@ trait BreadcrumbsTrait
                 $item = $this->getBreadcrumbsHomeItem();
             }
 
-            $bc->push($item['title'], $item['url']);
+            $bc->push($item['title'], $item['url'], isset($item['array']) ? $item['array'] : []);
         });
     }
 
@@ -92,10 +93,12 @@ trait BreadcrumbsTrait
         breadcrumbs()->register($this->breadcrumbsContainer, function(Builder $bc) {
             $bc->parent('main');
 
-            if ( ! empty($this->breadcrumbsItems)) {
-                foreach ($this->breadcrumbsItems as $crumb) {
-                    $bc->push($crumb['title'], $crumb['url']);
-                }
+            if (empty($this->breadcrumbsItems)) {
+                return;
+            }
+
+            foreach ($this->breadcrumbsItems as $crumb) {
+                $bc->push($crumb['title'], $crumb['url'], isset($crumb['array']) ? $crumb['array'] : []);
             }
         });
     }
@@ -105,15 +108,13 @@ trait BreadcrumbsTrait
      *
      * @param  string  $title
      * @param  string  $url
+     * @param  array   $data
      *
      * @return self
      */
-    protected function addBreadcrumb($title, $url = '')
+    protected function addBreadcrumb($title, $url = '', array $data = [])
     {
-        $this->breadcrumbsItems[] = [
-            'title' => $title,
-            'url'   => $url,
-        ];
+        $this->breadcrumbsItems[] = compact('title', 'url', 'data');
 
         return $this;
     }
@@ -124,11 +125,12 @@ trait BreadcrumbsTrait
      * @param  string  $title
      * @param  string  $route
      * @param  array   $parameters
+     * @param  array   $data
      *
      * @return self
      */
-    protected function addBreadcrumbRoute($title, $route, $parameters = [])
+    protected function addBreadcrumbRoute($title, $route, array $parameters = [], array $data = [])
     {
-        return $this->addBreadcrumb($title, route($route, $parameters));
+        return $this->addBreadcrumb($title, route($route, $parameters), $data);
     }
 }

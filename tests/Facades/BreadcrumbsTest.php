@@ -19,7 +19,7 @@ class BreadcrumbsTest extends TestCase
     public function it_register_callbacks()
     {
         Breadcrumbs::register('public', function($builder) {
-
+            //
         });
     }
 }
