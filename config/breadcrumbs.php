@@ -11,7 +11,7 @@ return [
         'supported' => [
             'bootstrap-3'  => 'breadcrumbs::bootstrap-3',
             'bootstrap-2'  => 'breadcrumbs::bootstrap-2',
-            'foundation-5' => 'breadcrumbs::bootstrap-5',
+            'foundation-5' => 'breadcrumbs::foundation-5',
         ],
     ],
 
