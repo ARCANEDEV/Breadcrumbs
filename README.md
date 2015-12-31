@@ -11,7 +11,7 @@
 [![Packagist Release][badge_release]](https://packagist.org/packages/arcanedev/breadcrumbs)
 [![Packagist Downloads][badge_downloads]](https://packagist.org/packages/arcanedev/breadcrumbs)
 
-[badge_laravel]:   https://img.shields.io/badge/For%20Laravel-5.0%7C5.1-orange.svg?style=flat-square
+[badge_laravel]:   https://img.shields.io/badge/For-Laravel%205.x-orange.svg?style=flat-square
 [badge_license]:   https://img.shields.io/packagist/l/arcanedev/breadcrumbs.svg?style=flat-square
 
 [badge_build]:     https://img.shields.io/travis/ARCANEDEV/Breadcrumbs.svg?style=flat-square
@@ -49,17 +49,16 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/Breadcrumbs/r
 
   - [ ] Complete documentation.
   - [ ] Examples.
-  - [ ] Adding Laravel 5.2 Support.
-  - [ ] Complete Twitter Bootstrap v4 Support.
-  - [ ] Complete ZURB Foundation v5 Support.
-  - [ ] Complete ZURB Foundation v6 Support.
 
 ## DONE
 
   - [x] Laravel 5.0 Supported.
   - [x] Laravel 5.1 Supported.
+  - [x] Laravel 5.2 Supported.
   - [x] Twitter Bootstrap v3 Supported.
-  - [x] Twitter Bootstrap v2 Supported.
+  - [ ] Twitter Bootstrap v4 Supported.
+  - [x] ZURB Foundation v5 Supported.
+  - [x] ZURB Foundation v6 Supported.
 
 ## Contribution
 
