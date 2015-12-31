@@ -10,7 +10,6 @@ return [
 
         'supported' => [
             // Twitter Bootstrap
-            'bootstrap-2'  => 'breadcrumbs::bootstrap-2',
             'bootstrap-3'  => 'breadcrumbs::bootstrap-3',
             'bootstrap-4'  => 'breadcrumbs::bootstrap-4',
 
