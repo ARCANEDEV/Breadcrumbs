@@ -93,12 +93,10 @@ trait BreadcrumbsTrait
         breadcrumbs()->register($this->breadcrumbsContainer, function(Builder $bc) {
             $bc->parent('main');
 
-            if (empty($this->breadcrumbsItems)) {
-                return;
-            }
-
-            foreach ($this->breadcrumbsItems as $crumb) {
-                $bc->push($crumb['title'], $crumb['url'], isset($crumb['array']) ? $crumb['array'] : []);
+            if ( ! empty($this->breadcrumbsItems)) {
+                foreach ($this->breadcrumbsItems as $crumb) {
+                    $bc->push($crumb['title'], $crumb['url'], isset($crumb['array']) ? $crumb['array'] : []);
+                }
             }
         });
     }
