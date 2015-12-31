@@ -66,18 +66,20 @@ class BreadcrumbCollection extends Collection
      */
     private function order()
     {
-        $this->each(function(BreadcrumbItem $breadcrumb, $key) {
-            $breadcrumb->resetPosition();
+        $count = $this->count();
+
+        $this->map(function (BreadcrumbItem $crumb, $key) use ($count) {
+            $crumb->resetPosition();
 
             if ($key === 0) {
-                $breadcrumb->setFirst();
+                $crumb->setFirst();
             }
 
-            if ($key === ($this->count() - 1)) {
-                $breadcrumb->setLast();
+            if ($key === ($count - 1)) {
+                $crumb->setLast();
             }
 
-            return $breadcrumb;
+            return $crumb;
         });
 
         return $this;
