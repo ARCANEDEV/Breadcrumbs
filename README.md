@@ -48,7 +48,6 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/Breadcrumbs/r
 ## TODOS
 
   - [ ] Complete documentation.
-  - [ ] Examples.
 
 ## DONE
 
@@ -56,7 +55,7 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/Breadcrumbs/r
   - [x] Laravel 5.1 Supported.
   - [x] Laravel 5.2 Supported.
   - [x] Twitter Bootstrap v3 Supported.
-  - [ ] Twitter Bootstrap v4 Supported.
+  - [x] Twitter Bootstrap v4 Supported.
   - [x] ZURB Foundation v5 Supported.
   - [x] ZURB Foundation v6 Supported.
 
