@@ -19,14 +19,21 @@ class BreadcrumbsServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $vendor       = 'arcanedev';
+    protected $vendor  = 'arcanedev';
 
     /**
      * Package name.
      *
      * @var string
      */
-    protected $package      = 'breadcrumbs';
+    protected $package = 'breadcrumbs';
+
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer   = true;
 
     /* ------------------------------------------------------------------------------------------------
      |  Getters & Setters
@@ -62,7 +69,9 @@ class BreadcrumbsServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        $this->registerViews();
+        // Publishes
+        $this->publishConfig();
+        $this->publishViews();
     }
 
     /**
@@ -93,17 +102,5 @@ class BreadcrumbsServiceProvider extends ServiceProvider
                 $config->get('breadcrumbs.template.default', '')
             );
         });
-    }
-
-    /**
-     * Register the package views.
-     */
-    private function registerViews()
-    {
-        $viewsPath = $this->getBasePath() . '/resources/views';
-        $this->loadViewsFrom($viewsPath, 'breadcrumbs');
-        $this->publishes([
-            $viewsPath => base_path('resources/views/vendor/breadcrumbs'),
-        ]);
     }
 }
