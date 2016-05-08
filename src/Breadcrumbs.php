@@ -12,6 +12,12 @@ use Closure;
 class Breadcrumbs implements BreadcrumbsContract
 {
     /* ------------------------------------------------------------------------------------------------
+     |  Constants
+     | ------------------------------------------------------------------------------------------------
+     */
+    const DEFAULT_TEMPLATE = 'bootstrap-3';
+
+    /* ------------------------------------------------------------------------------------------------
      |  Properties
      | ------------------------------------------------------------------------------------------------
      */
@@ -27,7 +33,7 @@ class Breadcrumbs implements BreadcrumbsContract
      *
      * @var array
      */
-    private $supported = [
+    protected $supported = [
         'bootstrap-3' => 'breadcrumbs::bootstrap-3',
     ];
 
@@ -41,24 +47,33 @@ class Breadcrumbs implements BreadcrumbsContract
     /**
      * Create a Breadcrumbs instance.
      *
-     * @param  array   $supported
-     * @param  string  $template
+     * @param  array        $supported
+     * @param  string|null  $template
      */
-    public function __construct(array $supported, $template = '')
+    public function __construct(array $supported, $template = null)
     {
-        $this->supported = $supported;
-
-        if ( ! empty($template)) {
-            $template = 'bootstrap-3';
-        }
-
-        $this->setTemplate($template);
+        $this->setSupported($supported);
+        $this->setTemplate(is_null($template) ? self::DEFAULT_TEMPLATE : $template);
     }
 
     /* ------------------------------------------------------------------------------------------------
      |  Getters & Setters
      | ------------------------------------------------------------------------------------------------
      */
+    /**
+     * Set the supported template.
+     *
+     * @param  array  $supported
+     *
+     * @return self
+     */
+    public function setSupported(array $supported)
+    {
+        $this->supported = $supported;
+
+        return $this;
+    }
+
     /**
      * Set default template view.
      *

@@ -6,7 +6,7 @@ return [
      | ------------------------------------------------------------------------------------------------
      */
     'template'  => [
-        'default'   => 'bootstrap-3',
+        'default'   => \Arcanedev\Breadcrumbs\Breadcrumbs::DEFAULT_TEMPLATE,
 
         'supported' => [
             // Twitter Bootstrap

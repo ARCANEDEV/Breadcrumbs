@@ -108,7 +108,7 @@ class BreadcrumbsTest extends TestCase
      * @expectedException         \Arcanedev\Breadcrumbs\Exceptions\InvalidTemplateException
      * @expectedExceptionMessage  The template [material-design] is not supported.
      */
-    public function it_must_throw_InvalidTemplateException_on_template()
+    public function it_must_throw_invalid_template_exception_on_not_found_template()
     {
         breadcrumbs()->setTemplate('material-design');
     }
@@ -119,7 +119,7 @@ class BreadcrumbsTest extends TestCase
      * @expectedException         \Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException
      * @expectedExceptionMessage  The callback name value must be a string, NULL given.
      */
-    public function it_must_throw_InvalidTypeException_on_register()
+    public function it_must_throw_invalid_type_exception_on_register()
     {
         breadcrumbs()->register(null, function () {
             return 'hello';
