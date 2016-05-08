@@ -15,6 +15,15 @@ interface Breadcrumbs
      | ------------------------------------------------------------------------------------------------
      */
     /**
+     * Set the supported template.
+     *
+     * @param  array  $supported
+     *
+     * @return self
+     */
+    public function setSupported(array $supported);
+
+    /**
      * Set default template view.
      *
      * @param  string  $template
