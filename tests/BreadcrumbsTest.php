@@ -26,7 +26,7 @@ class BreadcrumbsTest extends TestCase
     {
         parent::setUp();
 
-        $this->breadcrumbs = breadcrumbs();
+        $this->breadcrumbs = $this->app->make('arcanedev.breadcrumbs');
 
         $this->registerMainBreadcrumb();
     }
@@ -45,6 +45,21 @@ class BreadcrumbsTest extends TestCase
     /** @test */
     public function it_can_be_instantiated()
     {
+        $expectations = [
+            \Arcanedev\Breadcrumbs\Contracts\Breadcrumbs::class,
+            \Arcanedev\Breadcrumbs\Breadcrumbs::class,
+        ];
+
+        foreach ($expectations as $expected) {
+            $this->assertInstanceOf($expected, $this->breadcrumbs);
+        }
+    }
+
+    /** @test */
+    public function it_can_be_instantiated_via_helper()
+    {
+        $this->breadcrumbs = breadcrumbs();
+
         $expectations = [
             \Arcanedev\Breadcrumbs\Contracts\Breadcrumbs::class,
             \Arcanedev\Breadcrumbs\Breadcrumbs::class,
