@@ -1,7 +1,6 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests;
 
 use Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider;
-use Arcanedev\Breadcrumbs\Tests\TestCase;
 
 /**
  * Class     BreadcrumbsServiceProviderTest
@@ -41,25 +40,28 @@ class BreadcrumbsServiceProviderTest extends TestCase
      | ------------------------------------------------------------------------------------------------
      */
     /** @test */
-    public function it_must_be_a_provider()
+    public function it_can_be_instantiated()
     {
-        $exceptedProviders = [
+        $expectations = [
             \Illuminate\Support\ServiceProvider::class,
             \Arcanedev\Support\ServiceProvider::class,
             \Arcanedev\Support\PackageServiceProvider::class,
             \Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider::class,
         ];
 
-        foreach ($exceptedProviders as $expected) {
+        foreach ($expectations as $expected) {
             $this->assertInstanceOf($expected, $this->provider);
         }
     }
 
     /** @test */
-    public function it_can_get_what_package_provides()
+    public function it_can_provides()
     {
-        $this->assertEquals([
-            'arcanedev.breadcrumbs'
-        ], $this->provider->provides());
+        $expected = [
+            'arcanedev.breadcrumbs',
+            \Arcanedev\Breadcrumbs\Contracts\Breadcrumbs::class,
+        ];
+
+        $this->assertEquals($expected, $this->provider->provides());
     }
 }
