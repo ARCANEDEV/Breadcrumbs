@@ -15,13 +15,6 @@ class BreadcrumbsServiceProvider extends ServiceProvider
      | ------------------------------------------------------------------------------------------------
      */
     /**
-     * Vendor name.
-     *
-     * @var string
-     */
-    protected $vendor  = 'arcanedev';
-
-    /**
      * Package name.
      *
      * @var string
@@ -96,7 +89,7 @@ class BreadcrumbsServiceProvider extends ServiceProvider
      */
     private function registerBreadcrumbsService()
     {
-        $this->app->singleton('arcanedev.breadcrumbs', function ($app) {
+        $this->singleton('arcanedev.breadcrumbs', function ($app) {
             /** @var  \Illuminate\Contracts\Config\Repository  $config */
             $config = $app['config'];
 
@@ -106,6 +99,6 @@ class BreadcrumbsServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->bind(Contracts\Breadcrumbs::class, 'arcanedev.breadcrumbs');
+        $this->bind(Contracts\Breadcrumbs::class, 'arcanedev.breadcrumbs');
     }
 }
