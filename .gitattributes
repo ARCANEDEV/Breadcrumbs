@@ -1,5 +1,5 @@
+/_docs            export-ignore
 /tests            export-ignore
-/examples         export-ignore
 /.gitattributes   export-ignore
 /.gitignore       export-ignore
 /.scrutinizer.yml export-ignore
