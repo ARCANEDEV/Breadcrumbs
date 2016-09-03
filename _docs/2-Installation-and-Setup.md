@@ -9,7 +9,7 @@ Or by adding the package to your `composer.json`.
 ```json
 {
     "require": {
-        "arcanedev/breadcrumbs": "~2.4"
+        "arcanedev/breadcrumbs": "~2.0"
     }
 }
 ```
