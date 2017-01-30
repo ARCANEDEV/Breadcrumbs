@@ -1,6 +1,6 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests;
 
-use Orchestra\Testbench\TestCase as BaseTestCase;
+use Orchestra\Testbench\BrowserKit\TestCase as BaseTestCase;
 
 /**
  * Class     TestCase
