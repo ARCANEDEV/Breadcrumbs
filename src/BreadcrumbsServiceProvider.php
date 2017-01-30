@@ -1,6 +1,6 @@
 <?php namespace Arcanedev\Breadcrumbs;
 
-use Arcanedev\Support\PackageServiceProvider as ServiceProvider;
+use Arcanedev\Support\PackageServiceProvider;
 
 /**
  * Class     BreadcrumbsServiceProvider
@@ -8,7 +8,7 @@ use Arcanedev\Support\PackageServiceProvider as ServiceProvider;
  * @package  Arcanedev\Breadcrumbs
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class BreadcrumbsServiceProvider extends ServiceProvider
+class BreadcrumbsServiceProvider extends PackageServiceProvider
 {
     /* ------------------------------------------------------------------------------------------------
      |  Properties
@@ -89,7 +89,7 @@ class BreadcrumbsServiceProvider extends ServiceProvider
      */
     private function registerBreadcrumbsService()
     {
-        $this->singleton('arcanedev.breadcrumbs', function ($app) {
+        $this->singleton(Contracts\Breadcrumbs::class, function ($app) {
             /** @var  \Illuminate\Contracts\Config\Repository  $config */
             $config = $app['config'];
 
@@ -99,6 +99,6 @@ class BreadcrumbsServiceProvider extends ServiceProvider
             );
         });
 
-        $this->bind(Contracts\Breadcrumbs::class, 'arcanedev.breadcrumbs');
+        $this->singleton('arcanedev.breadcrumbs', Contracts\Breadcrumbs::class);
     }
 }

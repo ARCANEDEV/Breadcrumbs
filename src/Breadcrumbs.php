@@ -161,9 +161,9 @@ class Breadcrumbs implements BreadcrumbsContract
      */
     private function generateArray($name, array $args = [])
     {
-        $generator = new Builder($this->callbacks);
-
-        return $generator->call($name, $args)->toArray();
+        return (new Builder($this->callbacks))
+            ->call($name, $args)
+            ->toArray();
     }
 
     /* ------------------------------------------------------------------------------------------------
