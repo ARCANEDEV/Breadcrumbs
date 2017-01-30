@@ -20,7 +20,7 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/Breadcrumbs/r
 
   * Well tested with maximum code quality.
   * Easy setup &amp; configuration.
-  * Laravel `5.0 | 5.1 | 5.2 | 5.3` are supported.
+  * Laravel `5.0 | 5.1 | 5.2 | 5.3 | 5.4` are supported.
   * Twitter Bootstrap `v3 | v4` are supported.
   * ZURB Foundation `v5 | v6` are supported.
   * Well documented &amp; IDE Friendly.
@@ -29,9 +29,10 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/Breadcrumbs/r
 ## Table of contents
 
   1. [Requirements](_docs/1-Requirements.md)
-  2. [Installation and Setup](_docs/2-Installation-and-Setup.md)
-  3. [Configuration](_docs/3-Configuration.md)
-  4. [Usage](_docs/4-Usage.md)
+  2. [Version Compatibility](_docs/2-Version-Compatibility.md)
+  3. [Installation and Setup](_docs/3-Installation-and-Setup.md)
+  4. [Configuration](_docs/4-Configuration.md)
+  5. [Usage](_docs/5-Usage.md)
 
 ## TODOS
 
