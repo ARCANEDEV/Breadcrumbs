@@ -10,10 +10,11 @@ use Orchestra\Testbench\BrowserKit\TestCase as BaseTestCase;
  */
 abstract class TestCase extends BaseTestCase
 {
-    /* ------------------------------------------------------------------------------------------------
-     |  Main Functions
-     | ------------------------------------------------------------------------------------------------
+    /* -----------------------------------------------------------------
+     |  Main Methods
+     | -----------------------------------------------------------------
      */
+
     public function setUp()
     {
         parent::setUp();
@@ -21,12 +22,10 @@ abstract class TestCase extends BaseTestCase
         $this->app->loadDeferredProviders();
     }
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Laravel Functions
-     | ------------------------------------------------------------------------------------------------
-     */
     /**
      * Register Service Providers.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
      *
      * @return array
      */
@@ -39,6 +38,8 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * Register Aliases.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
      *
      * @return array
      */

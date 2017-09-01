@@ -10,10 +10,11 @@ use Arcanedev\Support\PackageServiceProvider;
  */
 class BreadcrumbsServiceProvider extends PackageServiceProvider
 {
-    /* ------------------------------------------------------------------------------------------------
+    /* -----------------------------------------------------------------
      |  Properties
-     | ------------------------------------------------------------------------------------------------
+     | -----------------------------------------------------------------
      */
+
     /**
      * Package name.
      *
@@ -28,29 +29,18 @@ class BreadcrumbsServiceProvider extends PackageServiceProvider
      */
     protected $defer   = true;
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Getters & Setters
-     | ------------------------------------------------------------------------------------------------
+    /* -----------------------------------------------------------------
+     |  Main Methods
+     | -----------------------------------------------------------------
      */
-    /**
-     * Get the base path of the package.
-     *
-     * @return string
-     */
-    public function getBasePath()
-    {
-        return dirname(__DIR__);
-    }
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Main Functions
-     | ------------------------------------------------------------------------------------------------
-     */
     /**
      * Register the service provider.
      */
     public function register()
     {
+        parent::register();
+
         $this->registerConfig();
         $this->registerBreadcrumbsService();
     }
@@ -65,6 +55,7 @@ class BreadcrumbsServiceProvider extends PackageServiceProvider
         // Publishes
         $this->publishConfig();
         $this->publishViews();
+        $this->publishTranslations();
     }
 
     /**
@@ -75,15 +66,15 @@ class BreadcrumbsServiceProvider extends PackageServiceProvider
     public function provides()
     {
         return [
-            'arcanedev.breadcrumbs',
             Contracts\Breadcrumbs::class,
         ];
     }
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Other Functions
-     | ------------------------------------------------------------------------------------------------
+    /* -----------------------------------------------------------------
+     |  Other Methods
+     | -----------------------------------------------------------------
      */
+
     /**
      * Register the Breadcrumbs service.
      */
@@ -98,7 +89,5 @@ class BreadcrumbsServiceProvider extends PackageServiceProvider
                 $config->get('breadcrumbs.template.default', '')
             );
         });
-
-        $this->singleton('arcanedev.breadcrumbs', Contracts\Breadcrumbs::class);
     }
 }
