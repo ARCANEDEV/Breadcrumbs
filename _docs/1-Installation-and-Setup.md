@@ -1,4 +1,18 @@
-# 2. Version Compatibility
+# 1. Installation
+
+## Table of contents
+
+  1. [Installation and Setup](_docs/1-Installation-and-Setup.md)
+  2. [Configuration](_docs/2-Configuration.md)
+  3. [Usage](_docs/3-Usage.md)
+  
+## Server Requirements
+
+The Breadcrumbs package has a few system requirements:
+
+    - PHP >= 5.6
+    
+## Version Compatibility
 
 | Breadcrumbs                          | Laravel                                                                                                             |
 |:-------------------------------------|:--------------------------------------------------------------------------------------------------------------------|
@@ -13,3 +27,41 @@
 
 [breadcrumbs_2_x]: https://img.shields.io/badge/version-2.*-blue.svg?style=flat-square "Breadcrumbs v2.*"
 [breadcrumbs_3_x]: https://img.shields.io/badge/version-3.*-blue.svg?style=flat-square "Breadcrumbs v3.*"
+
+## Composer
+
+You can install this package via [Composer](http://getcomposer.org/) by running this command: `composer require arcanedev/breadcrumbs`.
+
+## Laravel
+
+### Setup
+
+Once the package is installed, you can register the service provider in `config/app.php` in the `providers` array:
+
+```php
+// config/app.php
+
+'providers' => [
+    ...
+    Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider::class,
+],
+```
+
+And for the Facade:
+
+```php
+// config/app.php
+
+'aliases' => [
+    ...
+    'Breadcrumbs' => Arcanedev\Breadcrumbs\Facades\Breadcrumbs::class,
+];
+```
+
+### Artisan commands
+
+To publish the config &amp; view files, run this command:
+
+```bash
+php artisan vendor:publish --provider="Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider"
+```
