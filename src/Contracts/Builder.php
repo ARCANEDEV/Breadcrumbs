@@ -1,17 +1,20 @@
 <?php namespace Arcanedev\Breadcrumbs\Contracts;
 
+use Illuminate\Contracts\Support\Arrayable;
+
 /**
  * Interface  BuilderInterface
  *
  * @package   Arcanedev\Breadcrumbs\Contracts
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-interface Builder
+interface Builder extends Arrayable
 {
-    /* ------------------------------------------------------------------------------------------------
+    /* -----------------------------------------------------------------
      |  Getters and Setters
-     | ------------------------------------------------------------------------------------------------
+     | -----------------------------------------------------------------
      */
+
     /**
      * Get breadcrumbs collection.
      *
@@ -26,10 +29,11 @@ interface Builder
      */
     public function getCallbacks();
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Main Functions
-     | ------------------------------------------------------------------------------------------------
+    /* -----------------------------------------------------------------
+     |  Main Methods
+     | -----------------------------------------------------------------
      */
+
     /**
      * Call breadcrumb.
      *
@@ -61,11 +65,4 @@ interface Builder
      * @param  array        $data
      */
     public function push($title, $url = null, array $data = []);
-
-    /**
-     * Get the breadcrumbs items as a plain array.
-     *
-     * @return array
-     */
-    public function toArray();
 }

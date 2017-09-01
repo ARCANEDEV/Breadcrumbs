@@ -10,21 +10,11 @@ use Arcanedev\Support\Collection;
  */
 class BreadcrumbCollection extends Collection
 {
-    /* ------------------------------------------------------------------------------------------------
-     |  Properties
-     | ------------------------------------------------------------------------------------------------
+    /* -----------------------------------------------------------------
+     |  Main Methods
+     | -----------------------------------------------------------------
      */
-    /**
-     * The breadcrumbs collection.
-     *
-     * @var array
-     */
-    protected $items = [];
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Main Function
-     | ------------------------------------------------------------------------------------------------
-     */
     /**
      * Add a breadcrumb item to collection.
      *
@@ -55,10 +45,11 @@ class BreadcrumbCollection extends Collection
         return $this->order();
     }
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Other Functions
-     | ------------------------------------------------------------------------------------------------
+    /* -----------------------------------------------------------------
+     |  Other Methods
+     | -----------------------------------------------------------------
      */
+
     /**
      * Order all breadcrumbs items.
      *
@@ -71,13 +62,11 @@ class BreadcrumbCollection extends Collection
         $this->map(function (BreadcrumbItem $crumb, $key) use ($count) {
             $crumb->resetPosition();
 
-            if ($key === 0) {
+            if ($key === 0)
                 $crumb->setFirst();
-            }
 
-            if ($key === ($count - 1)) {
+            if ($key === ($count - 1))
                 $crumb->setLast();
-            }
 
             return $crumb;
         });

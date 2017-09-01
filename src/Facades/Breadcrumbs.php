@@ -1,5 +1,6 @@
 <?php namespace Arcanedev\Breadcrumbs\Facades;
 
+use Arcanedev\Breadcrumbs\Contracts\Breadcrumbs as BreadcrumbsContract;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -15,5 +16,5 @@ class Breadcrumbs extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'arcanedev.breadcrumbs'; }
+    protected static function getFacadeAccessor() { return BreadcrumbsContract::class; }
 }
