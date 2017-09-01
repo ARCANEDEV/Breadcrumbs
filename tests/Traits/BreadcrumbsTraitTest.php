@@ -35,24 +35,26 @@ class BreadcrumbsTraitTest extends TestCase
 
         $result = breadcrumbs()->render('public');
 
+        $this->assertInstanceOf(\Illuminate\Support\HtmlString::class, $result);
+
         $this->assertStringStartsWith(
             '<ul class="breadcrumb breadcrumb-top">',
-            $result
+            $result->toHtml()
         );
 
         $this->assertContains(
             '<a href="http://localhost">Home</a>',
-            $result
+            $result->toHtml()
         );
 
         $this->assertContains(
             '<a href="http://localhost/about">About</a>',
-            $result
+            $result->toHtml()
         );
 
         $this->assertContains(
             '<li class="active">ARCANEDEV</li>',
-            $result
+            $result->toHtml()
         );
     }
 

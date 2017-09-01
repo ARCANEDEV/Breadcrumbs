@@ -2,6 +2,7 @@
 
 use Arcanedev\Breadcrumbs\Contracts\Breadcrumbs as BreadcrumbsContract;
 use Closure;
+use Illuminate\Support\HtmlString;
 
 /**
  * Class     Breadcrumbs
@@ -130,44 +131,31 @@ class Breadcrumbs implements BreadcrumbsContract
      * Render breadcrumbs items.
      *
      * @param  string|null  $name
+     * @param  array        $params
      *
-     * @return string
+     * @return \Illuminate\Support\HtmlString
      */
-    public function render($name = null)
+    public function render($name = null, ...$params)
     {
-        $breadcrumbs = $this->generateArray(
-            $name, array_slice(func_get_args(), 1)
+        return new HtmlString(
+            view($this->getView(), [
+                'breadcrumbs' => $this->generate($name, $params)
+            ])->render()
         );
-
-        return (string) view($this->getView(), compact('breadcrumbs'))->render();
     }
 
     /**
      * Generate the breadcrumbs.
      *
      * @param  string  $name
+     * @param  array   $params
      *
      * @return array
      */
-    public function generate($name)
-    {
-        return $this->generateArray(
-            $name, array_slice(func_get_args(), 1)
-        );
-    }
-
-    /**
-     * Generate array.
-     *
-     * @param  string  $name
-     * @param  array   $args
-     *
-     * @return array
-     */
-    private function generateArray($name, array $args = [])
+    public function generate($name, ...$params)
     {
         return (new Builder($this->callbacks))
-            ->call($name, $args)
+            ->call($name, $params)
             ->toArray();
     }
 

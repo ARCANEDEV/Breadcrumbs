@@ -22,5 +22,7 @@ class BreadcrumbsTest extends TestCase
         Breadcrumbs::register('public', function($builder) {
             //
         });
+
+        $this->assertSame([], Breadcrumbs::generate('public'));
     }
 }

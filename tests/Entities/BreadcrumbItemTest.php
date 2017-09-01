@@ -39,15 +39,15 @@ class BreadcrumbItemTest extends TestCase
     {
         $title            = 'Home';
         $url              = 'http://www.example.com';
-        $this->breadcrumb = new BreadcrumbItem($title, $url);
+        $this->breadcrumb = new BreadcrumbItem(compact('title', 'url'));
 
         $this->assertInstanceOf(BreadcrumbItem::class, $this->breadcrumb);
 
-        $this->assertEquals($title, $this->breadcrumb->getTitle());
-        $this->assertEquals($title, $this->breadcrumb->title);
+        $this->assertSame($title, $this->breadcrumb->getTitle());
+        $this->assertSame($title, $this->breadcrumb->title);
 
-        $this->assertEquals($url, $this->breadcrumb->getUrl());
-        $this->assertEquals($url, $this->breadcrumb->url);
+        $this->assertSame($url, $this->breadcrumb->getUrl());
+        $this->assertSame($url, $this->breadcrumb->url);
 
         $this->assertFalse($this->breadcrumb->isFirst());
         $this->assertFalse($this->breadcrumb->first);
@@ -65,11 +65,11 @@ class BreadcrumbItemTest extends TestCase
 
         $this->assertInstanceOf(BreadcrumbItem::class, $this->breadcrumb);
 
-        $this->assertEquals($title, $this->breadcrumb->getTitle());
-        $this->assertEquals($title, $this->breadcrumb->title);
+        $this->assertSame($title, $this->breadcrumb->getTitle());
+        $this->assertSame($title, $this->breadcrumb->title);
 
-        $this->assertEquals($url, $this->breadcrumb->getUrl());
-        $this->assertEquals($url, $this->breadcrumb->url);
+        $this->assertSame($url, $this->breadcrumb->getUrl());
+        $this->assertSame($url, $this->breadcrumb->url);
 
         $this->assertFalse($this->breadcrumb->isFirst());
         $this->assertFalse($this->breadcrumb->first);
@@ -81,36 +81,41 @@ class BreadcrumbItemTest extends TestCase
     /** @test */
     public function it_can_set_and_get_custom_data()
     {
-        $title            = 'Home';
-        $url              = 'http://www.example.com';
-        $data             = [
+        $this->breadcrumb = new BreadcrumbItem($attributes = [
+            'title' => 'Home',
+            'url'   => 'http://www.example.com',
             'class' => 'active',
             'style' => 'display: block;',
-        ];
+        ]);
 
-        $this->breadcrumb = new BreadcrumbItem($title, $url, $data);
+        $this->assertSame($attributes['class'], $this->breadcrumb->extra('class'));
+        $this->assertSame($attributes['style'], $this->breadcrumb->extra('style'));
 
-        $this->assertEquals($data['class'], $this->breadcrumb->class);
-        $this->assertEquals($data['style'], $this->breadcrumb->style);
-        $this->assertNull($this->breadcrumb->target);
+        $this->assertNull($this->breadcrumb->extra('target'));
+        $this->assertSame('_blank', $this->breadcrumb->extra('target', '_blank'));
     }
 
     /** @test */
     public function it_can_convert_to_array()
     {
-        $title            = 'Home';
-        $url              = 'http://www.example.com';
-        $data             = [
+        $breadcrumb = new BreadcrumbItem([
+            'title' => 'Home',
+            'url'   => 'http://www.example.com',
             'class' => 'active',
             'style' => 'display: block;',
+        ]);
+
+        $expected = [
+            'title' => 'Home',
+            'url'   => 'http://www.example.com',
+            'extra' => [
+                'class' => 'active',
+                'style' => 'display: block;',
+            ],
+            'first' => false,
+            'last'  => false,
         ];
 
-        $this->breadcrumb = BreadcrumbItem::make($title, $url, $data);
-
-        $this->assertEquals(array_merge(
-            compact('title', 'url'),
-            ['first' => false, 'last' => false],
-            $data
-        ), $this->breadcrumb->toArray());
+        $this->assertSame($expected, $breadcrumb->toArray());
     }
 }
