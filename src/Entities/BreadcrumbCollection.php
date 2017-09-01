@@ -26,9 +26,9 @@ class BreadcrumbCollection extends Collection
      */
     public function addOne($title, $url, array $data = [])
     {
-        $breadcrumb = BreadcrumbItem::make($title, $url, $data);
-
-        return $this->add($breadcrumb);
+        return $this->add(
+            BreadcrumbItem::make($title, $url, $data)
+        );
     }
 
     /**

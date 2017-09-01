@@ -78,14 +78,16 @@ class BreadcrumbsTest extends TestCase
     {
         $result = $this->breadcrumbs->render('public');
 
+        $this->assertInstanceOf(\Illuminate\Support\HtmlString::class, $result);
+
         $this->assertStringStartsWith(
             '<ul class="breadcrumb breadcrumb-top">',
-            $result
+            $result->toHtml()
         );
 
         $this->assertContains(
             '<li class="active">Home</li>',
-            $result
+            $result->toHtml()
         );
     }
 
@@ -155,7 +157,7 @@ class BreadcrumbsTest extends TestCase
 
         $this->assertContains(
             '<i class="fa fa-home"></i>',
-            $this->breadcrumbs->render('public')
+            $this->breadcrumbs->render('public')->toHtml()
         );
     }
 

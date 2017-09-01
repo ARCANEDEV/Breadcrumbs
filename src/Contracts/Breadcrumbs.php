@@ -52,17 +52,19 @@ interface Breadcrumbs
      * Render breadcrumbs items.
      *
      * @param  string|null  $name
+     * @param  array        $params
      *
-     * @return string
+     * @return \Illuminate\Support\HtmlString
      */
-    public function render($name = null);
+    public function render($name = null, ...$params);
 
     /**
      * Generate the breadcrumbs.
      *
-     * @param  string $name
+     * @param  string  $name
+     * @param  array   $params
      *
      * @return array
      */
-    public function generate($name);
+    public function generate($name, ...$params);
 }

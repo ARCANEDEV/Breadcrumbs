@@ -1,6 +1,7 @@
 <?php namespace Arcanedev\Breadcrumbs\Entities;
 
-use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Fluent;
 
 /**
  * Class     BreadcrumbItem
@@ -13,48 +14,8 @@ use Illuminate\Contracts\Support\Arrayable;
  * @property  bool    first
  * @property  bool    last
  */
-class BreadcrumbItem implements Arrayable
+class BreadcrumbItem extends Fluent
 {
-    /* -----------------------------------------------------------------
-     |  Properties
-     | -----------------------------------------------------------------
-     */
-
-    /**
-     * Breadcrumb title.
-     *
-     * @var string
-     */
-    protected $title = '';
-
-    /**
-     * Breadcrumb URL.
-     *
-     * @var string
-     */
-    protected $url   = '';
-
-    /**
-     * First position.
-     *
-     * @var bool
-     */
-    protected $first = false;
-
-    /**
-     * Last position.
-     *
-     * @var bool
-     */
-    protected $last  = false;
-
-    /**
-     * Custom data.
-     *
-     * @var array
-     */
-    protected $data = [];
-
     /* -----------------------------------------------------------------
      |  Constructor
      | -----------------------------------------------------------------
@@ -63,17 +24,17 @@ class BreadcrumbItem implements Arrayable
     /**
      * Create a breadcrumb item instance.
      *
-     * @param  string  $title
-     * @param  string  $url
-     * @param  array   $data
+     * @param  array|object  $attributes
      */
-    public function __construct($title, $url, array $data = [])
+    public function __construct(array $attributes = [])
     {
-        $this->setTitle($title);
-        $this->setUrl($url);
-        $this->first = false;
-        $this->last  = false;
-        $this->data  = $data;
+        $keys = ['title', 'url', 'icon'];
+
+        parent::__construct(Arr::only($attributes, $keys) + [
+            'extra' => Arr::except($attributes, $keys)
+        ]);
+
+        $this->resetPosition();
     }
 
     /* -----------------------------------------------------------------
@@ -82,70 +43,23 @@ class BreadcrumbItem implements Arrayable
      */
 
     /**
-     * Get Title.
+     * Get the title.
      *
-     * @return string
+     * @return string|null
      */
     public function getTitle()
     {
-        return $this->title;
+        return $this->get('title');
     }
 
     /**
-     * Set title.
+     * Get the url.
      *
-     * @param  string  $title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get URL.
-     *
-     * @return string
+     * @return string|null
      */
     public function getUrl()
     {
-        return $this->url;
-    }
-
-    /**
-     * Set URL.
-     *
-     * @param  string  $url
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get a breadcrumb item attribute.
-     *
-     * @param  string  $name
-     *
-     * @return mixed|null
-     */
-    public function __get($name)
-    {
-        if (property_exists($this, $name)) {
-            return $this->$name;
-        }
-        elseif ($this->hasData($name)) {
-            return $this->data[$name];
-        }
-
-        return null;
+        return $this->get('url');
     }
 
     /**
@@ -155,7 +69,7 @@ class BreadcrumbItem implements Arrayable
      */
     public function setFirst()
     {
-        $this->first = true;
+        $this->attributes['first'] = true;
 
         return $this;
     }
@@ -167,9 +81,22 @@ class BreadcrumbItem implements Arrayable
      */
     public function setLast()
     {
-        $this->last = true;
+        $this->attributes['last'] = true;
 
         return $this;
+    }
+
+    /**
+     * Get the extra attribute.
+     *
+     * @param  string  $key
+     * @param  mixed   $default
+     *
+     * @return mixed
+     */
+    public function extra($key, $default = null)
+    {
+        return Arr::get($this->attributes['extra'], $key, $default);
     }
 
     /* -----------------------------------------------------------------
@@ -188,7 +115,7 @@ class BreadcrumbItem implements Arrayable
      */
     public static function make($title, $url, array $data = [])
     {
-        return new self($title, $url, $data);
+        return new self($data + compact('title', 'url'));
     }
 
     /**
@@ -198,8 +125,8 @@ class BreadcrumbItem implements Arrayable
      */
     public function resetPosition()
     {
-        $this->first = false;
-        $this->last  = false;
+        $this->attributes['first'] = false;
+        $this->attributes['last']  = false;
 
         return $this;
     }
@@ -216,7 +143,7 @@ class BreadcrumbItem implements Arrayable
      */
     public function isFirst()
     {
-        return $this->first;
+        return $this->get('first', false);
     }
 
     /**
@@ -226,38 +153,6 @@ class BreadcrumbItem implements Arrayable
      */
     public function isLast()
     {
-        return $this->last;
-    }
-
-    /**
-     * Get the instance as an array.
-     *
-     * @return array
-     */
-    public function toArray()
-    {
-        return array_merge($this->data, [
-            'title' => $this->title,
-            'url'   => $this->url,
-            'first' => $this->first,
-            'last'  => $this->last,
-        ]);
-    }
-
-    /* -----------------------------------------------------------------
-     |  Other Methods
-     | -----------------------------------------------------------------
-     */
-
-    /**
-     * Check if breadcrumb item has a custom data.
-     *
-     * @param  string $name
-     *
-     * @return bool
-     */
-    private function hasData($name)
-    {
-        return isset($this->data[$name]);
+        return $this->get('last', false);
     }
 }
