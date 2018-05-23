@@ -59,22 +59,22 @@ class BuilderTest extends TestCase
         ];
 
         foreach ($expectations as $expected) {
-            $this->assertInstanceOf($expected, $this->builder);
+            static::assertInstanceOf($expected, $this->builder);
         }
 
-        $this->assertArrayHasKey('main', $this->builder->getCallbacks());
-        $this->assertArrayHasKey('blog', $this->builder->getCallbacks());
-        $this->assertEmpty($this->builder->toArray());
+        static::assertArrayHasKey('main', $this->builder->getCallbacks());
+        static::assertArrayHasKey('blog', $this->builder->getCallbacks());
+        static::assertEmpty($this->builder->toArray());
     }
 
     /** @test */
     public function it_can_be_called()
     {
-        $this->assertCount(0, $this->builder->get());
+        static::assertCount(0, $this->builder->get());
 
         $this->builder->call('blog');
 
-        $this->assertCount(2, $this->builder->get());
+        static::assertCount(2, $this->builder->get());
     }
 
     /**

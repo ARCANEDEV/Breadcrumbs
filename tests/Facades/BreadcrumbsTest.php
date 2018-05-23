@@ -23,6 +23,6 @@ class BreadcrumbsTest extends TestCase
             //
         });
 
-        $this->assertSame([], Breadcrumbs::generate('public'));
+        static::assertSame([], Breadcrumbs::generate('public'));
     }
 }

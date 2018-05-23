@@ -92,9 +92,6 @@ class Builder implements BuilderContract
      * @param  array   $params
      *
      * @return self
-     *
-     * @throws Exceptions\InvalidTypeException
-     * @throws Exceptions\InvalidCallbackNameException
      */
     public function call($name, array $params = [])
     {
@@ -110,9 +107,6 @@ class Builder implements BuilderContract
      * Call parent breadcrumb.
      *
      * @param  string  $name
-     *
-     * @throws Exceptions\InvalidTypeException
-     * @throws Exceptions\InvalidCallbackNameException
      */
     public function parent($name)
     {
@@ -155,8 +149,8 @@ class Builder implements BuilderContract
      *
      * @param  string  $name
      *
-     * @throws Exceptions\InvalidTypeException
-     * @throws Exceptions\InvalidCallbackNameException
+     * @throws \Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException
+     * @throws \Arcanedev\Breadcrumbs\Exceptions\InvalidCallbackNameException
      */
     private function checkName($name)
     {
