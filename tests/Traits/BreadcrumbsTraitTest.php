@@ -38,7 +38,7 @@ class BreadcrumbsTraitTest extends TestCase
         static::assertInstanceOf(\Illuminate\Support\HtmlString::class, $result);
 
         static::assertStringStartsWith(
-            '<ul class="breadcrumb breadcrumb-top">',
+            '<ol class="breadcrumb">',
             $result->toHtml()
         );
 
@@ -53,7 +53,7 @@ class BreadcrumbsTraitTest extends TestCase
         );
 
         static::assertContains(
-            '<li class="active">ARCANEDEV</li>',
+            '<li class="breadcrumb-item active" aria-current="page">ARCANEDEV</li>',
             $result->toHtml()
         );
     }

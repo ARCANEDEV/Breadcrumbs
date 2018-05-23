@@ -17,7 +17,7 @@ class Breadcrumbs implements BreadcrumbsContract
      | -----------------------------------------------------------------
      */
 
-    const DEFAULT_TEMPLATE = 'bootstrap-3';
+    const DEFAULT_TEMPLATE = 'bootstrap-4';
 
     /* -----------------------------------------------------------------
      |  Properties
@@ -37,7 +37,7 @@ class Breadcrumbs implements BreadcrumbsContract
      * @var array
      */
     protected $supported = [
-        'bootstrap-3' => 'breadcrumbs::bootstrap-3',
+        'bootstrap-4' => 'breadcrumbs::bootstrap-4',
     ];
 
     /** @var array */
