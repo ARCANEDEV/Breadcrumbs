@@ -41,9 +41,6 @@ interface Builder extends Arrayable
      * @param  array   $params
      *
      * @return self
-     *
-     * @throws \Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException
-     * @throws \Arcanedev\Breadcrumbs\Exceptions\InvalidCallbackNameException
      */
     public function call($name, array $params = []);
 
@@ -51,9 +48,6 @@ interface Builder extends Arrayable
      * Call parent breadcrumb.
      *
      * @param  string  $name
-     *
-     * @throws \Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException
-     * @throws \Arcanedev\Breadcrumbs\Exceptions\InvalidCallbackNameException
      */
     public function parent($name);
 

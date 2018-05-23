@@ -1,4 +1,4 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests\Stubs;
+<?php namespace Arcanedev\Breadcrumbs\Tests\Stubs\Controllers;
 
 use Arcanedev\Breadcrumbs\Traits\BreadcrumbsTrait;
 use Arcanedev\Support\Http\Controller;

@@ -41,19 +41,19 @@ class BreadcrumbItemTest extends TestCase
         $url              = 'http://www.example.com';
         $this->breadcrumb = new BreadcrumbItem(compact('title', 'url'));
 
-        $this->assertInstanceOf(BreadcrumbItem::class, $this->breadcrumb);
+        static::assertInstanceOf(BreadcrumbItem::class, $this->breadcrumb);
 
-        $this->assertSame($title, $this->breadcrumb->getTitle());
-        $this->assertSame($title, $this->breadcrumb->title);
+        static::assertSame($title, $this->breadcrumb->getTitle());
+        static::assertSame($title, $this->breadcrumb->title);
 
-        $this->assertSame($url, $this->breadcrumb->getUrl());
-        $this->assertSame($url, $this->breadcrumb->url);
+        static::assertSame($url, $this->breadcrumb->getUrl());
+        static::assertSame($url, $this->breadcrumb->url);
 
-        $this->assertFalse($this->breadcrumb->isFirst());
-        $this->assertFalse($this->breadcrumb->first);
+        static::assertFalse($this->breadcrumb->isFirst());
+        static::assertFalse($this->breadcrumb->first);
 
-        $this->assertFalse($this->breadcrumb->isLast());
-        $this->assertFalse($this->breadcrumb->last);
+        static::assertFalse($this->breadcrumb->isLast());
+        static::assertFalse($this->breadcrumb->last);
     }
 
     /** @test */
@@ -63,19 +63,19 @@ class BreadcrumbItemTest extends TestCase
         $url              = 'http://www.example.com';
         $this->breadcrumb = BreadcrumbItem::make($title, $url);
 
-        $this->assertInstanceOf(BreadcrumbItem::class, $this->breadcrumb);
+        static::assertInstanceOf(BreadcrumbItem::class, $this->breadcrumb);
 
-        $this->assertSame($title, $this->breadcrumb->getTitle());
-        $this->assertSame($title, $this->breadcrumb->title);
+        static::assertSame($title, $this->breadcrumb->getTitle());
+        static::assertSame($title, $this->breadcrumb->title);
 
-        $this->assertSame($url, $this->breadcrumb->getUrl());
-        $this->assertSame($url, $this->breadcrumb->url);
+        static::assertSame($url, $this->breadcrumb->getUrl());
+        static::assertSame($url, $this->breadcrumb->url);
 
-        $this->assertFalse($this->breadcrumb->isFirst());
-        $this->assertFalse($this->breadcrumb->first);
+        static::assertFalse($this->breadcrumb->isFirst());
+        static::assertFalse($this->breadcrumb->first);
 
-        $this->assertFalse($this->breadcrumb->isLast());
-        $this->assertFalse($this->breadcrumb->last);
+        static::assertFalse($this->breadcrumb->isLast());
+        static::assertFalse($this->breadcrumb->last);
     }
 
     /** @test */
@@ -88,11 +88,11 @@ class BreadcrumbItemTest extends TestCase
             'style' => 'display: block;',
         ]);
 
-        $this->assertSame($attributes['class'], $this->breadcrumb->extra('class'));
-        $this->assertSame($attributes['style'], $this->breadcrumb->extra('style'));
+        static::assertSame($attributes['class'], $this->breadcrumb->extra('class'));
+        static::assertSame($attributes['style'], $this->breadcrumb->extra('style'));
 
-        $this->assertNull($this->breadcrumb->extra('target'));
-        $this->assertSame('_blank', $this->breadcrumb->extra('target', '_blank'));
+        static::assertNull($this->breadcrumb->extra('target'));
+        static::assertSame('_blank', $this->breadcrumb->extra('target', '_blank'));
     }
 
     /** @test */
@@ -116,6 +116,6 @@ class BreadcrumbItemTest extends TestCase
             'last'  => false,
         ];
 
-        $this->assertSame($expected, $breadcrumb->toArray());
+        static::assertSame($expected, $breadcrumb->toArray());
     }
 }

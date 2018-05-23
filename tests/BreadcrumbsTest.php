@@ -54,7 +54,7 @@ class BreadcrumbsTest extends TestCase
         ];
 
         foreach ($expectations as $expected) {
-            $this->assertInstanceOf($expected, $this->breadcrumbs);
+            static::assertInstanceOf($expected, $this->breadcrumbs);
         }
     }
 
@@ -69,7 +69,7 @@ class BreadcrumbsTest extends TestCase
         ];
 
         foreach ($expectations as $expected) {
-            $this->assertInstanceOf($expected, $this->breadcrumbs);
+            static::assertInstanceOf($expected, $this->breadcrumbs);
         }
     }
 
@@ -78,14 +78,14 @@ class BreadcrumbsTest extends TestCase
     {
         $result = $this->breadcrumbs->render('public');
 
-        $this->assertInstanceOf(\Illuminate\Support\HtmlString::class, $result);
+        static::assertInstanceOf(\Illuminate\Support\HtmlString::class, $result);
 
-        $this->assertStringStartsWith(
+        static::assertStringStartsWith(
             '<ul class="breadcrumb breadcrumb-top">',
             $result->toHtml()
         );
 
-        $this->assertContains(
+        static::assertContains(
             '<li class="active">Home</li>',
             $result->toHtml()
         );
@@ -96,19 +96,19 @@ class BreadcrumbsTest extends TestCase
     {
         $items = $this->breadcrumbs->generate('public');
 
-        $this->assertCount(1, $items);
+        static::assertCount(1, $items);
 
         $item = $items[0];
 
-        $this->assertArrayHasKey('title', $item);
-        $this->assertArrayHasKey('url', $item);
-        $this->assertArrayHasKey('first', $item);
-        $this->assertArrayHasKey('last', $item);
+        static::assertArrayHasKey('title', $item);
+        static::assertArrayHasKey('url', $item);
+        static::assertArrayHasKey('first', $item);
+        static::assertArrayHasKey('last', $item);
 
-        $this->assertEquals($item['title'], 'Home');
-        $this->assertEquals($item['url'], 'http://www.example.com');
-        $this->assertTrue($item['first']);
-        $this->assertTrue($item['last']);
+        static::assertEquals($item['title'], 'Home');
+        static::assertEquals($item['url'], 'http://www.example.com');
+        static::assertTrue($item['first']);
+        static::assertTrue($item['last']);
     }
 
     /**
@@ -155,7 +155,7 @@ class BreadcrumbsTest extends TestCase
             ]);
         });
 
-        $this->assertContains(
+        static::assertContains(
             '<i class="fa fa-home"></i>',
             $this->breadcrumbs->render('public')->toHtml()
         );

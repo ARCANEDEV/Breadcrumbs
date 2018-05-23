@@ -31,28 +31,28 @@ class BreadcrumbsTraitTest extends TestCase
     /** @test */
     public function it_can_render_about_us_page_breadcrumbs()
     {
-        $this->route('GET', 'public::about-us');
+        $this->get(route('public::about-us'))->isOk();
 
         $result = breadcrumbs()->render('public');
 
-        $this->assertInstanceOf(\Illuminate\Support\HtmlString::class, $result);
+        static::assertInstanceOf(\Illuminate\Support\HtmlString::class, $result);
 
-        $this->assertStringStartsWith(
+        static::assertStringStartsWith(
             '<ul class="breadcrumb breadcrumb-top">',
             $result->toHtml()
         );
 
-        $this->assertContains(
+        static::assertContains(
             '<a href="http://localhost">Home</a>',
             $result->toHtml()
         );
 
-        $this->assertContains(
+        static::assertContains(
             '<a href="http://localhost/about">About</a>',
             $result->toHtml()
         );
 
-        $this->assertContains(
+        static::assertContains(
             '<li class="active">ARCANEDEV</li>',
             $result->toHtml()
         );
@@ -64,7 +64,7 @@ class BreadcrumbsTraitTest extends TestCase
         $router = app('router');
 
         $router->group([
-            'namespace' => 'Arcanedev\\Breadcrumbs\\Tests\\Stubs'
+            'namespace' => 'Arcanedev\\Breadcrumbs\\Tests\\Stubs\\Controllers'
         ], function (Router $router) {
             $router->get('/', [
                 'as'    => 'public::home',
