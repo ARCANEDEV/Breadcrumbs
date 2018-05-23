@@ -81,12 +81,12 @@ class BreadcrumbsTest extends TestCase
         static::assertInstanceOf(\Illuminate\Support\HtmlString::class, $result);
 
         static::assertStringStartsWith(
-            '<ul class="breadcrumb breadcrumb-top">',
+            '<ol class="breadcrumb">',
             $result->toHtml()
         );
 
         static::assertContains(
-            '<li class="active">Home</li>',
+            '<li class="breadcrumb-item active" aria-current="page">Home</li>',
             $result->toHtml()
         );
     }
