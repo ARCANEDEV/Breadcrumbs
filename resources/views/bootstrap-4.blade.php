@@ -2,15 +2,15 @@
     <ol class="breadcrumb">
         @foreach ($breadcrumbs as $crumb)
             <?php
-                $icon = isset($crumb['icon']) ? '<i class="' . $crumb['icon'] . '"></i> ' : '';
+            $icon = isset($crumb['icon']) ? '<i class="' . $crumb['icon'] . '"></i> ' : '';
             ?>
 
             @if ($crumb['url'] && ! $crumb['last'])
-                <li>
+                <li class="breadcrumb-item">
                     <a href="{{ $crumb['url'] }}">{!! $icon !!}{{ $crumb['title'] }}</a>
                 </li>
             @else
-                <li class="active">{!! $icon !!}{{ $crumb['title'] }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{!! $icon !!}{{ $crumb['title'] }}</li>
             @endif
         @endforeach
     </ol>
