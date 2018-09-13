@@ -9,7 +9,7 @@ return [
 
     'template'  => [
 
-        'default'   => \Arcanedev\Breadcrumbs\Breadcrumbs::DEFAULT_TEMPLATE,
+        'default'   => Arcanedev\Breadcrumbs\Breadcrumbs::DEFAULT_TEMPLATE,
 
         'supported' => [
             // Twitter Bootstrap
