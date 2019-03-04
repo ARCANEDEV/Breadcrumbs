@@ -82,7 +82,7 @@ trait BreadcrumbsTrait
                 $item = $this->getBreadcrumbsHomeItem();
             }
 
-            $bc->push($item['title'], $item['url'], isset($item['array']) ? $item['array'] : []);
+            $bc->push($item['title'], $item['url'], $item['data'] ?? []);
         });
     }
 
@@ -96,7 +96,7 @@ trait BreadcrumbsTrait
 
             if ( ! empty($this->breadcrumbsItems)) {
                 foreach ($this->breadcrumbsItems as $crumb) {
-                    $bc->push($crumb['title'], $crumb['url'], isset($crumb['array']) ? $crumb['array'] : []);
+                    $bc->push($crumb['title'], $crumb['url'], $crumb['data'] ?? []);
                 }
             }
         });

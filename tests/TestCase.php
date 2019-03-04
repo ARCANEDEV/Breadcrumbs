@@ -49,14 +49,4 @@ abstract class TestCase extends BaseTestCase
             'Breadcrumbs' => \Arcanedev\Breadcrumbs\Facades\Breadcrumbs::class
         ];
     }
-
-    /**
-     * Define environment setup.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     */
-    protected function getEnvironmentSetUp($app)
-    {
-        //
-    }
 }
