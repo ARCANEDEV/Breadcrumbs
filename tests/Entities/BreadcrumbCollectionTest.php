@@ -16,7 +16,7 @@ class BreadcrumbCollectionTest extends TestCase
      | -----------------------------------------------------------------
      */
 
-    /** @var BreadcrumbCollection */
+    /** @var  \Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection */
     private $bcCollection;
 
     /* -----------------------------------------------------------------
@@ -24,14 +24,14 @@ class BreadcrumbCollectionTest extends TestCase
      | -----------------------------------------------------------------
      */
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->bcCollection = new BreadcrumbCollection();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->bcCollection);
 

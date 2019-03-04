@@ -10,26 +10,6 @@ use Arcanedev\Breadcrumbs\Tests\TestCase;
 class BreadcrumbItemTest extends TestCase
 {
     /* -----------------------------------------------------------------
-     |  Properties
-     | -----------------------------------------------------------------
-     */
-
-    /** @var BreadcrumbItem */
-    private $breadcrumb;
-
-    /* -----------------------------------------------------------------
-     |  Main Methods
-     | -----------------------------------------------------------------
-     */
-
-    public function tearDown()
-    {
-        unset($this->breadcrumb);
-
-        parent::tearDown();
-    }
-
-    /* -----------------------------------------------------------------
      |  Tests
      | -----------------------------------------------------------------
      */
@@ -37,62 +17,62 @@ class BreadcrumbItemTest extends TestCase
     /** @test */
     public function it_can_be_instantiated()
     {
-        $title            = 'Home';
-        $url              = 'http://www.example.com';
-        $this->breadcrumb = new BreadcrumbItem(compact('title', 'url'));
+        $title      = 'Home';
+        $url        = 'http://www.example.com';
+        $breadcrumb = new BreadcrumbItem(compact('title', 'url'));
 
-        static::assertInstanceOf(BreadcrumbItem::class, $this->breadcrumb);
+        static::assertInstanceOf(BreadcrumbItem::class, $breadcrumb);
 
-        static::assertSame($title, $this->breadcrumb->getTitle());
-        static::assertSame($title, $this->breadcrumb->title);
+        static::assertSame($title, $breadcrumb->getTitle());
+        static::assertSame($title, $breadcrumb->title);
 
-        static::assertSame($url, $this->breadcrumb->getUrl());
-        static::assertSame($url, $this->breadcrumb->url);
+        static::assertSame($url, $breadcrumb->getUrl());
+        static::assertSame($url, $breadcrumb->url);
 
-        static::assertFalse($this->breadcrumb->isFirst());
-        static::assertFalse($this->breadcrumb->first);
+        static::assertFalse($breadcrumb->isFirst());
+        static::assertFalse($breadcrumb->first);
 
-        static::assertFalse($this->breadcrumb->isLast());
-        static::assertFalse($this->breadcrumb->last);
+        static::assertFalse($breadcrumb->isLast());
+        static::assertFalse($breadcrumb->last);
     }
 
     /** @test */
     public function it_can_make()
     {
-        $title            = 'Home';
-        $url              = 'http://www.example.com';
-        $this->breadcrumb = BreadcrumbItem::make($title, $url);
+        $title      = 'Home';
+        $url        = 'http://www.example.com';
+        $breadcrumb = BreadcrumbItem::make($title, $url);
 
-        static::assertInstanceOf(BreadcrumbItem::class, $this->breadcrumb);
+        static::assertInstanceOf(BreadcrumbItem::class, $breadcrumb);
 
-        static::assertSame($title, $this->breadcrumb->getTitle());
-        static::assertSame($title, $this->breadcrumb->title);
+        static::assertSame($title, $breadcrumb->getTitle());
+        static::assertSame($title, $breadcrumb->title);
 
-        static::assertSame($url, $this->breadcrumb->getUrl());
-        static::assertSame($url, $this->breadcrumb->url);
+        static::assertSame($url, $breadcrumb->getUrl());
+        static::assertSame($url, $breadcrumb->url);
 
-        static::assertFalse($this->breadcrumb->isFirst());
-        static::assertFalse($this->breadcrumb->first);
+        static::assertFalse($breadcrumb->isFirst());
+        static::assertFalse($breadcrumb->first);
 
-        static::assertFalse($this->breadcrumb->isLast());
-        static::assertFalse($this->breadcrumb->last);
+        static::assertFalse($breadcrumb->isLast());
+        static::assertFalse($breadcrumb->last);
     }
 
     /** @test */
     public function it_can_set_and_get_custom_data()
     {
-        $this->breadcrumb = new BreadcrumbItem($attributes = [
+        $breadcrumb = new BreadcrumbItem($attributes = [
             'title' => 'Home',
             'url'   => 'http://www.example.com',
             'class' => 'active',
             'style' => 'display: block;',
         ]);
 
-        static::assertSame($attributes['class'], $this->breadcrumb->extra('class'));
-        static::assertSame($attributes['style'], $this->breadcrumb->extra('style'));
+        static::assertSame($attributes['class'], $breadcrumb->extra('class'));
+        static::assertSame($attributes['style'], $breadcrumb->extra('style'));
 
-        static::assertNull($this->breadcrumb->extra('target'));
-        static::assertSame('_blank', $this->breadcrumb->extra('target', '_blank'));
+        static::assertNull($breadcrumb->extra('target'));
+        static::assertSame('_blank', $breadcrumb->extra('target', '_blank'));
     }
 
     /** @test */

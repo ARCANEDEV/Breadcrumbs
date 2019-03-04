@@ -15,7 +15,7 @@ class BreadcrumbsServiceProviderTest extends TestCase
      | -----------------------------------------------------------------
      */
 
-    /** @var BreadcrumbsServiceProvider */
+    /** @var  \Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider */
     private $provider;
 
     /* -----------------------------------------------------------------
@@ -23,14 +23,14 @@ class BreadcrumbsServiceProviderTest extends TestCase
      | -----------------------------------------------------------------
      */
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->provider = $this->app->getProvider(BreadcrumbsServiceProvider::class);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->provider);
 

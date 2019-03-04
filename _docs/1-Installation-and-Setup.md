@@ -21,6 +21,7 @@ The Breadcrumbs package has a few system requirements:
 | ![Breadcrumbs v3.1.x][breadcrumbs_3_1_x] | ![Laravel v5.5][laravel_5_5]                                                                                        |
 | ![Breadcrumbs v3.2.x][breadcrumbs_3_2_x] | ![Laravel v5.6][laravel_5_6]                                                                                        |
 | ![Breadcrumbs v3.3.x][breadcrumbs_3_3_x] | ![Laravel v5.7][laravel_5_7]                                                                                        |
+| ![Breadcrumbs v3.4.x][breadcrumbs_3_4_x] | ![Laravel v5.8][laravel_5_8]                                                                                        |
 
 [laravel_5_0]:  https://img.shields.io/badge/v5.0-supported-brightgreen.svg?style=flat-square "Laravel v5.0"
 [laravel_5_1]:  https://img.shields.io/badge/v5.1-supported-brightgreen.svg?style=flat-square "Laravel v5.1"
@@ -30,12 +31,14 @@ The Breadcrumbs package has a few system requirements:
 [laravel_5_5]:  https://img.shields.io/badge/v5.5-supported-brightgreen.svg?style=flat-square "Laravel v5.5"
 [laravel_5_6]:  https://img.shields.io/badge/v5.6-supported-brightgreen.svg?style=flat-square "Laravel v5.6"
 [laravel_5_7]:  https://img.shields.io/badge/v5.7-supported-brightgreen.svg?style=flat-square "Laravel v5.7"
+[laravel_5_8]:  https://img.shields.io/badge/v5.8-supported-brightgreen.svg?style=flat-square "Laravel v5.8"
 
 [breadcrumbs_2_x]:   https://img.shields.io/badge/version-2.*-blue.svg?style=flat-square "Breadcrumbs v2.*"
 [breadcrumbs_3_0_x]: https://img.shields.io/badge/version-3.0.*-blue.svg?style=flat-square "Breadcrumbs v3.0.*"
 [breadcrumbs_3_1_x]: https://img.shields.io/badge/version-3.1.*-blue.svg?style=flat-square "Breadcrumbs v3.1.*"
 [breadcrumbs_3_2_x]: https://img.shields.io/badge/version-3.2.*-blue.svg?style=flat-square "Breadcrumbs v3.2.*"
 [breadcrumbs_3_3_x]: https://img.shields.io/badge/version-3.3.*-blue.svg?style=flat-square "Breadcrumbs v3.3.*"
+[breadcrumbs_3_4_x]: https://img.shields.io/badge/version-3.4.*-blue.svg?style=flat-square "Breadcrumbs v3.4.*"
 
 ## Composer
 
@@ -56,17 +59,6 @@ Once the package is installed, you can register the service provider in `config/
     ...
     Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider::class,
 ],
-```
-
-**Optional -** And for the Facade:
-
-```php
-// config/app.php
-
-'aliases' => [
-    ...
-    'Breadcrumbs' => Arcanedev\Breadcrumbs\Facades\Breadcrumbs::class,
-];
 ```
 
 ### Artisan commands

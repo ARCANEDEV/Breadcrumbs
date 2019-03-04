@@ -1,14 +1,12 @@
-<?php namespace Arcanedev\Breadcrumbs\Traits;
-
-use Arcanedev\Breadcrumbs\Builder;
+<?php namespace Arcanedev\Breadcrumbs;
 
 /**
- * Trait     BreadcrumbsTrait
+ * Trait     HasBreadcrumbs
  *
- * @package  Arcanedev\Breadcrumbs\Traits
+ * @package  Arcanedev\Breadcrumbs
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-trait BreadcrumbsTrait
+trait HasBreadcrumbs
 {
     /* -----------------------------------------------------------------
      |  Properties
