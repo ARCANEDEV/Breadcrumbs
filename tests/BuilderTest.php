@@ -77,25 +77,21 @@ class BuilderTest extends TestCase
         static::assertCount(2, $this->builder->get());
     }
 
-    /**
-     * @test
-     *
-     * @expectedException        \Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException
-     * @expectedExceptionMessage The name value must be a string, boolean given
-     */
+    /** @test */
     public function it_must_throw_invalid_type_exception()
     {
+        $this->expectException(\Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException::class);
+        $this->expectExceptionMessage('The name value must be a string, boolean given');
+
         $this->builder->call(true);
     }
 
-    /**
-     * @test
-     *
-     * @expectedException        \Arcanedev\Breadcrumbs\Exceptions\InvalidCallbackNameException
-     * @expectedExceptionMessage The callback name not found [random]
-     */
+    /** @test */
     public function it_must_throw_invalid_callback_name_exception()
     {
+        $this->expectException(\Arcanedev\Breadcrumbs\Exceptions\InvalidCallbackNameException::class);
+        $this->expectExceptionMessage('The callback name not found [random]');
+
         $this->builder->call('random', []);
     }
 }

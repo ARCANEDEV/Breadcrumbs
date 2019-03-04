@@ -49,7 +49,7 @@ class BreadcrumbsServiceProviderTest extends TestCase
             \Illuminate\Support\ServiceProvider::class,
             \Arcanedev\Support\ServiceProvider::class,
             \Arcanedev\Support\PackageServiceProvider::class,
-            \Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider::class,
+            BreadcrumbsServiceProvider::class,
         ];
 
         foreach ($expectations as $expected) {

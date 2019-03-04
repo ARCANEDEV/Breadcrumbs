@@ -57,7 +57,7 @@ class Breadcrumbs implements BreadcrumbsContract
     public function __construct(array $supported, $template = null)
     {
         $this->setSupported($supported);
-        $this->setTemplate(is_null($template) ? self::DEFAULT_TEMPLATE : $template);
+        $this->setTemplate($template ?: self::DEFAULT_TEMPLATE);
     }
 
     /* -----------------------------------------------------------------

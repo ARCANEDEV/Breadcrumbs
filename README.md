@@ -32,10 +32,6 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/Breadcrumbs/r
   2. [Configuration](_docs/2-Configuration.md)
   3. [Usage](_docs/3-Usage.md)
 
-## TODOS
-
-  - [ ] Complete documentation.
-
 ## Contribution
 
 Any ideas are welcome. Feel free to submit any issues or pull requests, please check the [contribution guidelines](CONTRIBUTING.md).

@@ -58,6 +58,11 @@ class BreadcrumbsTraitTest extends TestCase
         );
     }
 
+    /* -----------------------------------------------------------------
+     |  Other Methods
+     | -----------------------------------------------------------------
+     */
+
     private function registerRoutes()
     {
         /** @var \Illuminate\Routing\Router $router */

@@ -111,36 +111,30 @@ class BreadcrumbsTest extends TestCase
         static::assertTrue($item['last']);
     }
 
-    /**
-     * @test
-     *
-     * @expectedException         \Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException
-     * @expectedExceptionMessage  The default template name must be a string, NULL given.
-     */
+    /** @test */
     public function it_must_throw_invalid_type_exception_on_template()
     {
+        $this->expectException(\Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException::class);
+        $this->expectExceptionMessage('The default template name must be a string, NULL given.');
+
         breadcrumbs()->setTemplate(null);
     }
 
-    /**
-     * @test
-     *
-     * @expectedException         \Arcanedev\Breadcrumbs\Exceptions\InvalidTemplateException
-     * @expectedExceptionMessage  The template [material-design] is not supported.
-     */
+    /** @test */
     public function it_must_throw_invalid_template_exception_on_not_found_template()
     {
+        $this->expectException(\Arcanedev\Breadcrumbs\Exceptions\InvalidTemplateException::class);
+        $this->expectExceptionMessage('The template [material-design] is not supported.');
+
         breadcrumbs()->setTemplate('material-design');
     }
 
-    /**
-     * @test
-     *
-     * @expectedException         \Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException
-     * @expectedExceptionMessage  The callback name value must be a string, NULL given.
-     */
+    /** @test */
     public function it_must_throw_invalid_type_exception_on_register()
     {
+        $this->expectException(\Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException::class);
+        $this->expectExceptionMessage('The callback name value must be a string, NULL given.');
+
         breadcrumbs()->register(null, function () {
             return 'hello';
         });
