@@ -15,7 +15,7 @@ class BuilderTest extends TestCase
      | -----------------------------------------------------------------
      */
 
-    /** @var Builder */
+    /** @var  \Arcanedev\Breadcrumbs\Builder */
     private $builder;
 
     /* -----------------------------------------------------------------
@@ -23,7 +23,7 @@ class BuilderTest extends TestCase
      | -----------------------------------------------------------------
      */
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -38,7 +38,7 @@ class BuilderTest extends TestCase
         ]);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->builder);
 
@@ -55,7 +55,7 @@ class BuilderTest extends TestCase
     {
         $expectations = [
             \Arcanedev\Breadcrumbs\Contracts\Builder::class,
-            \Arcanedev\Breadcrumbs\Builder::class,
+            Builder::class,
         ];
 
         foreach ($expectations as $expected) {

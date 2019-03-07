@@ -1,22 +1,21 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests\Traits;
+<?php namespace Arcanedev\Breadcrumbs\Tests;
 
-use Arcanedev\Breadcrumbs\Tests\TestCase;
 use Illuminate\Routing\Router;
 
 /**
- * Class     BreadcrumbsTraitTest
+ * Class     HasBreadcrumbsTest
  *
- * @package  Arcanedev\Breadcrumbs\Tests\Traits
+ * @package  Arcanedev\Breadcrumbs\Tests
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class BreadcrumbsTraitTest extends TestCase
+class HasBreadcrumbsTest extends TestCase
 {
     /* -----------------------------------------------------------------
      |  Main Methods
      | -----------------------------------------------------------------
      */
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -42,17 +41,17 @@ class BreadcrumbsTraitTest extends TestCase
             $result->toHtml()
         );
 
-        static::assertContains(
+        static::assertStringContainsString(
             '<a href="http://localhost">Home</a>',
             $result->toHtml()
         );
 
-        static::assertContains(
+        static::assertStringContainsString(
             '<a href="http://localhost/about">About</a>',
             $result->toHtml()
         );
 
-        static::assertContains(
+        static::assertStringContainsString(
             '<li class="breadcrumb-item active" aria-current="page">ARCANEDEV</li>',
             $result->toHtml()
         );

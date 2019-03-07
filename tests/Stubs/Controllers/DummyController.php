@@ -1,6 +1,6 @@
 <?php namespace Arcanedev\Breadcrumbs\Tests\Stubs\Controllers;
 
-use Arcanedev\Breadcrumbs\Traits\BreadcrumbsTrait;
+use Arcanedev\Breadcrumbs\HasBreadcrumbs;
 use Arcanedev\Support\Http\Controller;
 
 /**
@@ -16,7 +16,7 @@ class DummyController extends Controller
      | -----------------------------------------------------------------
      */
 
-    use BreadcrumbsTrait;
+    use HasBreadcrumbs;
 
     /* -----------------------------------------------------------------
      |  Constructor

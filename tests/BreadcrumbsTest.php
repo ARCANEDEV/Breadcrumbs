@@ -24,7 +24,7 @@ class BreadcrumbsTest extends TestCase
      | -----------------------------------------------------------------
      */
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -33,7 +33,7 @@ class BreadcrumbsTest extends TestCase
         $this->registerMainBreadcrumb();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->breadcrumbs);
 
@@ -85,7 +85,7 @@ class BreadcrumbsTest extends TestCase
             $result->toHtml()
         );
 
-        static::assertContains(
+        static::assertStringContainsString(
             '<li class="breadcrumb-item active" aria-current="page">Home</li>',
             $result->toHtml()
         );
@@ -149,7 +149,7 @@ class BreadcrumbsTest extends TestCase
             ]);
         });
 
-        static::assertContains(
+        static::assertStringContainsString(
             '<i class="fa fa-home"></i>',
             $this->breadcrumbs->render('public')->toHtml()
         );

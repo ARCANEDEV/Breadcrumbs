@@ -15,7 +15,7 @@ abstract class TestCase extends BaseTestCase
      | -----------------------------------------------------------------
      */
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -33,20 +33,6 @@ abstract class TestCase extends BaseTestCase
     {
         return [
             \Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider::class
-        ];
-    }
-
-    /**
-     * Register Aliases.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     *
-     * @return array
-     */
-    protected function getPackageAliases($app)
-    {
-        return [
-            'Breadcrumbs' => \Arcanedev\Breadcrumbs\Facades\Breadcrumbs::class
         ];
     }
 }

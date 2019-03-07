@@ -26,7 +26,7 @@ class BreadcrumbCollection extends Collection
      */
     public function addOne($title, $url, array $data = [])
     {
-        return $this->add(
+        return $this->addBreadcrumb(
             BreadcrumbItem::make($title, $url, $data)
         );
     }
@@ -38,7 +38,7 @@ class BreadcrumbCollection extends Collection
      *
      * @return self
      */
-    public function add(BreadcrumbItem $breadcrumb)
+    public function addBreadcrumb(BreadcrumbItem $breadcrumb)
     {
         $this->push($breadcrumb);
 
