@@ -6,7 +6,7 @@ A simple breadcrumbs generator helper.
 
   * Well tested with maximum code quality.
   * Easy setup &amp; configuration.
-  * Laravel `5.0` to ` 5.8` are supported.
+  * Laravel `5.0` to ` 6.0` are supported.
   * Twitter Bootstrap `v3 | v4` are supported.
   * ZURB Foundation `v5 | v6` are supported.
   * Well documented &amp; IDE Friendly.

@@ -5,12 +5,6 @@
   1. [Installation and Setup](1-Installation-and-Setup.md)
   2. [Configuration](2-Configuration.md)
   3. [Usage](3-Usage.md)
-  
-## Server Requirements
-
-The Breadcrumbs package has a few system requirements:
-
-    - PHP >= 5.6
     
 ## Version Compatibility
 
@@ -22,6 +16,7 @@ The Breadcrumbs package has a few system requirements:
 | ![Breadcrumbs v3.2.x][breadcrumbs_3_2_x] | ![Laravel v5.6][laravel_5_6]                                                                                        |
 | ![Breadcrumbs v3.3.x][breadcrumbs_3_3_x] | ![Laravel v5.7][laravel_5_7]                                                                                        |
 | ![Breadcrumbs v3.4.x][breadcrumbs_3_4_x] | ![Laravel v5.8][laravel_5_8]                                                                                        |
+| ![Breadcrumbs v4.0.x][breadcrumbs_4_0_x] | ![Laravel v6.0][laravel_6_0]                                                                                        |
 
 [laravel_5_0]:  https://img.shields.io/badge/v5.0-supported-brightgreen.svg?style=flat-square "Laravel v5.0"
 [laravel_5_1]:  https://img.shields.io/badge/v5.1-supported-brightgreen.svg?style=flat-square "Laravel v5.1"
@@ -32,6 +27,7 @@ The Breadcrumbs package has a few system requirements:
 [laravel_5_6]:  https://img.shields.io/badge/v5.6-supported-brightgreen.svg?style=flat-square "Laravel v5.6"
 [laravel_5_7]:  https://img.shields.io/badge/v5.7-supported-brightgreen.svg?style=flat-square "Laravel v5.7"
 [laravel_5_8]:  https://img.shields.io/badge/v5.8-supported-brightgreen.svg?style=flat-square "Laravel v5.8"
+[laravel_6_0]:  https://img.shields.io/badge/v6.0-supported-brightgreen.svg?style=flat-square "Laravel v6.0"
 
 [breadcrumbs_2_x]:   https://img.shields.io/badge/version-2.*-blue.svg?style=flat-square "Breadcrumbs v2.*"
 [breadcrumbs_3_0_x]: https://img.shields.io/badge/version-3.0.*-blue.svg?style=flat-square "Breadcrumbs v3.0.*"
@@ -39,6 +35,7 @@ The Breadcrumbs package has a few system requirements:
 [breadcrumbs_3_2_x]: https://img.shields.io/badge/version-3.2.*-blue.svg?style=flat-square "Breadcrumbs v3.2.*"
 [breadcrumbs_3_3_x]: https://img.shields.io/badge/version-3.3.*-blue.svg?style=flat-square "Breadcrumbs v3.3.*"
 [breadcrumbs_3_4_x]: https://img.shields.io/badge/version-3.4.*-blue.svg?style=flat-square "Breadcrumbs v3.4.*"
+[breadcrumbs_4_0_x]: https://img.shields.io/badge/version-4.0.*-blue.svg?style=flat-square "Breadcrumbs v4.0.*"
 
 ## Composer
 
