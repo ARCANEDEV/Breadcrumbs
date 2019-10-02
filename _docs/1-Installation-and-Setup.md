@@ -16,7 +16,7 @@
 | ![Breadcrumbs v3.2.x][breadcrumbs_3_2_x] | ![Laravel v5.6][laravel_5_6]                                                                                        |
 | ![Breadcrumbs v3.3.x][breadcrumbs_3_3_x] | ![Laravel v5.7][laravel_5_7]                                                                                        |
 | ![Breadcrumbs v3.4.x][breadcrumbs_3_4_x] | ![Laravel v5.8][laravel_5_8]                                                                                        |
-| ![Breadcrumbs v4.0.x][breadcrumbs_4_0_x] | ![Laravel v6.0][laravel_6_0]                                                                                        |
+| ![Breadcrumbs v4.x][breadcrumbs_4_x]     | ![Laravel v6.x][laravel_6_x]                                                                                        |
 
 [laravel_5_0]:  https://img.shields.io/badge/v5.0-supported-brightgreen.svg?style=flat-square "Laravel v5.0"
 [laravel_5_1]:  https://img.shields.io/badge/v5.1-supported-brightgreen.svg?style=flat-square "Laravel v5.1"
@@ -27,15 +27,15 @@
 [laravel_5_6]:  https://img.shields.io/badge/v5.6-supported-brightgreen.svg?style=flat-square "Laravel v5.6"
 [laravel_5_7]:  https://img.shields.io/badge/v5.7-supported-brightgreen.svg?style=flat-square "Laravel v5.7"
 [laravel_5_8]:  https://img.shields.io/badge/v5.8-supported-brightgreen.svg?style=flat-square "Laravel v5.8"
-[laravel_6_0]:  https://img.shields.io/badge/v6.0-supported-brightgreen.svg?style=flat-square "Laravel v6.0"
+[laravel_6_x]:  https://img.shields.io/badge/v6.x-supported-brightgreen.svg?style=flat-square "Laravel v6.x"
 
-[breadcrumbs_2_x]:   https://img.shields.io/badge/version-2.*-blue.svg?style=flat-square "Breadcrumbs v2.*"
-[breadcrumbs_3_0_x]: https://img.shields.io/badge/version-3.0.*-blue.svg?style=flat-square "Breadcrumbs v3.0.*"
-[breadcrumbs_3_1_x]: https://img.shields.io/badge/version-3.1.*-blue.svg?style=flat-square "Breadcrumbs v3.1.*"
-[breadcrumbs_3_2_x]: https://img.shields.io/badge/version-3.2.*-blue.svg?style=flat-square "Breadcrumbs v3.2.*"
-[breadcrumbs_3_3_x]: https://img.shields.io/badge/version-3.3.*-blue.svg?style=flat-square "Breadcrumbs v3.3.*"
-[breadcrumbs_3_4_x]: https://img.shields.io/badge/version-3.4.*-blue.svg?style=flat-square "Breadcrumbs v3.4.*"
-[breadcrumbs_4_0_x]: https://img.shields.io/badge/version-4.0.*-blue.svg?style=flat-square "Breadcrumbs v4.0.*"
+[breadcrumbs_2_x]:   https://img.shields.io/badge/version-2.x-blue.svg?style=flat-square "Breadcrumbs v2.x"
+[breadcrumbs_3_0_x]: https://img.shields.io/badge/version-3.0.x-blue.svg?style=flat-square "Breadcrumbs v3.0.x"
+[breadcrumbs_3_1_x]: https://img.shields.io/badge/version-3.1.x-blue.svg?style=flat-square "Breadcrumbs v3.1.x"
+[breadcrumbs_3_2_x]: https://img.shields.io/badge/version-3.2.x-blue.svg?style=flat-square "Breadcrumbs v3.2.x"
+[breadcrumbs_3_3_x]: https://img.shields.io/badge/version-3.3.x-blue.svg?style=flat-square "Breadcrumbs v3.3.x"
+[breadcrumbs_3_4_x]: https://img.shields.io/badge/version-3.4.x-blue.svg?style=flat-square "Breadcrumbs v3.4.x"
+[breadcrumbs_4_x]:   https://img.shields.io/badge/version-4.x-blue.svg?style=flat-square "Breadcrumbs v4.x"
 
 ## Composer
 

@@ -156,7 +156,7 @@ class Builder implements BuilderContract
     {
         if ( ! is_string($name)) {
             throw new Exceptions\InvalidTypeException(
-                'The name value must be a string, ' . gettype($name) . ' given'
+                'The name value must be a string, '.gettype($name).' given'
             );
         }
 

@@ -1,6 +1,7 @@
 <?php namespace Arcanedev\Breadcrumbs;
 
-use Arcanedev\Support\PackageServiceProvider;
+use Arcanedev\Support\Providers\PackageServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 
 /**
  * Class     BreadcrumbsServiceProvider
@@ -8,7 +9,7 @@ use Arcanedev\Support\PackageServiceProvider;
  * @package  Arcanedev\Breadcrumbs
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
-class BreadcrumbsServiceProvider extends PackageServiceProvider
+class BreadcrumbsServiceProvider extends PackageServiceProvider implements DeferrableProvider
 {
     /* -----------------------------------------------------------------
      |  Properties
@@ -22,13 +23,6 @@ class BreadcrumbsServiceProvider extends PackageServiceProvider
      */
     protected $package = 'breadcrumbs';
 
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer   = true;
-
     /* -----------------------------------------------------------------
      |  Main Methods
      | -----------------------------------------------------------------
@@ -37,22 +31,26 @@ class BreadcrumbsServiceProvider extends PackageServiceProvider
     /**
      * Register the service provider.
      */
-    public function register()
+    public function register(): void
     {
         parent::register();
 
         $this->registerConfig();
-        $this->registerBreadcrumbsService();
+
+        // Register the Breadcrumbs service.
+        $this->singleton(Contracts\Breadcrumbs::class, function ($app) {
+            return new Breadcrumbs(
+                $app['config']->get('breadcrumbs.template.supported', []),
+                $app['config']->get('breadcrumbs.template.default', '')
+            );
+        });
     }
 
     /**
      * Boot the service provider.
      */
-    public function boot()
+    public function boot(): void
     {
-        parent::boot();
-
-        // Publishes
         $this->publishConfig();
         $this->publishViews();
         $this->publishTranslations();
@@ -63,31 +61,10 @@ class BreadcrumbsServiceProvider extends PackageServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return [
             Contracts\Breadcrumbs::class,
         ];
-    }
-
-    /* -----------------------------------------------------------------
-     |  Other Methods
-     | -----------------------------------------------------------------
-     */
-
-    /**
-     * Register the Breadcrumbs service.
-     */
-    private function registerBreadcrumbsService()
-    {
-        $this->singleton(Contracts\Breadcrumbs::class, function ($app) {
-            /** @var  \Illuminate\Contracts\Config\Repository  $config */
-            $config = $app['config'];
-
-            return new Breadcrumbs(
-                $config->get('breadcrumbs.template.supported', []),
-                $config->get('breadcrumbs.template.default', '')
-            );
-        });
     }
 }
