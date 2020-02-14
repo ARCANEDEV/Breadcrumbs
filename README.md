@@ -1,6 +1,6 @@
 # Breadcrumbs [![Packagist License][badge_license]](LICENSE.md) [![Laravel Supported][badge_laravel]][link-github-repo]
 
-[![Travis Status][badge_build]][link-travis]
+[![Github Workflow Status][badge_build]][link-github-status]
 [![Coverage Status][badge_coverage]][link-scrutinizer]
 [![Scrutinizer Code Quality][badge_quality]][link-scrutinizer]
 [![SensioLabs Insight][badge_insight]][link-insight]
@@ -47,7 +47,7 @@ If you discover any security related issues, please email arcanedev.maroc@gmail.
 
 [badge_laravel]:      https://img.shields.io/badge/Laravel%20supported-5.0%20to%206.x-orange.svg?style=flat-square
 [badge_license]:      https://img.shields.io/packagist/l/arcanedev/breadcrumbs.svg?style=flat-square
-[badge_build]:        https://img.shields.io/travis/ARCANEDEV/Breadcrumbs.svg?style=flat-square
+[badge_build]:        https://img.shields.io/github/workflow/status/ARCANEDEV/Breadcrumbs/run-tests?style=flat-square
 [badge_coverage]:     https://img.shields.io/scrutinizer/coverage/g/ARCANEDEV/Breadcrumbs.svg?style=flat-square
 [badge_quality]:      https://img.shields.io/scrutinizer/g/ARCANEDEV/Breadcrumbs.svg?style=flat-square
 [badge_insight]:      https://img.shields.io/sensiolabs/i/f3fd137f-6b3e-42dc-bac6-fdc98720e3c2.svg?style=flat-square
@@ -58,6 +58,7 @@ If you discover any security related issues, please email arcanedev.maroc@gmail.
 
 [link-author]:        https://github.com/arcanedev-maroc
 [link-github-repo]:   https://github.com/ARCANEDEV/Breadcrumbs
+[link-github-status]: https://github.com/ARCANEDEV/Breadcrumbs/actions
 [link-github-issues]: https://github.com/ARCANEDEV/Breadcrumbs/issues
 [link-contributors]:  https://github.com/ARCANEDEV/Breadcrumbs/graphs/contributors
 [link-packagist]:     https://packagist.org/packages/arcanedev/breadcrumbs

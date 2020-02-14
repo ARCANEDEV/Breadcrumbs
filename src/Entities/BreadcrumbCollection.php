@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\Breadcrumbs\Entities;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Entities;
 
 use Illuminate\Support\Collection;
 
@@ -22,7 +26,7 @@ class BreadcrumbCollection extends Collection
      * @param  string  $url
      * @param  array   $data
      *
-     * @return self
+     * @return $this
      */
     public function addOne($title, $url, array $data = [])
     {
@@ -34,15 +38,13 @@ class BreadcrumbCollection extends Collection
     /**
      * Add a breadcrumb item to collection.
      *
-     * @param  BreadcrumbItem  $breadcrumb
+     * @param  \Arcanedev\Breadcrumbs\Entities\BreadcrumbItem  $item
      *
-     * @return self
+     * @return $this
      */
-    public function addBreadcrumb(BreadcrumbItem $breadcrumb)
+    public function addBreadcrumb(BreadcrumbItem $item)
     {
-        $this->push($breadcrumb);
-
-        return $this->order();
+        return $this->push($item)->order();
     }
 
     /* -----------------------------------------------------------------
@@ -53,7 +55,7 @@ class BreadcrumbCollection extends Collection
     /**
      * Order all breadcrumbs items.
      *
-     * @return self
+     * @return $this
      */
     private function order()
     {

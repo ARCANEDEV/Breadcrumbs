@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\Breadcrumbs;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs;
 
 use Arcanedev\Support\Providers\PackageServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;

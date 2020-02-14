@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests\Entities;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Tests\Entities;
 
 use Arcanedev\Breadcrumbs\Entities\BreadcrumbItem;
 use Arcanedev\Breadcrumbs\Tests\TestCase;
@@ -15,7 +19,7 @@ class BreadcrumbItemTest extends TestCase
      */
 
     /** @test */
-    public function it_can_be_instantiated()
+    public function it_can_be_instantiated(): void
     {
         $title      = 'Home';
         $url        = 'http://www.example.com';
@@ -37,7 +41,7 @@ class BreadcrumbItemTest extends TestCase
     }
 
     /** @test */
-    public function it_can_make()
+    public function it_can_make(): void
     {
         $title      = 'Home';
         $url        = 'http://www.example.com';
@@ -59,7 +63,7 @@ class BreadcrumbItemTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_and_get_custom_data()
+    public function it_can_set_and_get_custom_data(): void
     {
         $breadcrumb = new BreadcrumbItem($attributes = [
             'title' => 'Home',
@@ -76,7 +80,7 @@ class BreadcrumbItemTest extends TestCase
     }
 
     /** @test */
-    public function it_can_convert_to_array()
+    public function it_can_convert_to_array(): void
     {
         $breadcrumb = new BreadcrumbItem([
             'title' => 'Home',

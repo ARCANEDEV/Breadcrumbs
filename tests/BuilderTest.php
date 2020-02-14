@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Tests;
 
 use Arcanedev\Breadcrumbs\Builder;
 
@@ -51,7 +55,7 @@ class BuilderTest extends TestCase
      */
 
     /** @test */
-    public function it_can_be_instantiated()
+    public function it_can_be_instantiated(): void
     {
         $expectations = [
             \Arcanedev\Breadcrumbs\Contracts\Builder::class,
@@ -68,7 +72,7 @@ class BuilderTest extends TestCase
     }
 
     /** @test */
-    public function it_can_be_called()
+    public function it_can_be_called(): void
     {
         static::assertCount(0, $this->builder->get());
 
@@ -78,7 +82,7 @@ class BuilderTest extends TestCase
     }
 
     /** @test */
-    public function it_must_throw_invalid_type_exception()
+    public function it_must_throw_invalid_type_exception(): void
     {
         $this->expectException(\Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException::class);
         $this->expectExceptionMessage('The name value must be a string, boolean given');
@@ -87,7 +91,7 @@ class BuilderTest extends TestCase
     }
 
     /** @test */
-    public function it_must_throw_invalid_callback_name_exception()
+    public function it_must_throw_invalid_callback_name_exception(): void
     {
         $this->expectException(\Arcanedev\Breadcrumbs\Exceptions\InvalidCallbackNameException::class);
         $this->expectExceptionMessage('The callback name not found [random]');

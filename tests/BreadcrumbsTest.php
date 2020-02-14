@@ -1,6 +1,9 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests;
+<?php
 
-use Arcanedev\Breadcrumbs\Breadcrumbs;
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Tests;
+
 use Arcanedev\Breadcrumbs\Builder;
 
 /**
@@ -16,7 +19,7 @@ class BreadcrumbsTest extends TestCase
      | -----------------------------------------------------------------
      */
 
-    /** @var Breadcrumbs */
+    /** @var \Arcanedev\Breadcrumbs\Contracts\Breadcrumbs */
     private $breadcrumbs;
 
     /* -----------------------------------------------------------------
@@ -46,7 +49,7 @@ class BreadcrumbsTest extends TestCase
      */
 
     /** @test */
-    public function it_can_be_instantiated()
+    public function it_can_be_instantiated(): void
     {
         $expectations = [
             \Arcanedev\Breadcrumbs\Contracts\Breadcrumbs::class,
@@ -59,7 +62,7 @@ class BreadcrumbsTest extends TestCase
     }
 
     /** @test */
-    public function it_can_be_instantiated_via_helper()
+    public function it_can_be_instantiated_via_helper(): void
     {
         $this->breadcrumbs = breadcrumbs();
 
@@ -74,7 +77,7 @@ class BreadcrumbsTest extends TestCase
     }
 
     /** @test */
-    public function it_can_render()
+    public function it_can_render(): void
     {
         $result = $this->breadcrumbs->render('public');
 
@@ -92,7 +95,7 @@ class BreadcrumbsTest extends TestCase
     }
 
     /** @test */
-    public function it_can_generate_items()
+    public function it_can_generate_items(): void
     {
         $items = $this->breadcrumbs->generate('public');
 
@@ -112,7 +115,7 @@ class BreadcrumbsTest extends TestCase
     }
 
     /** @test */
-    public function it_must_throw_invalid_type_exception_on_template()
+    public function it_must_throw_invalid_type_exception_on_template(): void
     {
         $this->expectException(\Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException::class);
         $this->expectExceptionMessage('The default template name must be a string, NULL given.');
@@ -121,7 +124,7 @@ class BreadcrumbsTest extends TestCase
     }
 
     /** @test */
-    public function it_must_throw_invalid_template_exception_on_not_found_template()
+    public function it_must_throw_invalid_template_exception_on_not_found_template(): void
     {
         $this->expectException(\Arcanedev\Breadcrumbs\Exceptions\InvalidTemplateException::class);
         $this->expectExceptionMessage('The template [material-design] is not supported.');
@@ -130,7 +133,7 @@ class BreadcrumbsTest extends TestCase
     }
 
     /** @test */
-    public function it_must_throw_invalid_type_exception_on_register()
+    public function it_must_throw_invalid_type_exception_on_register(): void
     {
         $this->expectException(\Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException::class);
         $this->expectExceptionMessage('The callback name value must be a string, NULL given.');
@@ -141,7 +144,7 @@ class BreadcrumbsTest extends TestCase
     }
 
     /** @test */
-    public function it_can_register_a_crumb_with_icon()
+    public function it_can_register_a_crumb_with_icon(): void
     {
         $this->breadcrumbs->register('public', function(Builder $builder) {
             $builder->push('Home', 'http://www.example.com', [
@@ -163,7 +166,7 @@ class BreadcrumbsTest extends TestCase
     /**
      * Register main breadcrumb domain.
      */
-    private function registerMainBreadcrumb()
+    private function registerMainBreadcrumb(): void
     {
         $this->breadcrumbs->register('public', function(Builder $builder) {
             $builder->push('Home', 'http://www.example.com');

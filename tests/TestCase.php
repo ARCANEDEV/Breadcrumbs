@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Tests;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
@@ -29,7 +33,7 @@ abstract class TestCase extends BaseTestCase
      *
      * @return array
      */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             \Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider::class

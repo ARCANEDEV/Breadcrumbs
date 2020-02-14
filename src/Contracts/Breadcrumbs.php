@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\Breadcrumbs\Contracts;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Contracts;
 
 use Closure;
 
