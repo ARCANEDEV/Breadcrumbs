@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Arcanedev\Breadcrumbs\Contracts\Breadcrumbs;
 
 if ( ! function_exists('breadcrumbs')) {

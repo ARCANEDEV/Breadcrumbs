@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\Breadcrumbs\Exceptions;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Exceptions;
 
 /**
  * Class     InvalidTemplateException

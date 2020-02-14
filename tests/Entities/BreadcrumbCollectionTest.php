@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests\Entities;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Tests\Entities;
 
 use Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection;
 use Arcanedev\Breadcrumbs\Tests\TestCase;
@@ -44,14 +48,14 @@ class BreadcrumbCollectionTest extends TestCase
      */
 
     /** @test */
-    public function it_can_be_instantiated()
+    public function it_can_be_instantiated(): void
     {
         static::assertInstanceOf(BreadcrumbCollection::class, $this->bcCollection);
         static::assertCount(0, $this->bcCollection);
     }
 
     /** @test */
-    public function it_can_add_one()
+    public function it_can_add_one(): void
     {
         static::assertCount(0, $this->bcCollection);
 
@@ -61,7 +65,7 @@ class BreadcrumbCollectionTest extends TestCase
     }
 
     /** @test */
-    public function it_can_order_items()
+    public function it_can_order_items(): void
     {
         static::assertCount(0, $this->bcCollection);
 

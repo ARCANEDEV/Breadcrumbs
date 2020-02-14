@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\Breadcrumbs;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs;
 
 use Arcanedev\Breadcrumbs\Contracts\Builder as BuilderContract;
 
@@ -49,7 +53,7 @@ class Builder implements BuilderContract
     /**
      * Get breadcrumbs collection.
      *
-     * @return Entities\BreadcrumbCollection
+     * @return \Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection
      */
     public function get()
     {
@@ -61,7 +65,7 @@ class Builder implements BuilderContract
      *
      * @return array
      */
-    public function getCallbacks()
+    public function getCallbacks(): array
     {
         return $this->callbacks;
     }
@@ -71,7 +75,7 @@ class Builder implements BuilderContract
      *
      * @param  array  $callbacks
      *
-     * @return Builder
+     * @return $this
      */
     private function setCallbacks(array $callbacks)
     {
@@ -91,7 +95,7 @@ class Builder implements BuilderContract
      * @param  string  $name
      * @param  array   $params
      *
-     * @return self
+     * @return $this
      */
     public function call($name, array $params = [])
     {
@@ -108,7 +112,7 @@ class Builder implements BuilderContract
      *
      * @param  string  $name
      */
-    public function parent($name)
+    public function parent($name): void
     {
         $this->call($name, array_slice(func_get_args(), 1));
     }
@@ -120,7 +124,7 @@ class Builder implements BuilderContract
      * @param  string|null  $url
      * @param  array        $data
      *
-     * @return self
+     * @return $this
      */
     public function push($title, $url = null, array $data = [])
     {
@@ -134,7 +138,7 @@ class Builder implements BuilderContract
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->breadcrumbs->toArray();
     }
@@ -152,7 +156,7 @@ class Builder implements BuilderContract
      * @throws \Arcanedev\Breadcrumbs\Exceptions\InvalidTypeException
      * @throws \Arcanedev\Breadcrumbs\Exceptions\InvalidCallbackNameException
      */
-    private function checkName($name)
+    private function checkName($name): void
     {
         if ( ! is_string($name)) {
             throw new Exceptions\InvalidTypeException(

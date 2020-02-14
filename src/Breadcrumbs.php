@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\Breadcrumbs;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs;
 
 use Arcanedev\Breadcrumbs\Contracts\Breadcrumbs as BreadcrumbsContract;
 use Closure;
@@ -70,7 +74,7 @@ class Breadcrumbs implements BreadcrumbsContract
      *
      * @param  array  $supported
      *
-     * @return self
+     * @return $this
      */
     public function setSupported(array $supported)
     {
@@ -84,7 +88,7 @@ class Breadcrumbs implements BreadcrumbsContract
      *
      * @param  string  $template
      *
-     * @return self
+     * @return $this
      */
     public function setTemplate($template)
     {
@@ -100,7 +104,7 @@ class Breadcrumbs implements BreadcrumbsContract
      *
      * @return string
      */
-    private function getView()
+    private function getView(): string
     {
         return $this->supported[$this->template];
     }
@@ -116,7 +120,7 @@ class Breadcrumbs implements BreadcrumbsContract
      * @param  string    $name
      * @param  \Closure  $callback
      *
-     * @return self
+     * @return $this
      */
     public function register($name, Closure $callback)
     {
@@ -152,11 +156,9 @@ class Breadcrumbs implements BreadcrumbsContract
      *
      * @return array
      */
-    public function generate($name, ...$params)
+    public function generate($name, ...$params): array
     {
-        return (new Builder($this->callbacks))
-            ->call($name, $params)
-            ->toArray();
+        return (new Builder($this->callbacks))->call($name, $params)->toArray();
     }
 
     /* -----------------------------------------------------------------
@@ -172,7 +174,7 @@ class Breadcrumbs implements BreadcrumbsContract
      * @throws Exceptions\InvalidTemplateException
      * @throws Exceptions\InvalidTypeException
      */
-    private function checkTemplate($template)
+    private function checkTemplate($template): void
     {
         if ( ! is_string($template)) {
             $type = gettype($template);
@@ -197,7 +199,7 @@ class Breadcrumbs implements BreadcrumbsContract
      *
      * @throws Exceptions\InvalidTypeException
      */
-    private function checkCallbackName(&$name)
+    private function checkCallbackName(&$name): void
     {
         if ( ! is_string($name)) {
             $type = gettype($name);

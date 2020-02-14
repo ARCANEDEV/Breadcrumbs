@@ -1,5 +1,10 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests;
+<?php
 
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Tests;
+
+use Arcanedev\Breadcrumbs\Tests\Stubs\Controllers\DummyController;
 use Illuminate\Routing\Router;
 
 /**
@@ -19,7 +24,7 @@ class HasBreadcrumbsTest extends TestCase
     {
         parent::setUp();
 
-        $this->registerRoutes();
+        $this->setupRoutes($this->app['router']);
     }
 
     /* -----------------------------------------------------------------
@@ -28,9 +33,10 @@ class HasBreadcrumbsTest extends TestCase
      */
 
     /** @test */
-    public function it_can_render_about_us_page_breadcrumbs()
+    public function it_can_render_about_us_page_breadcrumbs(): void
     {
-        $this->get(route('public::about-us'))->isOk();
+        $this->get(route('public::about-us'))
+             ->isOk();
 
         $result = breadcrumbs()->render('public');
 
@@ -62,28 +68,22 @@ class HasBreadcrumbsTest extends TestCase
      | -----------------------------------------------------------------
      */
 
-    private function registerRoutes()
+    /**
+     * Setup the routes.
+     *
+     * @param  \Illuminate\Routing\Router  $router
+     */
+    private function setupRoutes(Router $router): void
     {
-        /** @var \Illuminate\Routing\Router $router */
-        $router = app('router');
+        $router->name('public::')->group(function () use ($router) {
+            $router->get('/', [DummyController::class, 'index'])
+                   ->name('home');
 
-        $router->group([
-            'namespace' => 'Arcanedev\\Breadcrumbs\\Tests\\Stubs\\Controllers'
-        ], function (Router $router) {
-            $router->get('/', [
-                'as'    => 'public::home',
-                'uses'  => 'DummyController@index',
-            ]);
+            $router->get('about', [DummyController::class, 'about'])
+                   ->name('about');
 
-            $router->get('about', [
-                'as'    => 'public::about',
-                'uses'  => 'DummyController@about',
-            ]);
-
-            $router->get('about-us', [
-                'as'    => 'public::about-us',
-                'uses'  => 'DummyController@aboutUs',
-            ]);
+            $router->get('about-us', [DummyController::class, 'aboutUs'])
+                   ->name('about-us');
         });
     }
 }

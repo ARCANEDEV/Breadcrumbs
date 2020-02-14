@@ -1,7 +1,10 @@
-<?php namespace Arcanedev\Breadcrumbs\Entities;
+<?php
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Fluent;
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Entities;
+
+use Illuminate\Support\{Arr, Fluent};
 
 /**
  * Class     BreadcrumbItem
@@ -65,7 +68,7 @@ class BreadcrumbItem extends Fluent
     /**
      * Set as first item.
      *
-     * @return self
+     * @return $this
      */
     public function setFirst()
     {
@@ -77,7 +80,7 @@ class BreadcrumbItem extends Fluent
     /**
      * Set as last item.
      *
-     * @return self
+     * @return $this
      */
     public function setLast()
     {
@@ -111,7 +114,7 @@ class BreadcrumbItem extends Fluent
      * @param  string  $url
      * @param  array   $data
      *
-     * @return self
+     * @return $this
      */
     public static function make($title, $url, array $data = [])
     {
@@ -121,7 +124,7 @@ class BreadcrumbItem extends Fluent
     /**
      * Reset position.
      *
-     * @return self
+     * @return $this
      */
     public function resetPosition()
     {
@@ -141,7 +144,7 @@ class BreadcrumbItem extends Fluent
      *
      * @return bool
      */
-    public function isFirst()
+    public function isFirst(): bool
     {
         return $this->get('first', false);
     }
@@ -151,7 +154,7 @@ class BreadcrumbItem extends Fluent
      *
      * @return bool
      */
-    public function isLast()
+    public function isLast(): bool
     {
         return $this->get('last', false);
     }

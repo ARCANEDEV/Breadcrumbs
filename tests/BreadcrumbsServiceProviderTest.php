@@ -1,4 +1,8 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Tests;
 
 use Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider;
 
@@ -43,7 +47,7 @@ class BreadcrumbsServiceProviderTest extends TestCase
      */
 
     /** @test */
-    public function it_can_be_instantiated()
+    public function it_can_be_instantiated(): void
     {
         $expectations = [
             \Illuminate\Support\ServiceProvider::class,
@@ -59,7 +63,7 @@ class BreadcrumbsServiceProviderTest extends TestCase
     }
 
     /** @test */
-    public function it_can_provides()
+    public function it_can_provides(): void
     {
         $expected = [
             \Arcanedev\Breadcrumbs\Contracts\Breadcrumbs::class,

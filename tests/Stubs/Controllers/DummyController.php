@@ -1,7 +1,11 @@
-<?php namespace Arcanedev\Breadcrumbs\Tests\Stubs\Controllers;
+<?php
+
+declare(strict_types=1);
+
+namespace Arcanedev\Breadcrumbs\Tests\Stubs\Controllers;
 
 use Arcanedev\Breadcrumbs\HasBreadcrumbs;
-use Arcanedev\Support\Http\Controller;
+use Illuminate\Routing\Controller;
 
 /**
  * Class     DummyController
@@ -25,8 +29,6 @@ class DummyController extends Controller
 
     public function __construct()
     {
-        parent::__construct();
-
         $this->registerBreadcrumbs('public');
     }
 
