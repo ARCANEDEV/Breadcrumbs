@@ -14,13 +14,12 @@
     "type":    "library",
     "license": "MIT",
     "require": {
-        "php":               ">=7.2.0",
-        "arcanedev/support": "^5.1.1"
+        "php":               "^7.2.5",
+        "arcanedev/support": "^7.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^4.0",
-        "phpunit/phpcov":      "^6.0",
-        "phpunit/phpunit":     "^8.0"
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit":     "^8.5|^9.0"
     },
     "autoload": {
         "psr-4": {
@@ -39,5 +38,7 @@
                 "Arcanedev\\Breadcrumbs\\BreadcrumbsServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

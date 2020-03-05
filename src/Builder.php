@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Arcanedev\Breadcrumbs;
 
 use Arcanedev\Breadcrumbs\Contracts\Builder as BuilderContract;
+use Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection;
 
 /**
  * Class     Builder
@@ -25,7 +26,7 @@ class Builder implements BuilderContract
     /**
      * Breadcrumbs collection.
      *
-     * @var Entities\BreadcrumbCollection
+     * @var \Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection
      */
     protected $breadcrumbs;
 
@@ -41,7 +42,7 @@ class Builder implements BuilderContract
      */
     public function __construct(array $callbacks = [])
     {
-        $this->breadcrumbs = new Entities\BreadcrumbCollection;
+        $this->breadcrumbs = new BreadcrumbCollection;
         $this->setCallbacks($callbacks);
     }
 
@@ -55,7 +56,7 @@ class Builder implements BuilderContract
      *
      * @return \Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection
      */
-    public function get()
+    public function get(): BreadcrumbCollection
     {
         return $this->breadcrumbs;
     }

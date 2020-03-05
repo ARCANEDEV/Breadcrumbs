@@ -20,7 +20,7 @@ Feel free to check out the [releases](https://github.com/ARCANEDEV/Breadcrumbs/r
 
   * Well tested with maximum code quality.
   * Easy setup &amp; configuration.
-  * Laravel `5.0` to ` 6.x` are supported.
+  * Laravel `5.x` to ` 7.x` are supported.
   * Twitter Bootstrap `v3 | v4` are supported.
   * ZURB Foundation `v5 | v6` are supported.
   * Well documented &amp; IDE Friendly.
@@ -45,7 +45,7 @@ If you discover any security related issues, please email arcanedev.maroc@gmail.
 - [ARCANEDEV][link-author]
 - [All Contributors][link-contributors]
 
-[badge_laravel]:      https://img.shields.io/badge/Laravel%20supported-5.0%20to%206.x-orange.svg?style=flat-square
+[badge_laravel]:      https://img.shields.io/badge/Laravel%20supported-5.x%20to%207.x-orange.svg?style=flat-square
 [badge_license]:      https://img.shields.io/packagist/l/arcanedev/breadcrumbs.svg?style=flat-square
 [badge_build]:        https://img.shields.io/github/workflow/status/ARCANEDEV/Breadcrumbs/run-tests?style=flat-square
 [badge_coverage]:     https://img.shields.io/scrutinizer/coverage/g/ARCANEDEV/Breadcrumbs.svg?style=flat-square

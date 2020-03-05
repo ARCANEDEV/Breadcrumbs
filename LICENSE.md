@@ -1,6 +1,6 @@
 The MIT License
 
-Copyright (c) 2015-2019 | ARCANEDEV(c) - Breadcrumbs
+Copyright (c) 2015-2020 | ARCANEDEV(c) - Breadcrumbs
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
