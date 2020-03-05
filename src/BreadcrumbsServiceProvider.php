@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Arcanedev\Breadcrumbs;
 
+use Arcanedev\Breadcrumbs\Contracts\Breadcrumbs as BreadcrumbsContract;
 use Arcanedev\Support\Providers\PackageServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
 
@@ -42,7 +43,7 @@ class BreadcrumbsServiceProvider extends PackageServiceProvider implements Defer
         $this->registerConfig();
 
         // Register the Breadcrumbs service.
-        $this->singleton(Contracts\Breadcrumbs::class, function ($app) {
+        $this->singleton(BreadcrumbsContract::class, function ($app) {
             return new Breadcrumbs(
                 $app['config']->get('breadcrumbs.template.supported', []),
                 $app['config']->get('breadcrumbs.template.default', '')
@@ -55,9 +56,14 @@ class BreadcrumbsServiceProvider extends PackageServiceProvider implements Defer
      */
     public function boot(): void
     {
-        $this->publishConfig();
-        $this->publishViews();
-        $this->publishTranslations();
+        $this->loadTranslations();
+        $this->loadViews();
+
+        if ($this->app->runningInConsole()) {
+            $this->publishConfig();
+            $this->publishTranslations();
+            $this->publishViews();
+        }
     }
 
     /**
@@ -68,7 +74,7 @@ class BreadcrumbsServiceProvider extends PackageServiceProvider implements Defer
     public function provides(): array
     {
         return [
-            Contracts\Breadcrumbs::class,
+            BreadcrumbsContract::class,
         ];
     }
 }

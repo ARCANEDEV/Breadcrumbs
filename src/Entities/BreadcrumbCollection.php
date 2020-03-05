@@ -61,7 +61,7 @@ class BreadcrumbCollection extends Collection
     {
         $count = $this->count();
 
-        $this->map(function (BreadcrumbItem $crumb, $key) use ($count) {
+        return $this->map(function (BreadcrumbItem $crumb, $key) use ($count) {
             $crumb->resetPosition();
 
             if ($key === 0)
@@ -72,7 +72,5 @@ class BreadcrumbCollection extends Collection
 
             return $crumb;
         });
-
-        return $this;
     }
 }

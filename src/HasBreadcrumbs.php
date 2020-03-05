@@ -111,7 +111,7 @@ trait HasBreadcrumbs
      * @param  string  $url
      * @param  array   $data
      *
-     * @return self
+     * @return $this
      */
     protected function addBreadcrumb(string $title, string $url = '', array $data = [])
     {
