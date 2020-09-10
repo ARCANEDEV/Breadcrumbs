@@ -1,7 +1,7 @@
 @if ($breadcrumbs)
 <ol class="breadcrumb">
     @foreach ($breadcrumbs as $crumb)
-        @php($icon = isset($crumb['icon']) ? '<i class="' . $crumb['icon'] . '"></i> ' : '')
+        @php($icon = isset($crumb['icon']) ? '<i class="'.$crumb['icon'].'"></i> ' : '')
 
         @if ($crumb['url'] && ! $crumb['last'])
             <li class="breadcrumb-item">

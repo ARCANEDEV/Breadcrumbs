@@ -1,12 +1,12 @@
 # Breadcrumbs
 
-A simple breadcrumbs generator helper.
+A simple breadcrumbs' generator helper.
 
 ### Features
 
   * Well tested with maximum code quality.
   * Easy setup &amp; configuration.
-  * Laravel `5.x` to ` 7.x` are supported.
+  * Laravel `5.x` to ` 8.x` are supported.
   * Twitter Bootstrap `v3 | v4` are supported.
   * ZURB Foundation `v5 | v6` are supported.
   * Well documented &amp; IDE Friendly.
