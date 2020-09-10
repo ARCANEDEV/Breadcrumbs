@@ -15,10 +15,10 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "arcanedev/support": "^8.0"
+        "arcanedev/support": "^9.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.4",
+        "orchestra/testbench": "^7.0",
         "phpunit/phpunit": "^9.3.3"
     },
     "autoload": {
@@ -38,7 +38,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-develop": "6.x-dev"
+            "dev-develop": "7.x-dev"
         },
         "laravel": {
             "providers": [
