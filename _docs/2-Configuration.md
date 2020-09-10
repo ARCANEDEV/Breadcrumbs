@@ -24,6 +24,7 @@ return [
             // Twitter Bootstrap
             'bootstrap-3'  => 'breadcrumbs::bootstrap-3',
             'bootstrap-4'  => 'breadcrumbs::bootstrap-4',
+            'bootstrap-5'  => 'breadcrumbs::bootstrap-5',
 
             // Zurb Foundation
             'foundation-5' => 'breadcrumbs::foundation-5',
