@@ -9,7 +9,6 @@ use Arcanedev\Breadcrumbs\BreadcrumbsServiceProvider;
 /**
  * Class     BreadcrumbsServiceProviderTest
  *
- * @package  Arcanedev\Breadcrumbs\Tests\Laravel
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class BreadcrumbsServiceProviderTest extends TestCase

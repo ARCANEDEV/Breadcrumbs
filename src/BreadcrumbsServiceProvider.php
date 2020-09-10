@@ -11,7 +11,6 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 /**
  * Class     BreadcrumbsServiceProvider
  *
- * @package  Arcanedev\Breadcrumbs
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class BreadcrumbsServiceProvider extends PackageServiceProvider implements DeferrableProvider

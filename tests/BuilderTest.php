@@ -9,7 +9,6 @@ use Arcanedev\Breadcrumbs\Builder;
 /**
  * Class     BuilderTest
  *
- * @package  Arcanedev\Breadcrumbs\Tests
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class BuilderTest extends TestCase

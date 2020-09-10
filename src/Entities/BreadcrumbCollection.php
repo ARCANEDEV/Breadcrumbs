@@ -9,7 +9,6 @@ use Illuminate\Support\Collection;
 /**
  * Class     BreadcrumbCollection
  *
- * @package  Arcanedev\Breadcrumbs\Entities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class BreadcrumbCollection extends Collection

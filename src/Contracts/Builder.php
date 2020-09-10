@@ -7,9 +7,8 @@ namespace Arcanedev\Breadcrumbs\Contracts;
 use Illuminate\Contracts\Support\Arrayable;
 
 /**
- * Interface  BuilderInterface
+ * Interface  Builder
  *
- * @package   Arcanedev\Breadcrumbs\Contracts
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface Builder extends Arrayable

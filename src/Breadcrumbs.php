@@ -11,7 +11,6 @@ use Illuminate\Support\HtmlString;
 /**
  * Class     Breadcrumbs
  *
- * @package  Arcanedev\Breadcrumbs
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class Breadcrumbs implements BreadcrumbsContract

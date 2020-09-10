@@ -8,8 +8,9 @@ use Arcanedev\Breadcrumbs\Entities\BreadcrumbItem;
 use Arcanedev\Breadcrumbs\Tests\TestCase;
 
 /**
- * Class BreadcrumbItemTest
- * @package Arcanedev\Breadcrumbs\Tests\Entities
+ * Class     BreadcrumbItemTest
+ *
+ * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class BreadcrumbItemTest extends TestCase
 {

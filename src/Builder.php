@@ -10,7 +10,6 @@ use Arcanedev\Breadcrumbs\Entities\BreadcrumbCollection;
 /**
  * Class     Builder
  *
- * @package  Arcanedev\Breadcrumbs
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class Builder implements BuilderContract

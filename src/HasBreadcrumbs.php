@@ -7,7 +7,6 @@ namespace Arcanedev\Breadcrumbs;
 /**
  * Trait     HasBreadcrumbs
  *
- * @package  Arcanedev\Breadcrumbs
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 trait HasBreadcrumbs

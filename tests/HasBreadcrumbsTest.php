@@ -10,7 +10,6 @@ use Illuminate\Routing\Router;
 /**
  * Class     HasBreadcrumbsTest
  *
- * @package  Arcanedev\Breadcrumbs\Tests
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 class HasBreadcrumbsTest extends TestCase

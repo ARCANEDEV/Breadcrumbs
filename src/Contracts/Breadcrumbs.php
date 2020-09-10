@@ -9,7 +9,6 @@ use Closure;
 /**
  * Interface  Breadcrumbs
  *
- * @package   Arcanedev\Breadcrumbs\Contracts
  * @author    ARCANEDEV <arcanedev.maroc@gmail.com>
  */
 interface Breadcrumbs

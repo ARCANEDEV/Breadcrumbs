@@ -9,7 +9,6 @@ use Illuminate\Support\{Arr, Fluent};
 /**
  * Class     BreadcrumbItem
  *
- * @package  Arcanedev\Breadcrumbs\Entities
  * @author   ARCANEDEV <arcanedev.maroc@gmail.com>
  *
  * @property  string  title
